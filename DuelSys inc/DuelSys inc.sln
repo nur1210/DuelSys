@@ -3,24 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuelSys inc", "DuelSys inc.csproj", "{A73B06C2-053B-48F9-895E-F72C9950B1C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DuelSys inc", "DuelSys inc.csproj", "{A73B06C2-053B-48F9-895E-F72C9950B1C0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0E762D78-2526-4F01-AD4B-E1E024EF0208} = {0E762D78-2526-4F01-AD4B-E1E024EF0208}
 		{025110EC-71E4-423E-9B45-8EC533AD92C9} = {025110EC-71E4-423E-9B45-8EC533AD92C9}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuelSys inc WebApp", "..\DuelSys inc WebApp\DuelSys inc WebApp.csproj", "{28E52FF1-08FF-482B-BC6B-C19A72D285C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DuelSys inc WebApp", "..\DuelSys inc WebApp\DuelSys inc WebApp.csproj", "{28E52FF1-08FF-482B-BC6B-C19A72D285C9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0E762D78-2526-4F01-AD4B-E1E024EF0208} = {0E762D78-2526-4F01-AD4B-E1E024EF0208}
 		{025110EC-71E4-423E-9B45-8EC533AD92C9} = {025110EC-71E4-423E-9B45-8EC533AD92C9}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "..\DAL\DAL.csproj", "{025110EC-71E4-423E-9B45-8EC533AD92C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "..\DAL\DAL.csproj", "{025110EC-71E4-423E-9B45-8EC533AD92C9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0E762D78-2526-4F01-AD4B-E1E024EF0208} = {0E762D78-2526-4F01-AD4B-E1E024EF0208}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "..\Logic\Logic.csproj", "{0E762D78-2526-4F01-AD4B-E1E024EF0208}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "..\Logic\Logic.csproj", "{0E762D78-2526-4F01-AD4B-E1E024EF0208}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic.Tests", "..\..\Individual Project\wad-project\Individual project\ASP.NET\Logic.Tests\Logic.Tests.csproj", "{B141F53E-6570-4030-A0A3-7F183743B57A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0E762D78-2526-4F01-AD4B-E1E024EF0208} = {0E762D78-2526-4F01-AD4B-E1E024EF0208}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +49,10 @@ Global
 		{0E762D78-2526-4F01-AD4B-E1E024EF0208}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E762D78-2526-4F01-AD4B-E1E024EF0208}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E762D78-2526-4F01-AD4B-E1E024EF0208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B141F53E-6570-4030-A0A3-7F183743B57A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B141F53E-6570-4030-A0A3-7F183743B57A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B141F53E-6570-4030-A0A3-7F183743B57A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B141F53E-6570-4030-A0A3-7F183743B57A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

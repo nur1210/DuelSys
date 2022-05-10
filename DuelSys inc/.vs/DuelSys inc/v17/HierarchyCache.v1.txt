@@ -1,0 +1,330 @@
+﻿++Solution 'DuelSys inc' ‎(5 of 5 projects)
+i:{00000000-0000-0000-0000-000000000000}:DuelSys inc.sln
+++Logic.Tests
+i:{00000000-0000-0000-0000-000000000000}:Logic.Tests
+++Dependencies
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:>990
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:>420
+i:{025110ec-71e4-423e-9b45-8ec533ad92c9}:>419
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:>421
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:>569
+++UserManagerTests.cs
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:c:\users\nur nechushtan\documents\fontys\semester 2\individual project\wad-project\individual project\asp.net\logic.tests\usermanagertests.cs
+++xunit.runner.json
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:c:\users\nur nechushtan\documents\fontys\semester 2\individual project\wad-project\individual project\asp.net\logic.tests\xunit.runner.json
+++Analyzers
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:analyzers
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:analyzers
+i:{025110ec-71e4-423e-9b45-8ec533ad92c9}:analyzers
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:analyzers
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:analyzers
+++Frameworks
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:frameworks
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:frameworks
+i:{025110ec-71e4-423e-9b45-8ec533ad92c9}:frameworks
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:frameworks
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:frameworks
+++Packages
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:packages
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:packages
+i:{025110ec-71e4-423e-9b45-8ec533ad92c9}:packages
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:packages
+++Projects
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:projects
+i:{025110ec-71e4-423e-9b45-8ec533ad92c9}:projects
+++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{025110ec-71e4-423e-9b45-8ec533ad92c9}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+++Microsoft.CodeAnalysis.NetAnalyzers
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{025110ec-71e4-423e-9b45-8ec533ad92c9}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+++System.Text.Json.SourceGeneration
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.4\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.4\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{025110ec-71e4-423e-9b45-8ec533ad92c9}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.4\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.4\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.4\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+++xunit.analyzers
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:c:\users\nur nechushtan\.nuget\packages\xunit.analyzers\0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll
+++Microsoft.NETCore.App
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:c:\users\nur nechushtan\documents\fontys\semester 2\individual project\wad-project\individual project\asp.net\logic.tests\microsoft.netcore.app
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc\microsoft.netcore.app
+i:{025110ec-71e4-423e-9b45-8ec533ad92c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\dal\microsoft.netcore.app
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\microsoft.netcore.app
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\microsoft.netcore.app
+++Autofac.Extras.Moq (6.1.0)
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:>1000
+++Microsoft.NET.Test.Sdk (17.1.0)
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:>998
+++Moq (4.17.2)
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:>1002
+++xunit (2.4.1)
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:>999
+++xunit.runner.console (2.4.1)
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:>997
+++xunit.runner.visualstudio (2.4.3)
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:>1001
+++Logic
+i:{b141f53e-6570-4030-a0a3-7f183743b57a}:c:\users\nur nechushtan\documents\fontys\semester 2\individual project\wad-project\individual project\asp.net\classlibrary\logic.csproj
+i:{025110ec-71e4-423e-9b45-8ec533ad92c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\logic.csproj
+i:{00000000-0000-0000-0000-000000000000}:Logic
+++DuelSys inc
+i:{00000000-0000-0000-0000-000000000000}:DuelSys inc
+++MainForm.cs
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc\mainform.cs
+++MainForm.Designer.cs
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc\mainform.designer.cs
+++MainForm.resx
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc\mainform.resx
+++Program.cs
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc\program.cs
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\program.cs
+++System.Windows.Forms.Analyzers
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:c:\program files\dotnet\packs\microsoft.windowsdesktop.app.ref\6.0.4\analyzers\dotnet\system.windows.forms.analyzers.dll
+++System.Windows.Forms.Analyzers.CSharp
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:c:\program files\dotnet\packs\microsoft.windowsdesktop.app.ref\6.0.4\analyzers\dotnet\cs\system.windows.forms.analyzers.csharp.dll
+++Microsoft.WindowsDesktop.App.WindowsForms
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc\microsoft.windowsdesktop.app.windowsforms
+++MaterialSkin.2 (2.3.1)
+i:{a73b06c2-053b-48f9-895e-f72c9950b1c0}:>1016
+++DAL
+i:{00000000-0000-0000-0000-000000000000}:DAL
+++Connection.cs
+i:{025110ec-71e4-423e-9b45-8ec533ad92c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\dal\connection.cs
+++TournamentDB.cs
+i:{025110ec-71e4-423e-9b45-8ec533ad92c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\dal\tournamentdb.cs
+++MySql.Data (8.0.29)
+i:{025110ec-71e4-423e-9b45-8ec533ad92c9}:>584
+++Models
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\models\
+++Admin.cs
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\models\admin.cs
+++Badminton.cs
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\models\badminton.cs
+++Match.cs
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\models\match.cs
+++Person.cs
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\models\person.cs
+++Result.cs
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\models\result.cs
+++RoundRobin.cs
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\models\roundrobin.cs
+++Sport.cs
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\models\sport.cs
+++Tournament.cs
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\models\tournament.cs
+++TournamentLeaderBoard.cs
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\models\tournamentleaderboard.cs
+++TournamentSchedule.cs
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\models\tournamentschedule.cs
+++TournamentSystem.cs
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\models\tournamentsystem.cs
+++User.cs
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\logic\models\user.cs
+++BCrypt.Net-Core (1.6.0)
+i:{0e762d78-2526-4f01-ad4b-e1e024ef0208}:>604
+++DuelSys inc WebApp
+i:{00000000-0000-0000-0000-000000000000}:DuelSys inc WebApp
+++Connected Services 
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:>570
+++Properties
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\properties\
+++wwwroot
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\
+++Pages
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\pages\
+++appsettings.json
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\appsettings.json
+++No service dependencies discovered
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:>571
+++launchSettings.json
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\properties\launchsettings.json
+++css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\css\
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\
+++js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\js\
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\js\
+++lib
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\
+++favicon.ico
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\favicon.ico
+++Shared
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\pages\shared\
+++_ViewImports.cshtml
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\pages\_viewimports.cshtml
+++_ViewStart.cshtml
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\pages\_viewstart.cshtml
+++Error.cshtml
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\pages\error.cshtml
+++Index.cshtml
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\pages\index.cshtml
+++Privacy.cshtml
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\pages\privacy.cshtml
+++appsettings.Development.json
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\appsettings.development.json
+++Microsoft.AspNetCore.Analyzers
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
+++Microsoft.AspNetCore.App.Analyzers
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.4\analyzers\dotnet\cs\microsoft.aspnetcore.app.analyzers.dll
+++Microsoft.AspNetCore.App.CodeFixes
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.4\analyzers\dotnet\cs\microsoft.aspnetcore.app.codefixes.dll
+++Microsoft.AspNetCore.Components.Analyzers
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
+++Microsoft.AspNetCore.Mvc.Analyzers
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
+++Microsoft.AspNetCore.Razor.SourceGenerator.Tooling.Internal
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk.razor\source-generators\microsoft.aspnetcore.razor.sourcegenerator.tooling.internal.dll
+++Microsoft.Extensions.Logging.Generators
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.4\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+++Microsoft.NET.Sdk.Razor.SourceGenerators
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\program files\dotnet\sdk\6.0.202\sdks\microsoft.net.sdk.razor\source-generators\microsoft.net.sdk.razor.sourcegenerators.dll
+++Microsoft.AspNetCore.App
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\microsoft.aspnetcore.app
+++site.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\css\site.css
+++site.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\js\site.js
+++bootstrap
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\
+++jquery
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery\
+++jquery-validation
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery-validation\
+++jquery-validation-unobtrusive
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery-validation-unobtrusive\
+++_Layout.cshtml
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\pages\shared\_layout.cshtml
+++_ValidationScriptsPartial.cshtml
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\pages\shared\_validationscriptspartial.cshtml
+++Error.cshtml.cs
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\pages\error.cshtml.cs
+++Index.cshtml.cs
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\pages\index.cshtml.cs
+++Privacy.cshtml.cs
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\pages\privacy.cshtml.cs
+++dist
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery\dist\
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery-validation\dist\
+++LICENSE
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\license
+++LICENSE.txt
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery\license.txt
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery-validation-unobtrusive\license.txt
+++LICENSE.md
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery-validation\license.md
+++jquery.validate.unobtrusive.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
+++_Layout.cshtml.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\pages\shared\_layout.cshtml.css
+++jquery.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery\dist\jquery.js
+++additional-methods.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery-validation\dist\additional-methods.js
+++jquery.validate.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+++jquery.validate.unobtrusive.min.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
+++bootstrap.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+++bootstrap-grid.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+++bootstrap-reboot.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+++bootstrap-utilities.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+++bootstrap.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+++jquery.min.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery\dist\jquery.min.js
+++additional-methods.min.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+++jquery.validate.min.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+++bootstrap.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+++bootstrap.min.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+++bootstrap.rtl.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+++bootstrap-grid.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+++bootstrap-grid.min.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+++bootstrap-grid.rtl.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+++bootstrap-reboot.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+++bootstrap-reboot.min.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+++bootstrap-reboot.rtl.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+++bootstrap-utilities.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+++bootstrap-utilities.min.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+++bootstrap-utilities.rtl.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+++bootstrap.bundle.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+++bootstrap.esm.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+++bootstrap.js.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+++bootstrap.min.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+++jquery.min.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\jquery\dist\jquery.min.map
+++bootstrap.min.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+++bootstrap.rtl.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+++bootstrap.rtl.min.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+++bootstrap-grid.min.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+++bootstrap-grid.rtl.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+++bootstrap-grid.rtl.min.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+++bootstrap-reboot.min.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+++bootstrap-reboot.rtl.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+++bootstrap-reboot.rtl.min.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+++bootstrap-utilities.min.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+++bootstrap-utilities.rtl.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+++bootstrap-utilities.rtl.min.css
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+++bootstrap.bundle.js.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+++bootstrap.bundle.min.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+++bootstrap.esm.js.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+++bootstrap.esm.min.js
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+++bootstrap.min.js.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+++bootstrap.rtl.min.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+++bootstrap-grid.rtl.min.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+++bootstrap-reboot.rtl.min.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+++bootstrap-utilities.rtl.min.css.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+++bootstrap.bundle.min.js.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+++bootstrap.esm.min.js.map
+i:{28e52ff1-08ff-482b-bc6b-c19a72d285c9}:c:\users\nur nechushtan\documents\fontys\semester 2\duelsys project\duelsys inc webapp\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map

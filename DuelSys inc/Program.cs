@@ -1,3 +1,5 @@
+using Autofac;
+
 namespace DuelSys_inc
 {
     internal static class Program
@@ -10,8 +12,9 @@ namespace DuelSys_inc
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+            var container = ContainerConfig.Configure();
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(container.Resolve<MainForm>());
         }
     }
 }
