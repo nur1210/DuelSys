@@ -11,12 +11,12 @@ namespace DAL
 {
     public class UserDB : IUserDB
     {
-        public void AddUser(User user)
+        public void AddUser(User user, string hashedPassword)
         {
             using var conn = Connection.OpenConnection();
             string sql = "INSERT INTO user (first_name, last_name, email, password, is_admin) VALUES (@FirstName, @LastName, @Email, @Password, @IsAdmin)";
             MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("FirstName", user.FirstName), new MySqlParameter("LastName", user.LastName), new MySqlParameter("Email", user.Email), 
-                new MySqlParameter("Password", user.Password), new MySqlParameter("IsAdmin", user.IsAdmin));
+                new MySqlParameter("Password", hashedPassword), new MySqlParameter("IsAdmin", user.IsAdmin));
         }
 
         public void UpdateUser(User user)

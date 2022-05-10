@@ -17,7 +17,7 @@ namespace Logic.Services
             _repository = repository;
         }
 
-        public void AddUser(User u) => _repository.AddUser(u);
+        public void AddUser(User u) => _repository.AddUser(u, Hashing.HashPassword(u.Password));
         public void UpdateUser(User u) => _repository.UpdateUser(u);
         public void DeleteUser(User u) => _repository.DeleteUser(u);
         public List<User> GetAllUsers() => _repository.GetAllUsers();

@@ -1,8 +1,8 @@
 ﻿namespace Logic.Services
 {
-    public static class Hashing
+    internal static class Hashing
     {
-        public static string GenerateSalt()
+        private static string GenerateSalt()
         {
             return BCrypt.Net.BCrypt.GenerateSalt();
         }

@@ -8,35 +8,35 @@
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/DuelSys_inc_WebApp.styles.css" asp-append-version="true" />
 </head>
-	<header id="header" class="alt">
-					<h1><a href="">DuelSys Inc.</a> sport tournaments</h1>
-					<nav id="nav">
+<header id="header" class="alt">
+	<h1><a href="">DuelSys Inc.</a> sport tournaments</h1>
+	<nav id="nav">
+		<ul>
+			<li><a href="Index">Home</a></li>
+			<li>
+				<a href="#" class="icon solid fa-angle-down">Layouts</a>
+				<ul>
+					<li><a href="generic.html">Generic</a></li>
+					<li><a href="contact.html">Contact</a></li>
+					<li><a href="elements.html">Elements</a></li>
+					<li>
+						<a href="#">Submenu</a>
 						<ul>
-							<li><a href="Index">Home</a></li>
-							<li>
-								<a href="#" class="icon solid fa-angle-down">Layouts</a>
-								<ul>
-									<li><a href="generic.html">Generic</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<li><a href="elements.html">Elements</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option One</a></li>
-											<li><a href="#">Option Two</a></li>
-											<li><a href="#">Option Three</a></li>
-											<li><a href="#">Option Four</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a href="Login" class="button">Login</a></li>
+							<li><a href="#">Option One</a></li>
+							<li><a href="#">Option Two</a></li>
+							<li><a href="#">Option Three</a></li>
+							<li><a href="#">Option Four</a></li>
 						</ul>
-					</nav>
-				</header>
-		<main role="main" class="pb-3">
-			@RenderBody()
-		</main>
+					</li>
+				</ul>
+			</li>
+			<li><a href="Login" class="button">Login</a></li>
+		</ul>
+	</nav>
+</header>
+<main role="main" class="pb-3">
+	@RenderBody()
+</main>
 
 <footer id="footer">
 	<ul class="icons">
@@ -48,20 +48,23 @@
 		<li><a href="#"><span class="label">Google+</span></a></li>
 	</ul>
 	<ul class="copyright">
-		<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+		<li>&copy; Untitled. All rights reserved.</li>
+		<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 	</ul>
 </footer>
 
-	<script src="~/lib/jquery/dist/jquery.min.js"></script>
-	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="~/js/site.js" asp-append-version="true"></script>
-	<script src="~/js/jquery.min.js"asp-append-version="true"></script>
-	<script src="~/js/jquery.dropotron.min.js"asp-append-version="true"></script>
-	<script src="~/js/jquery.scrollex.min.js"asp-append-version="true"></script>
-	<script src="~/js/browser.min.js"asp-append-version="true"></script>
-	<script src="~/js/breakpoints.min.js"asp-append-version="true"></script>
-	<script src="~/js/util.js"asp-append-version="true"></script>
-	<script src="~/js/main.js"asp-append-version="true"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/jquery.dropotron.min.js" asp-append-version="true"></script>
+<script src="~/js/jquery.scrollex.min.js" asp-append-version="true"></script>
+<script src="~/js/browser.min.js" asp-append-version="true"></script>
+<script src="~/js/breakpoints.min.js" asp-append-version="true"></script>
+<script src="~/js/util.js" asp-append-version="true"></script>
+<script src="~/js/main.js" asp-append-version="true"></script>
 
-	@await RenderSectionAsync("Scripts", required: false)
+@await RenderSectionAsync("Scripts", required: false)
+@await Component.InvokeAsync("Notyf")
+
 </html>

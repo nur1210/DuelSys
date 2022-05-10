@@ -25,9 +25,16 @@ builder.Services.AddNotyf
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<UserService>();
+builder.Services.AddSingleton<Validation>();
+builder.Services.AddSingleton<SportService>();
+builder.Services.AddSingleton<TournamentService>();
+builder.Services.AddSingleton<TournamentSystemService>();
 
 
 builder.Services.AddSingleton<IUserDB, UserDB>();
+builder.Services.AddSingleton<ISportDB, SportDB>();
+builder.Services.AddSingleton<ITournamentDB, TournamentDB>();
+builder.Services.AddSingleton<ITournamentSystemDB, TournamentSystemDB>();
 
 
 var app = builder.Build();
