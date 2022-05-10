@@ -1,4 +1,6 @@
 using AspNetCoreHero.ToastNotification;
+using DAL;
+using Logic.Interfaces;
 using Logic.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -25,7 +27,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddSingleton<UserService>();
 
 
-
+builder.Services.AddSingleton<IUserDB, UserDB>();
 
 
 var app = builder.Build();
