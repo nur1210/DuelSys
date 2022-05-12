@@ -24,5 +24,10 @@ namespace Logic.Services
         public List<Tournament> GetAllTournaments() => _repository.GetAllTournaments();
         public List<TournamentView> GetAllTournamentsForView() => _repository.GetAllTournamentsForView();
 
+        public double GetTournamentOccupancyPercentage(int tournamentId) => GetAllTournamentsForView()
+            .Where(x => x.Id == tournamentId)
+            .Select(y => (y.RegisteredPlayers * 100) / y.MaxPlayers)
+            .First();
+
     }
 }

@@ -1,0 +1,50 @@
+﻿.tournament-register-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: lightgrey;
+    margin-bottom: 1px;
+}
+
+.card-header-nigger {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    
+}
+
+.card-header-nigger > img {
+    margin-right: 1rem;
+}
+
+.no-bullet-list {
+    list-style-type: none;
+}
+
+.animated-progress {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 20px 10px;
+    border: 1px solid rgb(189, 113, 113);
+    overflow: hidden;
+    position: relative;
+}
+
+.animated-progress span {
+    height: 100%;
+    display: block;
+    width: 0;
+    color: rgb(255, 251, 251);
+    line-height: 30px;
+    position: absolute;
+    text-align: end;
+    padding-right: 5px;
+}
+
+.progress-green span {
+    background-color: lightgreen;
+}

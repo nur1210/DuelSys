@@ -1,0 +1,27 @@
+﻿@page
+@model DuelSys_inc_WebApp.Pages.BadmintonModel
+@{
+}
+<div class="container">
+	<h2>Tournaments List</h2>
+	<ul>
+		@foreach (var t in Model.TournamentService.GetAllTournamentsForView())
+		{
+			<li class="no-bullet-list">
+				<div class="tournament-register-card">
+					<div class="card-header-nigger">
+						<img src="img/badminton.png" style="width: 45px">
+						<div>
+							<span>@t.Description</span><br>
+							<span>@t.Location</span>
+						</div>
+						<div class="animated-progress progress-green">
+							<span data-progress="@Model.TournamentService.GetTournamentOccupancyPercentage(t.Id)"></span>
+						</div>
+					</div>
+					<button onclick="this.parentElement.style.display = 'none'">Register</button>
+				</div>
+			</li>
+		}
+	</ul>
+</div>

@@ -65,7 +65,7 @@ namespace DAL
         {
             List<TournamentView> list = new();
             using var conn = Connection.OpenConnection();
-            string sql = @"SELECT t.description, t.location, COUNT(utm.user_id), s.min_players, s.max_players, 
+            string sql = @"SELECT t.id, t.description, t.location, COUNT(utm.user_id), s.min_players, s.max_players, 
             t.start_date, t.end_date, s.name, ts.name
             FROM tournament AS t
              join sport s on t.sport_id = s.id
@@ -77,9 +77,9 @@ namespace DAL
 
             while (rdr.Read())
             {
-                list.Add(new TournamentView(rdr.GetString(0), rdr.GetString(1),
-                    rdr.GetInt32(2), rdr.GetInt32(3), rdr.GetInt32(4), rdr.GetDateTime(5),
-                    rdr.GetDateTime(6), rdr.GetString(7), rdr.GetString(8)));
+                list.Add(new TournamentView(rdr.GetInt32(0),rdr.GetString(1), rdr.GetString(2),
+                    rdr.GetInt32(3), rdr.GetInt32(4), rdr.GetInt32(5), rdr.GetDateTime(6),
+                    rdr.GetDateTime(7), rdr.GetString(8), rdr.GetString(9)));
             }
             return list;
         }
