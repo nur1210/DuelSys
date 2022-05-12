@@ -65,12 +65,14 @@ namespace DAL
         {
             List<TournamentView> list = new();
             using var conn = Connection.OpenConnection();
-            string sql = "SELECT t.description, t.location, COUNT(utm.user_id), s.min_players, s.max_players, t.start_date, t.end_date, s.name, ts.name " +
-                         "FROM tournament AS t INNER JOIN sport AS s ON t.sport_id = s.id INNER JOIN tournament_system AS ts " +
-                         "ON t.tournament_system_id = ts.id INNER JOIN user_tournament_match AS utm ON t.id = utm.tournament_id;";
-
-            string sql2 = "SELECT COUNT(user_id) FROM user_tournament_match;";
-            var registeredUsers = Convert.ToInt32(MySqlHelper.ExecuteScalar(conn, sql2));
+            string sql = @"SELECT t.description, t.location, COUNT(utm.user_id), s.min_players, s.max_players, 
+            t.start_date, t.end_date, s.name, ts.name
+            FROM tournament AS t
+             join sport s on t.sport_id = s.id
+             join tournament_system ts on ts.id = t.tournament_system_id
+             left join user_tournament_match AS utm
+                  ON t.id = utm.tournament_id
+                 group by (t.id);";
             var rdr = MySqlHelper.ExecuteReader(conn, sql);
 
             while (rdr.Read())
