@@ -75,5 +75,12 @@ namespace DAL
             rdr.Close();
             return null;
         }
+
+        public void RegisterUserToTournament(int userId, int tournamentId)
+        {
+            using var conn = Connection.OpenConnection();
+            string sql = "INSERT INTO user_tournament_match (user_id, tournament_id) VALUES (@UserId, @TournamentId)";
+            MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("UserId", userId), new MySqlParameter("TournamentId", tournamentId));
+        }
     }
 }

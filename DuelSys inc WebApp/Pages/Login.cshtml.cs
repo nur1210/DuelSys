@@ -41,7 +41,7 @@ namespace DuelSys_inc_WebApp.Pages
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity));
             _toastNotification.Success("Login successful!");
-            return user.IsAdmin ? RedirectToPage("/UsersView") : RedirectToPage("/UsersView");
+            return user.IsAdmin ? RedirectToPage("/UsersView") : RedirectToPage("/Tournaments");
         }
 
     }

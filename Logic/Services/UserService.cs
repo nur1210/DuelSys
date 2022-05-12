@@ -23,5 +23,9 @@ namespace Logic.Services
         public List<User> GetAllUsers() => _repository.GetAllUsers();
         public User GetUserById(int id) => _repository.GetUserById(id);
         public User GetUserByEmail(string email) => _repository.GetUserByEmail(email);
+
+        public void RegisterUserToTournament(int userId, int tournamentId) =>
+            _repository.RegisterUserToTournament(userId, tournamentId);
+
     }
 }

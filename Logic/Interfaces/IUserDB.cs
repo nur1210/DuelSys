@@ -10,4 +10,5 @@ public interface IUserDB
     List<User> GetAllUsers();
     User GetUserById(int userId);
     User GetUserByEmail(string email);
+    void RegisterUserToTournament(int userId, int tournamentId);
 }
