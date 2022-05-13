@@ -25,7 +25,8 @@ namespace DuelSys_inc_WebApp.Pages
         public IActionResult OnPost()
         {
             var userId = int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
-            UserService.RegisterUserToTournament(userId, TournamentId);
+            var tournamentId = TournamentId;
+            UserService.RegisterUserToTournament(userId, tournamentId);
             return Page();
         }
     }

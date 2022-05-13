@@ -11,12 +11,12 @@ namespace DAL
 {
     public class UserDB : IUserDB
     {
-        public void AddUser(User user, string hashedPassword)
+        public void AddUser(User user, string hashPassword)
         {
             using var conn = Connection.OpenConnection();
             string sql = "INSERT INTO user (first_name, last_name, email, password, is_admin) VALUES (@FirstName, @LastName, @Email, @Password, @IsAdmin)";
             MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("FirstName", user.FirstName), new MySqlParameter("LastName", user.LastName), new MySqlParameter("Email", user.Email), 
-                new MySqlParameter("Password", hashedPassword), new MySqlParameter("IsAdmin", user.IsAdmin));
+                new MySqlParameter("Password", hashPassword), new MySqlParameter("IsAdmin", user.IsAdmin));
         }
 
         public void UpdateUser(User user)
@@ -48,11 +48,11 @@ namespace DAL
             return persons;
         }
 
-        public User GetUserById(int personId)
+        public User GetUserById(int userId)
         {
             using var conn = Connection.OpenConnection();
             string sql = "SELECT * FROM user WHERE id = @ID";
-            var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("ID", personId));
+            var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("ID", userId));
 
             while (rdr.Read())
             {

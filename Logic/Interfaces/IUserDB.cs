@@ -4,7 +4,7 @@ namespace Logic.Interfaces;
 
 public interface IUserDB
 {
-    void AddUser(User user, string hashedPassword);
+    void AddUser(User user, string hashPassword);
     void UpdateUser(User user);
     void DeleteUser(User user);
     List<User> GetAllUsers();
