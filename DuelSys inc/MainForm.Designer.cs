@@ -99,6 +99,7 @@
             this.dgvTournaments.RowTemplate.Height = 37;
             this.dgvTournaments.Size = new System.Drawing.Size(1111, 300);
             this.dgvTournaments.TabIndex = 0;
+            this.dgvTournaments.DoubleClick += new System.EventHandler(this.dgvTournaments_DoubleClick);
             // 
             // Forms
             // 

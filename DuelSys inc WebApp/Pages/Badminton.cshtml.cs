@@ -9,11 +9,13 @@ namespace DuelSys_inc_WebApp.Pages
     [Authorize]
     public class BadmintonModel : PageModel
     {
+        public Validation Validation;
         public TournamentService TournamentService { get; set; }
         public UserService UserService { get; set; }
         [BindProperty] public int TournamentId { get; set; }
-        public BadmintonModel(TournamentService tournamentService, UserService userService)
+        public BadmintonModel(TournamentService tournamentService, UserService userService, Validation validation)
         {
+            Validation = validation;
             TournamentService = tournamentService;
             UserService = userService;
         }

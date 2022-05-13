@@ -29,5 +29,7 @@ namespace Logic.Services
             .Select(y => (y.RegisteredPlayers * 100) / y.MaxPlayers)
             .First();
 
+        public List<User> GetAllUsersRegisteredToTournamentByTournamentId(int tournamentId) =>
+            _repository.GetAllUsersRegisteredToTournamentByTournamentId(tournamentId);
     }
 }

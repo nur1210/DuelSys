@@ -2,6 +2,7 @@
 using Logic.Interfaces;
 using Logic.Services;
 using DAL;
+using Logic.Models;
 
 namespace DuelSys_inc
 {
@@ -14,10 +15,13 @@ namespace DuelSys_inc
             builder.RegisterType<TournamentDB>().As<ITournamentDB>();
             builder.RegisterType<SportDB>().As<ISportDB>();
             builder.RegisterType<TournamentSystemDB>().As<ITournamentSystemDB>();
+            builder.RegisterType<UserDB>().As<IUserDB>();
+            builder.RegisterType<TournamentSystem>().As<ITournamentSystem>();
 
             builder.RegisterType<TournamentService>().AsSelf().SingleInstance();
             builder.RegisterType<SportService>().AsSelf().SingleInstance();
             builder.RegisterType<TournamentSystemService>().AsSelf().SingleInstance();
+            builder.RegisterType<UserService>().AsSelf().SingleInstance();
 
             builder.RegisterType<MainForm>();
 

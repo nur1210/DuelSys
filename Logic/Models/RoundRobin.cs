@@ -1,20 +1,26 @@
-﻿namespace Logic.Models;
+﻿using Logic.Interfaces;
 
-public class RoundRobin : TournamentSystem
+namespace Logic.Models;
+
+public class RoundRobin : TournamentSystem, ITournamentSystem
 {
-    protected override List<Match> GenerateTournamentSchedule(int tournamentId)
+    public RoundRobin(int id, string name) : base(id, name)
     {
-        var players = new List<User>(); //Get all users for tournament
+    }
+
+    public override List<Match> GenerateTournamentSchedule(int tournamentId, List<User> allPlayersInTheTournament)
+    {
         var matches = new List<Match>();
         var match = 0;
-        for (var i = 0; i < players.Count; i++)
+        for (var i = 0; i < allPlayersInTheTournament.Count; i++)
         {
-            for (var j = 1 + i; j < players.Count; j++)
+            for (var j = 1 + i; j < allPlayersInTheTournament.Count; j++)
             {
-                matches.Add(new Match(match, tournamentId, players[i].Id, players[j].Id));
+                matches.Add(new Match(match, tournamentId, allPlayersInTheTournament[i].Id, allPlayersInTheTournament[j].Id));
                 match++;
             }
         }
         return matches;
     }
+
 }

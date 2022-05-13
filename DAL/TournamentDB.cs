@@ -83,5 +83,22 @@ namespace DAL
             }
             return list;
         }
+
+        public List<User> GetAllUsersRegisteredToTournamentByTournamentId(int tournamentId)
+        {
+            List<User> users = new();
+            using var conn = Connection.OpenConnection();
+            string sql = @"select distinct id, first_name, last_name, email, password, is_admin from user as u
+            join user_tournament_match utm on u.id = utm.user_id
+            where tournament_id = @TournamentId;";
+            var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("TournamentId", tournamentId));
+
+            while (rdr.Read())
+            {
+                users.Add(new User(rdr.GetInt32(0), rdr.GetString(1),
+                    rdr.GetString(2), rdr.GetString(3), rdr.GetString(4), rdr.GetBoolean(5)));
+            }
+            return users;
+        }
     }
 }

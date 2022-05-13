@@ -10,5 +10,6 @@ public interface ITournamentDB
     void DeleteTournament(int tournamentId);
     List<Tournament> GetAllTournaments();
     List<TournamentView> GetAllTournamentsForView();
+    List<User> GetAllUsersRegisteredToTournamentByTournamentId(int tournamentId);
 
 }

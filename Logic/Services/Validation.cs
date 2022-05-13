@@ -10,17 +10,19 @@ namespace Logic.Services
 {
     public class Validation
     {
-        private readonly IUserDB _repository;
+        private readonly IUserDB _userRepository;
+        private readonly TournamentService _tournamentService;
 
-        public Validation(IUserDB repository)
+        public Validation(IUserDB userRepository, TournamentService tournamentService)
         {
-            _repository = repository;
+            _userRepository = userRepository;
+            _tournamentService = tournamentService;
         }
 
         public bool ValidUser(string email, string password)
         {
-            if (_repository.GetUserByEmail(email) == null) return false;
-            var user = _repository.GetUserByEmail(email);
+            if (_userRepository.GetUserByEmail(email) == null) return false;
+            var user = _userRepository.GetUserByEmail(email);
             return Hashing.ValidatePassword(password, user.Password);
         }
 
@@ -41,6 +43,18 @@ namespace Logic.Services
             {
                 return false;
             }
+        }
+
+        public bool ValidTournamentRegistration(int userId, int tournamentId)
+        {
+            foreach (var user in _tournamentService.GetAllUsersRegisteredToTournamentByTournamentId(tournamentId))
+            {
+                if (user.Id == userId)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

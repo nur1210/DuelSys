@@ -1,4 +1,5 @@
 ﻿using Logic.DTOs;
+using Logic.Models;
 
 namespace Logic.Interfaces;
 
