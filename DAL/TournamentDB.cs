@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Logic.DTOs;
 using Logic.Interfaces;
 using Logic.Models;
+using Logic.Services;
 using Logic.Views;
 using MySql.Data.MySqlClient;
 
@@ -56,7 +57,7 @@ namespace DAL
                 list.Add(new Tournament(rdr.GetInt32(0), rdr.GetString(1),
                     rdr.GetString(2), rdr.GetInt32(3), rdr.GetInt32(4), rdr.GetDateTime(5),
                     rdr.GetDateTime(6), new SportDTO(rdr.GetInt32(7), rdr.GetString(8), rdr.GetInt32(9),
-                        rdr.GetInt32(10)), new TournamentSystem(rdr.GetInt32(11), rdr.GetString(12))));
+                        rdr.GetInt32(10)), TournamentSystemFactory.CreateTournamentSystem(new TournamentSystem(rdr.GetInt32(11), rdr.GetString(12)))));
             }
             return list;
         }
@@ -65,13 +66,13 @@ namespace DAL
         {
             List<TournamentView> list = new();
             using var conn = Connection.OpenConnection();
-            string sql = @"SELECT t.id, t.description, t.location, COUNT(utm.user_id), s.min_players, s.max_players, 
+            string sql = @"SELECT t.id, t.description, t.location, COUNT(ut.user_id), s.min_players, s.max_players, 
             t.start_date, t.end_date, s.name, ts.name
             FROM tournament AS t
              join sport s on t.sport_id = s.id
              join tournament_system ts on ts.id = t.tournament_system_id
-             left join user_tournament_match AS utm
-                  ON t.id = utm.tournament_id
+             left join user_tournament AS ut
+                  ON t.id = ut.tournament_id
                  group by (t.id);";
             var rdr = MySqlHelper.ExecuteReader(conn, sql);
 
@@ -89,7 +90,7 @@ namespace DAL
             List<User> users = new();
             using var conn = Connection.OpenConnection();
             string sql = @"select distinct id, first_name, last_name, email, password, is_admin from user as u
-            join user_tournament_match utm on u.id = utm.user_id
+            join user_tournament ut on u.id = ut.user_id
             where tournament_id = @TournamentId;";
             var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("TournamentId", tournamentId));
 

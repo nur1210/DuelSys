@@ -79,7 +79,7 @@ namespace DAL
         public void RegisterUserToTournament(int userId, int tournamentId)
         {
             using var conn = Connection.OpenConnection();
-            string sql = "INSERT INTO user_tournament_match (user_id, tournament_id) VALUES (@UserId, @TournamentId)";
+            string sql = "INSERT INTO user_tournament (user_id, tournament_id) VALUES (@UserId, @TournamentId)";
             MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("UserId", userId), new MySqlParameter("TournamentId", tournamentId));
         }
     }

@@ -107,16 +107,11 @@ namespace DuelSys_inc
             int? i = dgvTournaments.CurrentCell.RowIndex;
             if (i is -1 or null) return;
             var tournamentId = Convert.ToInt32(dgvTournaments.Rows[i.Value].Cells[0].Value);
-            var players = _tournamentService.GetAllUsersRegisteredToTournamentByTournamentId(tournamentId);
-            var system = _tournamentSystemService.GetTournamentSystemById(tournamentId);
-            switch (system)
+            if (_tournamentService.GenerateTournamentSchedule(tournamentId))
             {
-                case RoundRobin roundRobin:
-                {
-                    var matches = roundRobin.GenerateTournamentSchedule(tournamentId, players);
-                    break;
-                }
+                MessageBox.Show(@"Tournament schedule created successfully!");
             }
+            MessageBox.Show(@"Unable to create tournament schedule");
         }
     }
 }
