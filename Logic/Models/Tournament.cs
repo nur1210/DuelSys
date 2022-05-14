@@ -18,7 +18,7 @@ namespace Logic.Models
         private DateTime _startDate;
         private DateTime _endDate;
         private SportDTO _sport;
-        private TournamentSystemDTO _system;
+        private TournamentSystem _system;
         private List<Match> _matches;
 
         public int Id { get => _id; set => _id = value; }
@@ -29,11 +29,11 @@ namespace Logic.Models
         public DateTime StartDate { get => _startDate; set => _startDate = value; }
         public DateTime EndDate { get => _endDate; set => _endDate = value; }
         public SportDTO Sport { get => _sport; set => _sport = value; }
-        public TournamentSystemDTO System { get => _system; set => _system = value; }
+        public TournamentSystem System { get => _system; set => _system = value; }
         public List<Match> Matches { get => _matches; set => _matches = value; }
 
 
-        public Tournament(string description, string location, DateTime startDate, DateTime endDate, SportDTO sport, TournamentSystemDTO system)
+        public Tournament(string description, string location, DateTime startDate, DateTime endDate, SportDTO sport, TournamentSystem system)
         {
             _description = description;
             _location = location;
@@ -45,7 +45,7 @@ namespace Logic.Models
             _system = system;
         }
 
-        public Tournament(int id, string description, string location, int minPlayers, int maxPlayers, DateTime startDate, DateTime endDate, SportDTO sport, TournamentSystemDTO system)
+        public Tournament(int id, string description, string location, int minPlayers, int maxPlayers, DateTime startDate, DateTime endDate, SportDTO sport, TournamentSystem system)
         {
             _id = id;
             _description = description;

@@ -12,14 +12,16 @@ public class TournamentSystem : ITournamentSystem
     public string Name { get => _name; set => _name = value; }
     public List<Match> Matches { get => _matches; set => _matches = value; }
 
-    public TournamentSystem()
-    {
-    }
 
     public TournamentSystem(int id, string name)
     {
         _id = id;
         _name = name;
+    }
+    public TournamentSystem(TournamentSystem ts)
+    {
+        _id = ts.Id;
+        _name = ts.Name;
     }
 
     public virtual List<Match> GenerateTournamentSchedule(int tournamentId, List<User> allPlayersInTheTournament) => new();

@@ -5,6 +5,6 @@ namespace Logic.Interfaces;
 
 public interface ITournamentSystemDB
 {
-    TournamentSystemDTO GetTournamentSystemById(int systemId);
-    List<TournamentSystemDTO> GetAllTournamentSystems();
+    TournamentSystem GetTournamentSystemById(int systemId);
+    List<TournamentSystem> GetAllTournamentSystems();
 }

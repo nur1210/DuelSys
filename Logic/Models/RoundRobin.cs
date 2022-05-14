@@ -4,7 +4,7 @@ namespace Logic.Models;
 
 public class RoundRobin : TournamentSystem, ITournamentSystem
 {
-    public RoundRobin(int id, string name) : base(id, name)
+    public RoundRobin(TournamentSystem tournamentSystem) : base(tournamentSystem)
     {
     }
 

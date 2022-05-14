@@ -11,10 +11,10 @@ namespace DuelSys_inc
         private readonly TournamentService _tournamentService;
         private readonly SportService _sportService;
         private readonly TournamentSystemService _tournamentSystemService;
-        private readonly TournamentSystem _tournamentSystem;
+        //private readonly TournamentSystem _tournamentSystem;
         private readonly BindingSource _source = new();
 
-        public MainForm(TournamentService tournamentService, SportService sportService, TournamentSystemService tournamentSystemService, TournamentSystem tournamentSystem)
+        public MainForm(TournamentService tournamentService, SportService sportService, TournamentSystemService tournamentSystemService)
         {
             InitializeComponent();
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -24,7 +24,6 @@ namespace DuelSys_inc
             _tournamentService = tournamentService;
             _sportService = sportService;
             _tournamentSystemService = tournamentSystemService;
-            _tournamentSystem = tournamentSystem;
 
             UpdateGridView();
             UpdateListBox();
@@ -108,9 +107,16 @@ namespace DuelSys_inc
             int? i = dgvTournaments.CurrentCell.RowIndex;
             if (i is -1 or null) return;
             var tournamentId = Convert.ToInt32(dgvTournaments.Rows[i.Value].Cells[0].Value);
-            var matches = _tournamentSystem.GenerateTournamentSchedule(tournamentId,
-                _tournamentService.GetAllUsersRegisteredToTournamentByTournamentId(tournamentId));
-            MessageBox.Show(matches[0].FirstPlayerId.ToString());
+            var players = _tournamentService.GetAllUsersRegisteredToTournamentByTournamentId(tournamentId);
+            var system = _tournamentSystemService.GetTournamentSystemById(tournamentId);
+            switch (system)
+            {
+                case RoundRobin roundRobin:
+                {
+                    var matches = roundRobin.GenerateTournamentSchedule(tournamentId, players);
+                    break;
+                }
+            }
         }
     }
 }
