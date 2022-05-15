@@ -101,5 +101,19 @@ namespace DAL
             }
             return users;
         }
+
+        public List<int> GetAllStartedTournamentsIds()
+        {
+            List<int> ids = new();
+            using var conn = Connection.OpenConnection();
+            string sql = "select distinct tournament_id from user_tournament_match";
+            var rdr = MySqlHelper.ExecuteReader(conn, sql);
+
+            while (rdr.Read())
+            {
+                ids.Add(rdr.GetInt32(0));
+            }
+            return ids;
+        }
     }
 }

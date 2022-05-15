@@ -11,7 +11,6 @@ namespace DuelSys_inc
         private readonly TournamentService _tournamentService;
         private readonly SportService _sportService;
         private readonly TournamentSystemService _tournamentSystemService;
-        //private readonly TournamentSystem _tournamentSystem;
         private readonly BindingSource _source = new();
 
         public MainForm(TournamentService tournamentService, SportService sportService, TournamentSystemService tournamentSystemService)
@@ -104,14 +103,20 @@ namespace DuelSys_inc
 
         private void dgvTournaments_DoubleClick(object sender, EventArgs e)
         {
+            //TODO Generate tournament only once
             int? i = dgvTournaments.CurrentCell.RowIndex;
             if (i is -1 or null) return;
             var tournamentId = Convert.ToInt32(dgvTournaments.Rows[i.Value].Cells[0].Value);
-            if (_tournamentService.GenerateTournamentSchedule(tournamentId))
+            if (!_tournamentService.TournamentHasStarted(tournamentId))
             {
-                MessageBox.Show(@"Tournament schedule created successfully!");
+                MessageBox.Show(_tournamentService.GenerateTournamentSchedule(tournamentId)
+                    ? @"Tournament schedule created successfully!"
+                    : @"Unable to create tournament schedule");
             }
-            MessageBox.Show(@"Unable to create tournament schedule");
+            else
+            {
+                MessageBox.Show(@"This tournament has already started");
+            }
         }
     }
 }

@@ -50,5 +50,8 @@ namespace Logic.Services
             }
             return true;
         }
+
+        public bool TournamentHasStarted(int tournamentId) =>
+            _repository.GetAllStartedTournamentsIds().Contains(tournamentId);
     }
 }
