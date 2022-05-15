@@ -103,7 +103,6 @@ namespace DuelSys_inc
 
         private void dgvTournaments_DoubleClick(object sender, EventArgs e)
         {
-            //TODO Generate tournament only once
             int? i = dgvTournaments.CurrentCell.RowIndex;
             if (i is -1 or null) return;
             var tournamentId = Convert.ToInt32(dgvTournaments.Rows[i.Value].Cells[0].Value);

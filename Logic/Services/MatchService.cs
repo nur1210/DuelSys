@@ -18,5 +18,8 @@ namespace Logic.Services
         }
 
         public void CreateMatch(Match m) => _repository.CreateMatch(m);
+
+        public List<Match> GetAllMatchesForTournament(int tournamentId) =>
+            _repository.GetAllMatchesForTournament(tournamentId);
     }
 }
