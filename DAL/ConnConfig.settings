@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DAL" GeneratedClassName="ConnConfig">
+  <Profiles />
+  <Settings>
+    <Setting Name="ConnStr" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=localhost;Uid=root;Database=duelsys_db; port=3307; Pwd=</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace DAL
 {
     internal static class Connection
     {
-        private static readonly string _conn = "Server=localhost;Uid=root;Database=duelsys_db; port=3307; Pwd=";
+        private static readonly string _conn = ConnConfig.Default.ConnStr;
 
         public static MySqlConnection OpenConnection()
         {

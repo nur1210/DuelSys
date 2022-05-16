@@ -1,0 +1,25 @@
+﻿@page
+@model DuelSys_inc_WebApp.Pages.Shared.TournamentMatchesModel
+@{
+	var players = Model.TournamentService.GetAllUsersRegisteredToTournamentByTournamentId(1);
+}
+<div class="container" id="page-wrapper">
+	<table>
+		<tr>
+			<th>Player</th>
+			<th>Result</th>
+		</tr>
+		@foreach (var p in players)
+		{
+			<tr>
+				<td>
+					<span>@p.FirstName @p.LastName</span>
+				</td>
+				@for (var i = 0; i < players.Count; i++)
+				{
+					<td>1-2</td>
+				}
+			</tr>
+		}
+	</table>
+</div>
