@@ -1,7 +1,8 @@
 ﻿@page
-@model DuelSys_inc_WebApp.Pages.Shared.TournamentMatchesModel
+@model DuelSys_inc_WebApp.Pages.Shared.RoundRobinMatchesModel
 @{
 	var players = Model.TournamentService.GetAllUsersRegisteredToTournamentByTournamentId(1);
+	var blank = 0;
 }
 <div class="container" id="page-wrapper">
 	<table>
@@ -17,9 +18,23 @@
 				</td>
 				@for (var i = 0; i < players.Count; i++)
 				{
-					<td>1-2</td>
+					if (blank == i)
+					{
+						<td></td>
+					}
+					else
+					{
+						<td><input type="text" /></td>
+					}
 				}
 			</tr>
+			blank++;
 		}
 	</table>
+	<form method="post">
+		@if (HttpContext.User.IsInRole("admin"))
+		{
+			<button type="submit">Add result</button>
+		}
+	</form>
 </div>

@@ -30,6 +30,7 @@ builder.Services.AddSingleton<SportService>();
 builder.Services.AddSingleton<TournamentService>();
 builder.Services.AddSingleton<TournamentSystemService>();
 builder.Services.AddSingleton<MatchService>();
+builder.Services.AddSingleton<ResultService>();
 
 
 builder.Services.AddSingleton<IUserDB, UserDB>();
@@ -37,6 +38,7 @@ builder.Services.AddSingleton<ISportDB, SportDB>();
 builder.Services.AddSingleton<ITournamentDB, TournamentDB>();
 builder.Services.AddSingleton<ITournamentSystemDB, TournamentSystemDB>();
 builder.Services.AddSingleton<IMatchDB, MatchDB>();
+builder.Services.AddSingleton<IResultDB, ResultDB>();
 
 
 var app = builder.Build();

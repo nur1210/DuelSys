@@ -21,5 +21,7 @@ namespace Logic.Services
 
         public List<Match> GetAllMatchesForTournament(int tournamentId) =>
             _repository.GetAllMatchesForTournament(tournamentId);
+
+        public bool HasResult(int matchId) => _repository.HasResult(matchId);
     }
 }

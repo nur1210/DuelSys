@@ -79,10 +79,10 @@ namespace DuelSys_inc
             tbxLocation.Text = tournament.Location;
             dtpStartDate.Value = tournament.StartDate;
             dtpEndDate.Value = tournament.EndDate;
-            cbxSport.SelectedItem = tournament.Sport;
             cbxSport.DisplayMember = "Name";
-            cbxTournamentSystem.SelectedItem = tournament.System;
+            cbxSport.SelectedItem = tournament.Sport;
             cbxTournamentSystem.DisplayMember = "Name";
+            cbxTournamentSystem.SelectedItem = tournament.System;
             btnEditTournament.Enabled = true;
         }
 

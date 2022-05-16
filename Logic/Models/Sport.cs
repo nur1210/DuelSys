@@ -1,5 +1,4 @@
-﻿using Logic.DTOs;
-
+﻿
 namespace Logic.Models;
 
 public class Sport

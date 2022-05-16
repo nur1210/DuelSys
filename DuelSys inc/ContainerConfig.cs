@@ -18,14 +18,17 @@ namespace DuelSys_inc
             builder.RegisterType<UserDB>().As<IUserDB>();
             builder.RegisterType<TournamentSystem>().As<ITournamentSystem>();
             builder.RegisterType<MatchDB>().As<IMatchDB>();
+            builder.RegisterType<ResultDB>().As<IResultDB>();
 
             builder.RegisterType<TournamentService>().AsSelf().SingleInstance();
             builder.RegisterType<SportService>().AsSelf().SingleInstance();
             builder.RegisterType<TournamentSystemService>().AsSelf().SingleInstance();
             builder.RegisterType<UserService>().AsSelf().SingleInstance();
             builder.RegisterType<MatchService>().AsSelf().SingleInstance();
+            builder.RegisterType<ResultService>().AsSelf().SingleInstance();
 
             builder.RegisterType<MainForm>();
+            builder.RegisterType<AddResult>();
 
             return builder.Build();
         }

@@ -13,7 +13,6 @@ namespace Logic.Models
         private int _firstPlayerId;
         private int _secondPlayerId;
 
-
         public int Id { get => _id; set => _id = value; }
         public int TournamentId { get => _tournamentId; set => _tournamentId = value; }
         public int FirstPlayerId { get => _firstPlayerId; set => _firstPlayerId = value; }

@@ -1,19 +1,23 @@
-﻿using Logic.DTOs;
-using Logic.Models;
+﻿using Logic.Models;
 
 namespace Logic.Services;
 
 public static class SportFactory
 {
-    private const string badminton = "badminton";
-    private const string football = "football";
+    private const string badminton = "Badminton";
+    private const string tennis = "Tennis";
 
     private delegate Sport SportFactoryFn(Sport s);
 
     private static Dictionary<string, SportFactoryFn> _sportTypes = new()
     {
         {
-            badminton, sport => new Badminton(sport)
+            badminton,
+            sport => new Badminton(sport)
+        },
+        {
+            tennis,
+            sport => new Tennis(sport)
         }
     };
     public static Sport CreateSport(Sport sport)
@@ -21,3 +25,4 @@ public static class SportFactory
         return _sportTypes[sport.Name](sport);
     }
 }
+

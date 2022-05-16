@@ -47,5 +47,13 @@ namespace DAL
             }
             return matches;
         }
+
+        public bool HasResult(int matchId)
+        {
+            using var conn = Connection.OpenConnection();
+            string sql = @"select * from match_result where match_id = @MatchId;";
+            var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("MatchId", matchId));
+            return rdr.HasRows;
+        }
     }
 }

@@ -4,18 +4,23 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DuelSys_inc_WebApp.Pages.Shared
 {
-    public class TournamentMatchesModel : PageModel
+    public class RoundRobinMatchesModel : PageModel
     {
         public MatchService MatchService;
         public TournamentService TournamentService;
 
-        public TournamentMatchesModel(MatchService matchService, TournamentService tournamentService)
+        public RoundRobinMatchesModel(MatchService matchService, TournamentService tournamentService)
         {
             MatchService = matchService;
             TournamentService = tournamentService;
         }
         public void OnGet()
         {
+        }
+
+        public IActionResult OnPost()
+        {
+            return RedirectToPage("/AddResult", 1);
         }
     }
 }

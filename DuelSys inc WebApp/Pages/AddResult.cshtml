@@ -1,0 +1,36 @@
+﻿@page
+@model DuelSys_inc_WebApp.Pages.AddResultModel
+@{
+}
+<div class="container" id="page-wrapper">
+	<table>
+		<tr>
+			<th>Player One</th>
+			<th>Player Two</th>
+			<th>Result of player one</th>
+			<th>Result of player two</th>
+		</tr>
+		@foreach (var m in Model.MatchService.GetAllMatchesForTournament(1))
+		{
+			<form method="post">
+			<tr>
+				<td>
+					<span>@m.FirstPlayerId</span>
+				</td>
+				<td>
+					<span>@m.SecondPlayerId</span>
+				</td>
+				<td>
+					<input asp-for="PlayerOneResult" type="text" />
+				</td>
+				<td>
+					<input asp-for="PlayerTwoResult" type="text" />
+				</td>
+				<td>
+					<button type="submit">Submit</button>
+				</td>
+			</tr>
+			</form>
+		}
+	</table>
+</div>
