@@ -19,8 +19,8 @@ namespace Logic.Services
             _repository = repository;
         }
 
-        public SportDTO GetSportById(int sportId) => _repository.GetSportById(sportId);
-        public List<SportDTO> GetAllSports() => _repository.GetAllSports();
+        public Sport GetSportById(int sportId) => _repository.GetSportById(sportId);
+        public List<Sport> GetAllSports() => _repository.GetAllSports();
 
     }
 }

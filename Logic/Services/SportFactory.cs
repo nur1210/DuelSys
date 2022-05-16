@@ -8,7 +8,7 @@ public static class SportFactory
     private const string badminton = "badminton";
     private const string football = "football";
 
-    private delegate Sport SportFactoryFn(SportDTO s);
+    private delegate Sport SportFactoryFn(Sport s);
 
     private static Dictionary<string, SportFactoryFn> _sportTypes = new()
     {
@@ -16,7 +16,7 @@ public static class SportFactory
             badminton, sport => new Badminton(sport)
         }
     };
-    public static Sport CreateSport(SportDTO sport)
+    public static Sport CreateSport(Sport sport)
     {
         return _sportTypes[sport.Name](sport);
     }

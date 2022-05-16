@@ -2,7 +2,7 @@
 
 namespace Logic.Models;
 
-public abstract class Sport
+public class Sport
 {
     private int _id;
     private string _name;
@@ -13,13 +13,15 @@ public abstract class Sport
     public int MinPlayers { get => _minPlayers; set => _minPlayers = value; }
     public int MaxPlayers { get => _maxPlayers; set => _maxPlayers = value; }
 
-    public Sport(int id, string name)
+    public Sport(int id, string name, int minPlayers, int maxPlayers)
     {
         _id = id;
         _name = name;
+        _minPlayers = minPlayers;
+        _maxPlayers = maxPlayers;
     }
 
-    public Sport(SportDTO s)
+    public Sport(Sport s)
     {
         _id = s.Id;
         _name = s.Name;
@@ -27,5 +29,5 @@ public abstract class Sport
         _maxPlayers = s.MaxPlayers;
     }
 
-    public abstract TournamentLeaderboard GenerateTournamentLeaderBoard();
+    public virtual TournamentLeaderboard GenerateTournamentLeaderBoard() => new();
 }

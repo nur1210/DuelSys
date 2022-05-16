@@ -56,8 +56,8 @@ namespace DAL
             {
                 list.Add(new Tournament(rdr.GetInt32(0), rdr.GetString(1),
                     rdr.GetString(2), rdr.GetInt32(3), rdr.GetInt32(4), rdr.GetDateTime(5),
-                    rdr.GetDateTime(6), new SportDTO(rdr.GetInt32(7), rdr.GetString(8), rdr.GetInt32(9),
-                        rdr.GetInt32(10)), TournamentSystemFactory.CreateTournamentSystem(new TournamentSystem(rdr.GetInt32(11), rdr.GetString(12)))));
+                    rdr.GetDateTime(6), SportFactory.CreateSport(new Sport(rdr.GetInt32(7), rdr.GetString(8), rdr.GetInt32(9),
+                        rdr.GetInt32(10))), TournamentSystemFactory.CreateTournamentSystem(new TournamentSystem(rdr.GetInt32(11), rdr.GetString(12)))));
             }
             return list;
         }

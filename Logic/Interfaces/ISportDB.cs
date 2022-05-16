@@ -1,9 +1,9 @@
-﻿using Logic.DTOs;
+﻿using Logic.Models;
 
 namespace Logic.Interfaces;
 
 public interface ISportDB
 {
-    SportDTO GetSportById(int sportId);
-    List<SportDTO> GetAllSports();
+    Sport GetSportById(int sportId);
+    List<Sport> GetAllSports();
 }

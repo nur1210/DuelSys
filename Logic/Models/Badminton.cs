@@ -4,7 +4,7 @@ namespace Logic.Models;
 
 public class Badminton : Sport
 {
-    public Badminton(SportDTO sport) : base(sport)
+    public Badminton(Sport sport) : base(sport)
     {
         MinPlayers = 4;
         MaxPlayers = 10;
