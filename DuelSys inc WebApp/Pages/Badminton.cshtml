@@ -4,51 +4,53 @@
 @model DuelSys_inc_WebApp.Pages.BadmintonModel
 @{
 }
-<div class="container">
-	<h2>Tournaments List</h2>
+<div id="page-wapper">
+	<div class="container">
+		<h2>Tournaments List</h2>
 
-	<form method="post" id="tournament-form">
-		<input asp-for="TournamentId" id="tournament-input" type="hidden"/>
-		<script>
-			const submitTournament = (tournamentId) => {
-				const input = document.getElementById("tournament-input")
-				const form = document.getElementById("tournament-form")
-				input.value = tournamentId
-				console.log(tournamentId)
-				form.submit()
-			}
-		</script>
+		<form method="post" id="tournament-form">
+			<input asp-for="TournamentId" id="tournament-input" type="hidden" />
+			<script>
+				const submitTournament = (tournamentId) => {
+					const input = document.getElementById("tournament-input")
+					const form = document.getElementById("tournament-form")
+					input.value = tournamentId
+					console.log(tournamentId)
+					form.submit()
+				}
+			</script>
 
-		<ul>
-			@foreach (var t in Model.TournamentService.GetAllTournamentsForView())
-			{
-				<li class="no-bullet-list">
-					<div class="tournament-register-card">
-						<div class="card-header-nigger">
-							<img src="img/badminton.png" style="width: 45px">
+			<ul>
+				@foreach (var t in Model.TournamentService.GetAllTournamentsForView())
+				{
+					<li class="no-bullet-list">
+						<div class="tournament-register-card">
+							<div class="card-header-nigger">
+								<img src="img/badminton.png" style="width: 45px">
+								<div>
+									<span>@t.Description</span><br>
+									<span>@t.Location</span>
+								</div>
+								<div class="animated-progress progress-green">
+									<span data-progress="@Model.TournamentService.GetTournamentOccupancyPercentage(t.Id)"></span>
+								</div>
+							</div>
 							<div>
-								<span>@t.Description</span><br>
-								<span>@t.Location</span>
-							</div>
-							<div class="animated-progress progress-green">
-								<span data-progress="@Model.TournamentService.GetTournamentOccupancyPercentage(t.Id)"></span>
+								@{
+									if (Model.Validation.ValidTournamentRegistration(int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)), t.Id))
+									{
+										<button class="button" onclick="submitTournament(@t.Id)">Register</button>
+									}
+									else
+									{
+										<h4>You are Registered</h4>
+									}
+								}
 							</div>
 						</div>
-						<div>
-							@{
-								if (Model.Validation.ValidTournamentRegistration(int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)), t.Id))
-								{
-									<button onclick="submitTournament(@t.Id)">Register</button>
-								}
-								else
-								{
-									<label>You are Registered</label>
-								}
-							}
-						</div>
-					</div>
-				</li>
-			}
-		</ul>
-	</form>
+					</li>
+				}
+			</ul>
+		</form>
+	</div>
 </div>

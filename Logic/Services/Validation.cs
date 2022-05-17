@@ -47,14 +47,7 @@ namespace Logic.Services
 
         public bool ValidTournamentRegistration(int userId, int tournamentId)
         {
-            foreach (var user in _tournamentService.GetAllUsersRegisteredToTournamentByTournamentId(tournamentId))
-            {
-                if (user.Id == userId)
-                {
-                    return false;
-                }
-            }
-            return true;
+            return _tournamentService.GetAllUsersRegisteredToTournamentByTournamentId(tournamentId).All(user => user.Id != userId);
         }
     }
 }

@@ -1,8 +1,11 @@
 ﻿@page
+@using System.Runtime.CompilerServices
+@using Microsoft.AspNetCore.Mvc.Formatters
 @model DuelSys_inc_WebApp.Pages.Shared.RoundRobinMatchesModel
 @{
-	var players = Model.TournamentService.GetAllUsersRegisteredToTournamentByTournamentId(1);
-	var blank = 0;
+	var playerMatches = Model.MatchService.GetAllMatchesPerPlayer(1);
+	var row = 0;
+	var index = row;
 }
 <div class="container" id="page-wrapper">
 	<table>
@@ -10,31 +13,24 @@
 			<th>Player</th>
 			<th>Result</th>
 		</tr>
-		@foreach (var p in players)
+		@foreach (var pm in playerMatches)
 		{
-			<tr>
-				<td>
-					<span>@p.FirstName @p.LastName</span>
-				</td>
-				@for (var i = 0; i < players.Count; i++)
+		<tr>
+			<td>@pm.Key</td>
+			@foreach (var m in pm.Value)
+			{
+				if (index == row)
 				{
-					if (blank == i)
-					{
-						<td></td>
-					}
-					else
-					{
-						<td><input type="text" /></td>
-					}
+					index += 1;
+					<td></td>
 				}
-			</tr>
-			blank++;
+				index += 1;
+				<td>@m.Id</td>
+			}
+		</tr>
+		row += 1;
+		index = 0;
+		}
 		}
 	</table>
-	<form method="post">
-		@if (HttpContext.User.IsInRole("admin"))
-		{
-			<button type="submit">Add result</button>
-		}
-	</form>
 </div>

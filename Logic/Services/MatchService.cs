@@ -23,5 +23,11 @@ namespace Logic.Services
             _repository.GetAllMatchesForTournament(tournamentId);
 
         public bool HasResult(int matchId) => _repository.HasResult(matchId);
+
+        public Match GetMatchByUsersIds(int firstUserId, int secondUserId) =>
+            _repository.GetMatchByUsersIds(firstUserId, secondUserId);
+
+        public Dictionary<int, List<Match>> GetAllMatchesPerPlayer(int tournamentId) =>
+            _repository.GetAllMatchesPerPlayer(tournamentId);
     }
 }

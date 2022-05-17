@@ -12,6 +12,7 @@ namespace DuelSys_inc_WebApp.Pages
         public Validation Validation;
         public TournamentService TournamentService { get; set; }
         public UserService UserService { get; set; }
+        public MatchService MatchService { get; }
         [BindProperty] public int TournamentId { get; set; }
         public BadmintonModel(TournamentService tournamentService, UserService userService, Validation validation)
         {
