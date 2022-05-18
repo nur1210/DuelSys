@@ -19,8 +19,8 @@ public class RoundRobin : TournamentSystem, ITournamentSystem
         {
             for (var j = 1 + i; j < allPlayersInTheTournament.Count; j++)
             {
-                Matches.Add(new Match(match, tournament.StartDate.AddDays(matchRate), tournament.Id, allPlayersInTheTournament[i].Id,
-                    allPlayersInTheTournament[j].Id));
+                Matches.Add(new Match(match, tournament.StartDate.AddDays(matchRate), tournament.Id,
+                    allPlayersInTheTournament[i].Id, allPlayersInTheTournament[j].Id));
 
                 matchRate += (double)tournamentLength / numberOfMatches;
                 match++;

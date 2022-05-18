@@ -14,22 +14,17 @@ namespace DAL
         public void CreateResult(Result r)
         {
             using var conn = Connection.OpenConnection();
-            string sql = @"INSERT INTO `result` (user_id, result) VALUE (@UserId, @Result);
+            string sql = @"INSERT INTO `result` (user_id, match_id, result) VALUE (@UserId, @MatchId, @Result);
             SELECT LAST_INSERT_ID();";
             var resultId = Convert.ToInt32(MySqlHelper.ExecuteScalar(conn, sql, new MySqlParameter("UserId", r.UserId),
-                new MySqlParameter("Result", r.MatchResult)));
-
-            string sql2 = "INSERT into match_result (match_id, result_id) VALUES (@MatchId, @ResultId)";
-            MySqlHelper.ExecuteNonQuery(conn, sql2, new MySqlParameter("MatchId", r.MatchId),
-                new MySqlParameter("ResultId", resultId));
+                new MySqlParameter("MatchId", r.MatchId), new MySqlParameter("Result", r.MatchResult)));
         }
 
         public List<Result> GetAllResultsForTournament(int tournamentId)
         {
             using var conn = Connection.OpenConnection();
-            string sql = @"select r.id, r.user_id, mr.match_id, r.result from result r
-            join match_result mr on r.id = mr.result_id
-            join `match` m on m.id = mr.match_id
+            string sql = @"select r.id, r.user_id, r.match_id, r.result from result r
+            join `match` m on m.id = r.match_id
             join user_tournament_match utm on m.id = utm.match_id
             where utm.tournament_id = @TournamentId";
             var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("TournamentId", tournamentId));

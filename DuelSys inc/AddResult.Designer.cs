@@ -38,7 +38,7 @@
             // cbxPlayerOne
             // 
             this.cbxPlayerOne.AutoResize = false;
-            this.cbxPlayerOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cbxPlayerOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbxPlayerOne.Depth = 0;
             this.cbxPlayerOne.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.cbxPlayerOne.DropDownHeight = 174;
@@ -62,7 +62,7 @@
             // cbxPlayerTwo
             // 
             this.cbxPlayerTwo.AutoResize = false;
-            this.cbxPlayerTwo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cbxPlayerTwo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbxPlayerTwo.Depth = 0;
             this.cbxPlayerTwo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.cbxPlayerTwo.DropDownHeight = 174;
@@ -85,6 +85,7 @@
             // tbxResultPlayerOne
             // 
             this.tbxResultPlayerOne.AnimateReadOnly = false;
+            this.tbxResultPlayerOne.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.tbxResultPlayerOne.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxResultPlayerOne.Depth = 0;
             this.tbxResultPlayerOne.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -103,6 +104,7 @@
             // tbxResultPlayerTwo
             // 
             this.tbxResultPlayerTwo.AnimateReadOnly = false;
+            this.tbxResultPlayerTwo.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.tbxResultPlayerTwo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxResultPlayerTwo.Depth = 0;
             this.tbxResultPlayerTwo.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
