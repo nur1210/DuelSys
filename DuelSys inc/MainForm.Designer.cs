@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.Dashboard = new System.Windows.Forms.TabPage();
+            this.btnAddResults = new MaterialSkin.Controls.MaterialButton();
             this.dgvTournaments = new System.Windows.Forms.DataGridView();
             this.Forms = new System.Windows.Forms.TabPage();
             this.lblId = new MaterialSkin.Controls.MaterialLabel();
@@ -77,6 +78,7 @@
             // Dashboard
             // 
             this.Dashboard.BackColor = System.Drawing.Color.Transparent;
+            this.Dashboard.Controls.Add(this.btnAddResults);
             this.Dashboard.Controls.Add(this.dgvTournaments);
             this.Dashboard.ImageKey = "icons8-table-32.png";
             this.Dashboard.Location = new System.Drawing.Point(4, 39);
@@ -87,18 +89,39 @@
             this.Dashboard.TabIndex = 0;
             this.Dashboard.Text = "Dashboard";
             // 
+            // btnAddResults
+            // 
+            this.btnAddResults.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAddResults.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAddResults.Depth = 0;
+            this.btnAddResults.HighEmphasis = true;
+            this.btnAddResults.Icon = null;
+            this.btnAddResults.Location = new System.Drawing.Point(1051, 621);
+            this.btnAddResults.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAddResults.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAddResults.Name = "btnAddResults";
+            this.btnAddResults.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAddResults.Size = new System.Drawing.Size(116, 36);
+            this.btnAddResults.TabIndex = 1;
+            this.btnAddResults.Text = "Add results";
+            this.btnAddResults.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAddResults.UseAccentColor = false;
+            this.btnAddResults.UseVisualStyleBackColor = true;
+            this.btnAddResults.Click += new System.EventHandler(this.btnAddResults_Click);
+            // 
             // dgvTournaments
             // 
             this.dgvTournaments.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvTournaments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTournaments.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dgvTournaments.Location = new System.Drawing.Point(69, 340);
+            this.dgvTournaments.Location = new System.Drawing.Point(33, 291);
             this.dgvTournaments.Margin = new System.Windows.Forms.Padding(2);
             this.dgvTournaments.Name = "dgvTournaments";
             this.dgvTournaments.RowHeadersWidth = 72;
             this.dgvTournaments.RowTemplate.Height = 37;
-            this.dgvTournaments.Size = new System.Drawing.Size(1111, 300);
+            this.dgvTournaments.Size = new System.Drawing.Size(1176, 300);
             this.dgvTournaments.TabIndex = 0;
+            this.dgvTournaments.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTournaments_CellContentClick);
             this.dgvTournaments.DoubleClick += new System.EventHandler(this.dgvTournaments_DoubleClick);
             // 
             // Forms
@@ -384,6 +407,7 @@
             this.Text = "DualSys Inc.";
             this.materialTabControl1.ResumeLayout(false);
             this.Dashboard.ResumeLayout(false);
+            this.Dashboard.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTournaments)).EndInit();
             this.Forms.ResumeLayout(false);
             this.Forms.PerformLayout();
@@ -413,6 +437,7 @@
         private ListBox lbxTournaments;
         private MaterialSkin.Controls.MaterialButton btnEditTournament;
         private MaterialSkin.Controls.MaterialLabel lblId;
+        private MaterialSkin.Controls.MaterialButton btnAddResults;
     }
 }
 

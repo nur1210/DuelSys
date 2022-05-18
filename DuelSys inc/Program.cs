@@ -14,7 +14,7 @@ namespace DuelSys_inc
             // see https://aka.ms/applicationconfiguration.
             var container = ContainerConfig.Configure();
             ApplicationConfiguration.Initialize();
-            Application.Run(container.Resolve<AddResult>());
+            Application.Run(container.Resolve<MainForm>());
         }
     }
 }

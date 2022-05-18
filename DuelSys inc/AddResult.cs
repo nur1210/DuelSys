@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Logic.Models;
 using Logic.Services;
+using MaterialSkin.Controls;
 
 namespace DuelSys_inc
 {
-    public partial class AddResult : Form
+    public partial class AddResult : MaterialForm
     {
         private readonly MatchService _matchService;
         private readonly ResultService _resultService;

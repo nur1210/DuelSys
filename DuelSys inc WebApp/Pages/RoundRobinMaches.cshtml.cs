@@ -2,17 +2,15 @@ using Logic.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace DuelSys_inc_WebApp.Pages.Shared
+namespace DuelSys_inc_WebApp.Pages
 {
     public class RoundRobinMatchesModel : PageModel
     {
         public MatchService MatchService;
-        public TournamentService TournamentService;
 
-        public RoundRobinMatchesModel(MatchService matchService, TournamentService tournamentService)
+        public RoundRobinMatchesModel(MatchService matchService)
         {
             MatchService = matchService;
-            TournamentService = tournamentService;
         }
         public void OnGet()
         {

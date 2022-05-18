@@ -12,8 +12,11 @@ namespace DuelSys_inc
         private readonly SportService _sportService;
         private readonly TournamentSystemService _tournamentSystemService;
         private readonly BindingSource _source = new();
+        private readonly MatchService _matchService;
+        private readonly ResultService _resultService;
+        private readonly UserService _userService;
 
-        public MainForm(TournamentService tournamentService, SportService sportService, TournamentSystemService tournamentSystemService)
+        public MainForm(TournamentService tournamentService, SportService sportService, TournamentSystemService tournamentSystemService, MatchService matchService, ResultService resultService, UserService userService)
         {
             InitializeComponent();
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -23,6 +26,9 @@ namespace DuelSys_inc
             _tournamentService = tournamentService;
             _sportService = sportService;
             _tournamentSystemService = tournamentSystemService;
+            _matchService = matchService;
+            _resultService = resultService;
+            _userService = userService;
 
             UpdateGridView();
             UpdateListBox();
@@ -34,6 +40,8 @@ namespace DuelSys_inc
             cbxTournamentSystem.ValueMember = "Id";
             cbxTournamentSystem.DisplayMember = "Name";
             cbxTournamentSystem.DataSource = _tournamentSystemService.GetAllTournamentSystems();
+
+            btnAddResults.Enabled = false;
         }
 
         private void UpdateGridView()
@@ -116,6 +124,26 @@ namespace DuelSys_inc
             {
                 MessageBox.Show(@"This tournament has already started");
             }
+        }
+
+        private void btnAddResults_Click(object sender, EventArgs e)
+        {
+            int? i = dgvTournaments.CurrentCell.RowIndex;
+            if (i is -1 or null) return;
+            var tournamentId = Convert.ToInt32(dgvTournaments.Rows[i.Value].Cells[0].Value);
+            if (_tournamentService.TournamentHasStarted(tournamentId))
+            {
+                AddResult addResult = new(_matchService, _resultService, _userService);
+                addResult.ShowDialog();
+            }
+        }
+
+        private void dgvTournaments_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int? i = dgvTournaments.CurrentCell.RowIndex;
+            if (i is -1 or null) return;
+            var tournamentId = Convert.ToInt32(dgvTournaments.Rows[i.Value].Cells[0].Value);
+            btnAddResults.Enabled = _tournamentService.TournamentHasStarted(tournamentId);
         }
     }
 }

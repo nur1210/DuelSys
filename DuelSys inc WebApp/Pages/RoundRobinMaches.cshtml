@@ -1,7 +1,5 @@
 ﻿@page
-@using System.Runtime.CompilerServices
-@using Microsoft.AspNetCore.Mvc.Formatters
-@model DuelSys_inc_WebApp.Pages.Shared.RoundRobinMatchesModel
+@model 			RoundRobinMatchesModel
 @{
 	var playerMatches = Model.MatchService.GetAllMatchesPerPlayer(1);
 	var row = 0;
@@ -15,22 +13,21 @@
 		</tr>
 		@foreach (var pm in playerMatches)
 		{
-		<tr>
-			<td>@pm.Key</td>
-			@foreach (var m in pm.Value)
-			{
-				if (index == row)
+			<tr>
+				<td>@pm.Key</td>
+				@foreach (var m in pm.Value)
 				{
+					if (index == row)
+					{
+						index += 1;
+						<td></td>
+					}
 					index += 1;
-					<td></td>
+					<td>@m.Id</td>
 				}
-				index += 1;
-				<td>@m.Id</td>
-			}
-		</tr>
-		row += 1;
-		index = 0;
-		}
+			</tr>
+			row += 1;
+			index = 0;
 		}
 	</table>
 </div>

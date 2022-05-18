@@ -4,6 +4,15 @@
 @model DuelSys_inc_WebApp.Pages.BadmintonModel
 @{
 }
+<header id="header">
+	<h1><a href="">DuelSys Inc.</a> sport tournaments</h1>
+	<nav id="nav">
+		<ul>
+			<li><a href="Index">Home</a></li>
+			<li><a href="Login" class="button">Login</a></li>
+		</ul>
+	</nav>
+</header>
 <div id="page-wapper">
 	<div class="container">
 		<h2>Tournaments List</h2>
@@ -21,7 +30,7 @@
 			</script>
 
 			<ul>
-				@foreach (var t in Model.TournamentService.GetAllTournamentsForView())
+				@foreach (var t in Model.TournamentService.GetAllBadmintonTournamentsForView())
 				{
 					<li class="no-bullet-list">
 						<div class="tournament-register-card">

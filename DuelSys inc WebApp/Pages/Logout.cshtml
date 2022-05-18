@@ -1,0 +1,18 @@
+﻿@page
+@model LogoutModel
+@{
+	ViewData["Title"] = "Logout";
+	string url = Model.ReturnUrl ?? "/Index";
+}
+<form method="post">
+	<div id="page-wapper">
+		<div class="container-md">
+			<p>Are you sure you want to logout?</p>
+			<p>
+				<button class="button" id="logout-btn" asp-page-handler="Logout">Yes</button>
+				<button class="button" id="logout-btn" asp-page="@url">No</button>
+			</p>
+		</div>
+	</div>
+</form>
+

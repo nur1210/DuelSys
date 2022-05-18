@@ -13,7 +13,16 @@
 	<nav id="nav">
 		<ul>
 			<li><a href="Index">Home</a></li>
-			<li><a href="Login" class="button">Login</a></li>
+			@{
+				if (User.Identity.IsAuthenticated)
+				{
+					<li> <a asp-page="Logout" asp-route-returnUrl="@Context.Request.Path" class="button">Logout</a></li>
+				}
+				else
+				{
+					<li><a href="Login" class="button">Login</a></li>
+				}
+			}
 		</ul>
 	</nav>
 </header>

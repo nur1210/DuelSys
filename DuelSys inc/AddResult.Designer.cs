@@ -47,14 +47,14 @@
             this.cbxPlayerOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cbxPlayerOne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cbxPlayerOne.FormattingEnabled = true;
+            this.cbxPlayerOne.Hint = "Player One";
             this.cbxPlayerOne.IntegralHeight = false;
             this.cbxPlayerOne.ItemHeight = 43;
-            this.cbxPlayerOne.Location = new System.Drawing.Point(136, 201);
-            this.cbxPlayerOne.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbxPlayerOne.Location = new System.Drawing.Point(64, 98);
             this.cbxPlayerOne.MaxDropDownItems = 4;
             this.cbxPlayerOne.MouseState = MaterialSkin.MouseState.OUT;
             this.cbxPlayerOne.Name = "cbxPlayerOne";
-            this.cbxPlayerOne.Size = new System.Drawing.Size(316, 49);
+            this.cbxPlayerOne.Size = new System.Drawing.Size(151, 49);
             this.cbxPlayerOne.StartIndex = 0;
             this.cbxPlayerOne.TabIndex = 0;
             this.cbxPlayerOne.SelectedIndexChanged += new System.EventHandler(this.cbxPlayerOne_SelectedIndexChanged);
@@ -71,14 +71,14 @@
             this.cbxPlayerTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cbxPlayerTwo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cbxPlayerTwo.FormattingEnabled = true;
+            this.cbxPlayerTwo.Hint = "Player Two";
             this.cbxPlayerTwo.IntegralHeight = false;
             this.cbxPlayerTwo.ItemHeight = 43;
-            this.cbxPlayerTwo.Location = new System.Drawing.Point(136, 424);
-            this.cbxPlayerTwo.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbxPlayerTwo.Location = new System.Drawing.Point(64, 207);
             this.cbxPlayerTwo.MaxDropDownItems = 4;
             this.cbxPlayerTwo.MouseState = MaterialSkin.MouseState.OUT;
             this.cbxPlayerTwo.Name = "cbxPlayerTwo";
-            this.cbxPlayerTwo.Size = new System.Drawing.Size(316, 49);
+            this.cbxPlayerTwo.Size = new System.Drawing.Size(151, 49);
             this.cbxPlayerTwo.StartIndex = 0;
             this.cbxPlayerTwo.TabIndex = 1;
             // 
@@ -88,14 +88,14 @@
             this.tbxResultPlayerOne.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxResultPlayerOne.Depth = 0;
             this.tbxResultPlayerOne.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.tbxResultPlayerOne.Hint = "Player one result";
             this.tbxResultPlayerOne.LeadingIcon = null;
-            this.tbxResultPlayerOne.Location = new System.Drawing.Point(638, 203);
-            this.tbxResultPlayerOne.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbxResultPlayerOne.Location = new System.Drawing.Point(300, 99);
             this.tbxResultPlayerOne.MaxLength = 50;
             this.tbxResultPlayerOne.MouseState = MaterialSkin.MouseState.OUT;
             this.tbxResultPlayerOne.Multiline = false;
             this.tbxResultPlayerOne.Name = "tbxResultPlayerOne";
-            this.tbxResultPlayerOne.Size = new System.Drawing.Size(266, 50);
+            this.tbxResultPlayerOne.Size = new System.Drawing.Size(148, 50);
             this.tbxResultPlayerOne.TabIndex = 2;
             this.tbxResultPlayerOne.Text = "";
             this.tbxResultPlayerOne.TrailingIcon = null;
@@ -106,14 +106,14 @@
             this.tbxResultPlayerTwo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxResultPlayerTwo.Depth = 0;
             this.tbxResultPlayerTwo.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.tbxResultPlayerTwo.Hint = "Player two result";
             this.tbxResultPlayerTwo.LeadingIcon = null;
-            this.tbxResultPlayerTwo.Location = new System.Drawing.Point(638, 422);
-            this.tbxResultPlayerTwo.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbxResultPlayerTwo.Location = new System.Drawing.Point(300, 206);
             this.tbxResultPlayerTwo.MaxLength = 50;
             this.tbxResultPlayerTwo.MouseState = MaterialSkin.MouseState.OUT;
             this.tbxResultPlayerTwo.Multiline = false;
             this.tbxResultPlayerTwo.Name = "tbxResultPlayerTwo";
-            this.tbxResultPlayerTwo.Size = new System.Drawing.Size(266, 50);
+            this.tbxResultPlayerTwo.Size = new System.Drawing.Size(148, 50);
             this.tbxResultPlayerTwo.TabIndex = 3;
             this.tbxResultPlayerTwo.Text = "";
             this.tbxResultPlayerTwo.TrailingIcon = null;
@@ -125,8 +125,8 @@
             this.btnSubmit.Depth = 0;
             this.btnSubmit.HighEmphasis = true;
             this.btnSubmit.Icon = null;
-            this.btnSubmit.Location = new System.Drawing.Point(374, 726);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(8, 12, 8, 12);
+            this.btnSubmit.Location = new System.Drawing.Point(176, 354);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnSubmit.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -140,16 +140,16 @@
             // 
             // AddResult
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1116, 922);
+            this.ClientSize = new System.Drawing.Size(525, 450);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.tbxResultPlayerTwo);
             this.Controls.Add(this.tbxResultPlayerOne);
             this.Controls.Add(this.cbxPlayerTwo);
             this.Controls.Add(this.cbxPlayerOne);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "AddResult";
+            this.Padding = new System.Windows.Forms.Padding(1, 31, 1, 1);
             this.Text = "AddResult";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -163,5 +163,5 @@
 		private MaterialSkin.Controls.MaterialTextBox tbxResultPlayerOne;
 		private MaterialSkin.Controls.MaterialTextBox tbxResultPlayerTwo;
 		private MaterialSkin.Controls.MaterialButton btnSubmit;
-	}
+    }
 }

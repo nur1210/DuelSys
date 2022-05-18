@@ -26,9 +26,12 @@ namespace Logic.Services
         public void DeleteTournament(int tournamentId) => _repository.DeleteTournament(tournamentId);
         public List<Tournament> GetAllTournaments() => _repository.GetAllTournaments();
 
+
         public Tournament GetTournamentById(int tournamentId) =>
             GetAllTournaments().First(t => t.Id == tournamentId);
         public List<TournamentView> GetAllTournamentsForView() => _repository.GetAllTournamentsForView();
+        public List<TournamentView> GetAllBadmintonTournamentsForView() =>
+            GetAllTournamentsForView().Where(x => x.SportName == "Badminton").ToList();
 
         public double GetTournamentOccupancyPercentage(int tournamentId) => GetAllTournamentsForView()
             .Where(x => x.Id == tournamentId)
