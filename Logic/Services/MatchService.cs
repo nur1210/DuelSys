@@ -29,5 +29,8 @@ namespace Logic.Services
 
         public Dictionary<int, List<Match>> GetAllMatchesPerPlayer(int tournamentId) =>
             _repository.GetAllMatchesPerPlayer(tournamentId);
+
+        public List<Match> GetAllPlayedMatchesPerTournament(int tournamentId) =>
+            _repository.GetAllPlayedMatchesPerTournament(tournamentId);
     }
 }

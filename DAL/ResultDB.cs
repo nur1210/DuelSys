@@ -35,7 +35,7 @@ namespace DAL
             while (rdr.Read())
             {
                 results.Add(new Result(rdr.GetInt32(0), rdr.GetInt32(1),
-                    rdr.GetInt32(2), rdr.GetString(3)));
+                    rdr.GetInt32(2), rdr.GetInt32(3)));
             }
             return results;
         }
@@ -53,7 +53,7 @@ namespace DAL
             while (rdr.Read())
             {
                 results.Add(new Result(rdr.GetInt32(0), rdr.GetInt32(1),
-                    rdr.GetInt32(2), rdr.GetString(3)));
+                    rdr.GetInt32(2), rdr.GetInt32(3)));
             }
             return results;
         }

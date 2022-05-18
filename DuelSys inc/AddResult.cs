@@ -43,13 +43,16 @@ namespace DuelSys_inc
         {
             var playerOne = Convert.ToInt32(cbxPlayerOne.SelectedValue);
             var playerTwo = Convert.ToInt32(cbxPlayerTwo.SelectedValue);
-            var playerOneResult = tbxResultPlayerOne.Text;
-            var playerTwoResult = tbxResultPlayerTwo.Text;
+            var playerOneResult = Convert.ToInt32(tbxResultPlayerOne.Text);
+            var playerTwoResult = Convert.ToInt32(tbxResultPlayerTwo.Text);
             foreach (var match in _matches.Where(match => match.FirstPlayerId == playerOne && match.SecondPlayerId == playerTwo))
             {
                 _resultService.CreateResult(new Result(match.FirstPlayerId, match.Id, playerOneResult));
                 _resultService.CreateResult(new Result(match.SecondPlayerId, match.Id, playerTwoResult));
             }
+            tbxResultPlayerOne.Clear();
+            tbxResultPlayerTwo.Clear();
+
         }
 
         private void cbxPlayerOne_SelectedIndexChanged(object sender, EventArgs e)

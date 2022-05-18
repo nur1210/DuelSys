@@ -89,6 +89,7 @@
             this.tbxResultPlayerOne.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxResultPlayerOne.Depth = 0;
             this.tbxResultPlayerOne.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.tbxResultPlayerOne.ForeColor = System.Drawing.SystemColors.WindowText;
             this.tbxResultPlayerOne.Hint = "Player one result";
             this.tbxResultPlayerOne.LeadingIcon = null;
             this.tbxResultPlayerOne.Location = new System.Drawing.Point(300, 99);

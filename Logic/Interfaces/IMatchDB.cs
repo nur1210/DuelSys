@@ -9,4 +9,5 @@ public interface IMatchDB
     bool HasResult(int matchId);
     Match GetMatchByUsersIds(int firstUserId, int secondUserId);
     Dictionary<int, List<Match>> GetAllMatchesPerPlayer(int tournamentId);
+    List<Match> GetAllPlayedMatchesPerTournament(int tournamentId);
 }

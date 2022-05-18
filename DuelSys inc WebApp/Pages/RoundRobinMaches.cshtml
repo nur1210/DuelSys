@@ -5,17 +5,26 @@
 	var row = 0;
 	var cell = row;
 }
+<script>
+	const onMatchClicked = (winnerId, loserId) => {
+		const winnerCell = document.getElementById(winnerId)
+		const loserCell = document.getElementById(loserId)
+		winnerCell.style.background = "green"
+		loserCell.style.background = "red"
+
+	}
+</script>
 <div class="container" id="page-wrapper">
 	<table>
 		<tr>
 			<th>Player</th>
 			<th>Result</th>
 		</tr>
-		@foreach (var pm in playerMatches)
+		@foreach (var playerMatch in playerMatches)
 		{
 			<tr>
-				<td>@pm.Key</td>
-				@foreach (var m in pm.Value)
+				<td id="@playerMatch.Key">@playerMatch.Key</td>
+				@foreach (var match in playerMatch.Value)
 				{
 					if (cell == row)
 					{
@@ -24,12 +33,13 @@
 					}
 					cell += 1;
 					var results = Model.TournamentResults
-						.Where(x => x.MatchId == m.Id)
-						.OrderBy(y => y.UserId == pm.Key)
-						.ToList();
+					.Where(x => x.MatchId == match.Id)
+					.OrderBy(y => y.UserId == playerMatch.Key)
+					.ToList();
+					var rank = results.OrderBy(x => x.MatchResult).ToList();
 					if (results.Count > 0)
 					{
-						<td>@(results[0].MatchResult) - @(results[1].MatchResult)</td>
+						<td onclick="onMatchClicked(@rank[0].UserId, @rank[1].UserId)">@(results[0].MatchResult) - @(results[1].MatchResult)</td>
 					}
 					else
 					{

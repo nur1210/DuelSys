@@ -10,6 +10,7 @@ namespace DuelSys_inc_WebApp.Pages
         public ResultService ResultService { get; }
         public MatchService MatchService;
         [BindProperty] public List<Result> TournamentResults { get; set; }
+        [BindProperty] public List<Match> TournamentPlayedMatches { get; set; }
 
         public RoundRobinMatchesModel(MatchService matchService, ResultService resultService)
         {
@@ -19,6 +20,7 @@ namespace DuelSys_inc_WebApp.Pages
         public void OnGet()
         {
             TournamentResults = ResultService.GetAllResultsForTournament(1);
+            TournamentPlayedMatches = MatchService.GetAllPlayedMatchesPerTournament(1);
         }
 
         public IActionResult OnPost()
