@@ -4,5 +4,5 @@ namespace Logic.Interfaces;
 
 public interface ITournamentSystem
 {
-    List<Match> GenerateTournamentSchedule(int tournamentId, List<User> allPlayersInTheTournament);
+    List<Match> GenerateTournamentSchedule(Tournament tournament, List<User> allPlayersInTheTournament);
 }

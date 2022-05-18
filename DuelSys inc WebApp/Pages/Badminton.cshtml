@@ -33,30 +33,32 @@
 				@foreach (var t in Model.TournamentService.GetAllBadmintonTournamentsForView())
 				{
 					<li class="no-bullet-list">
-						<div class="tournament-register-card">
-							<div class="card-header-nigger">
-								<img src="img/badminton.png" style="width: 45px">
+						<button>
+							<div class="tournament-register-card">
+								<div class="card-header">
+									<img src="img/badminton.png" style="width: 45px">
+									<div>
+										<span>@t.Description</span><br>
+										<span>@t.Location</span>
+									</div>
+									<div class="animated-progress progress-green">
+										<span data-progress="@Model.TournamentService.GetTournamentOccupancyPercentage(t.Id)"></span>
+									</div>
+								</div>
 								<div>
-									<span>@t.Description</span><br>
-									<span>@t.Location</span>
-								</div>
-								<div class="animated-progress progress-green">
-									<span data-progress="@Model.TournamentService.GetTournamentOccupancyPercentage(t.Id)"></span>
+									@{
+										if (Model.Validation.ValidTournamentRegistration(int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)), t.Id))
+										{
+											<button class="button" onclick="submitTournament(@t.Id)">Register</button>
+										}
+										else
+										{
+											<h4>You are Registered</h4>
+										}
+									}
 								</div>
 							</div>
-							<div>
-								@{
-									if (Model.Validation.ValidTournamentRegistration(int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)), t.Id))
-									{
-										<button class="button" onclick="submitTournament(@t.Id)">Register</button>
-									}
-									else
-									{
-										<h4>You are Registered</h4>
-									}
-								}
-							</div>
-						</div>
+						</button>
 					</li>
 				}
 			</ul>

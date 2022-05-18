@@ -1,9 +1,9 @@
 ﻿@page
-@model 			RoundRobinMatchesModel
+@model RoundRobinMatchesModel
 @{
 	var playerMatches = Model.MatchService.GetAllMatchesPerPlayer(1);
 	var row = 0;
-	var index = row;
+	var cell = row;
 }
 <div class="container" id="page-wrapper">
 	<table>
@@ -17,17 +17,17 @@
 				<td>@pm.Key</td>
 				@foreach (var m in pm.Value)
 				{
-					if (index == row)
+					if (cell == row)
 					{
-						index += 1;
+						cell += 1;
 						<td></td>
 					}
-					index += 1;
+					cell += 1;
 					<td>@m.Id</td>
 				}
 			</tr>
 			row += 1;
-			index = 0;
+			cell = 0;
 		}
 	</table>
 </div>

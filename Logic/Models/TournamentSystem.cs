@@ -24,5 +24,5 @@ public class TournamentSystem : ITournamentSystem
         _name = ts.Name;
     }
 
-    public virtual List<Match> GenerateTournamentSchedule(int tournamentId, List<User> allPlayersInTheTournament) => new();
+    public virtual List<Match> GenerateTournamentSchedule(Tournament tournament, List<User> allPlayersInTheTournament) => new();
 }

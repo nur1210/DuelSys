@@ -20,8 +20,8 @@ namespace Logic.Services
 
         public TournamentSystem GetTournamentSystemById(int systemId) => _repository.GetTournamentSystemById(systemId);
         public List<TournamentSystem> GetAllTournamentSystems() => _repository.GetAllTournamentSystems();
-        public List<Match>
-           GenerateTournamentSchedule(int tournamentId, List<User> allPlayersInTheTournament) =>
-            _tournamentSystem.GenerateTournamentSchedule(tournamentId, allPlayersInTheTournament);
+        //public List<Match>
+        //   GenerateTournamentSchedule(int tournamentId, List<User> allPlayersInTheTournament) =>
+        //    _tournamentSystem.GenerateTournamentSchedule(tournamentId, allPlayersInTheTournament);
     }
 }

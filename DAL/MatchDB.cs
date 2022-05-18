@@ -17,7 +17,7 @@ namespace DAL
             using var conn = Connection.OpenConnection();
             string sql = @"INSERT INTO `match` (date) VALUE (@Date);
             SELECT LAST_INSERT_ID();";
-            var matchId = Convert.ToInt32(MySqlHelper.ExecuteScalar(conn, sql, new MySqlParameter("Date", null)));
+            var matchId = Convert.ToInt32(MySqlHelper.ExecuteScalar(conn, sql, new MySqlParameter("Date", m.Date)));
 
             string sql2 = "INSERT into user_tournament_match (user_id, tournament_id, match_id) VALUES (@UserId, @TournamentId, @MatchId)";
             MySqlHelper.ExecuteNonQuery(conn, sql2, new MySqlParameter("UserId", m.FirstPlayerId),
@@ -31,7 +31,7 @@ namespace DAL
         public List<Match> GetAllMatchesForTournament(int tournamentId)
         {
             using var conn = Connection.OpenConnection();
-            string sql = @"select distinct (m.id), utm1.tournament_id, utm1.user_id, utm2.user_id
+            string sql = @"select distinct (m.id), m.date, utm1.tournament_id, utm1.user_id, utm2.user_id
             from `match` m
              join user_tournament_match utm1 on m.id = utm1.match_id
              join user_tournament_match utm2 on utm1.match_id = utm2.match_id
@@ -43,8 +43,8 @@ namespace DAL
             List<Match> matches = new();
             while (rdr.Read())
             {
-                matches.Add(new Match(rdr.GetInt32(0), rdr.GetInt32(1),
-                    rdr.GetInt32(2), rdr.GetInt32(3)));
+                matches.Add(new Match(rdr.GetInt32(0), rdr.GetDateTime(1), rdr.GetInt32(2),
+                    rdr.GetInt32(3), rdr.GetInt32(4)));
             }
             return matches;
         }
@@ -52,7 +52,7 @@ namespace DAL
         public Dictionary<int, List<Match>> GetAllMatchesPerPlayer(int tournamentId)
         {
             using var conn = Connection.OpenConnection();
-            string sql = @"select distinct (m.id), utm1.tournament_id, utm1.user_id, utm2.user_id
+            string sql = @"select distinct (m.id), m.date, utm1.tournament_id, utm1.user_id, utm2.user_id
             from `match` m
              join user_tournament_match utm1 on m.id = utm1.match_id
              join user_tournament_match utm2 on utm1.match_id = utm2.match_id
@@ -62,8 +62,8 @@ namespace DAL
             List<Match> matches = new();
             while (rdr.Read())
             {
-                matches.Add(new Match(rdr.GetInt32(0), rdr.GetInt32(1),
-                    rdr.GetInt32(2), rdr.GetInt32(3)));
+                matches.Add(new Match(rdr.GetInt32(0), rdr.GetDateTime(1), rdr.GetInt32(2),
+                    rdr.GetInt32(3), rdr.GetInt32(4)));
             }
             rdr.Close();
 
@@ -92,7 +92,7 @@ namespace DAL
         public Match GetMatchByUsersIds(int firstUserId, int secondUserId)
         {
             using var conn = Connection.OpenConnection();
-            string sql = @"select m.id, utm1.tournament_id, utm1.user_id, utm2.user_id from `match` m
+            string sql = @"select m.id, m.date, utm1.tournament_id, utm1.user_id, utm2.user_id from `match` m
             join user_tournament_match utm1 on m.id = utm1.match_id
             join user_tournament_match utm2 on utm1.match_id = utm2.match_id
             where utm1.user_id = @FirstUserId AND utm2.user_id = @SecondUserId;";
@@ -100,8 +100,8 @@ namespace DAL
                 new MySqlParameter("SecondUserId", secondUserId));
             while (rdr.Read())
             {
-                return new Match(rdr.GetInt32(0), rdr.GetInt32(1),
-                    rdr.GetInt32(2), rdr.GetInt32(3));
+                return new Match(rdr.GetInt32(0), rdr.GetDateTime(1), rdr.GetInt32(2),
+                    rdr.GetInt32(3), rdr.GetInt32(4));
             }
             return null;
         }
