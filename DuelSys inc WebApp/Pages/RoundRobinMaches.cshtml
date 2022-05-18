@@ -23,7 +23,18 @@
 						<td></td>
 					}
 					cell += 1;
-					<td>@m.Id</td>
+					var results = Model.TournamentResults
+						.Where(x => x.MatchId == m.Id)
+						.OrderBy(y => y.UserId == pm.Key)
+						.ToList();
+					if (results.Count > 0)
+					{
+						<td>@(results[0].MatchResult) - @(results[1].MatchResult)</td>
+					}
+					else
+					{
+						<td>Not played</td>
+					}
 				}
 			</tr>
 			row += 1;

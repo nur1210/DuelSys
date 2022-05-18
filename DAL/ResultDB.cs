@@ -23,11 +23,31 @@ namespace DAL
         public List<Result> GetAllResultsForTournament(int tournamentId)
         {
             using var conn = Connection.OpenConnection();
-            string sql = @"select r.id, r.user_id, r.match_id, r.result from result r
-            join `match` m on m.id = r.match_id
-            join user_tournament_match utm on m.id = utm.match_id
-            where utm.tournament_id = @TournamentId";
+            string sql = @"select r.id, r.user_id, r.match_id, r.result
+            from result r
+                     join `match` m on m.id = r.match_id
+                     join user_tournament_match utm on m.id = utm.match_id
+            where utm.tournament_id = @TournamentId
+            group by r.id, r.user_id, r.match_id, r.result";
             var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("TournamentId", tournamentId));
+
+            List<Result> results = new();
+            while (rdr.Read())
+            {
+                results.Add(new Result(rdr.GetInt32(0), rdr.GetInt32(1),
+                    rdr.GetInt32(2), rdr.GetString(3)));
+            }
+            return results;
+        }
+
+        public List<Result> GetAllResultsPerMatchById(int matchId, int userId)
+        {
+            using var conn = Connection.OpenConnection();
+            string sql = @"select * from result
+            where match_id = @MatchId
+            order by user_id = @UserId;";
+            var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("MatchId", matchId),
+                new MySqlParameter("UserId", userId));
 
             List<Result> results = new();
             while (rdr.Read())
