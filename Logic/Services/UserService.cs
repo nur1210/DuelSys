@@ -27,5 +27,6 @@ namespace Logic.Services
         public void RegisterUserToTournament(int userId, int tournamentId) =>
             _repository.RegisterUserToTournament(userId, tournamentId);
 
+        public Dictionary<int, string> GetAllUsersIdAndFullName() => _repository.GetAllUsersIdAndFullName();
     }
 }

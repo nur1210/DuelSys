@@ -82,5 +82,19 @@ namespace DAL
             string sql = "INSERT INTO user_tournament (user_id, tournament_id) VALUES (@UserId, @TournamentId)";
             MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("UserId", userId), new MySqlParameter("TournamentId", tournamentId));
         }
+
+        public Dictionary<int, string> GetAllUsersIdAndFullName()
+        {
+            using var conn = Connection.OpenConnection();
+            string sql = @"select id, concat(first_name,' ',last_name) full_name from user;";
+            var rdr = MySqlHelper.ExecuteReader(conn, sql);
+            Dictionary<int, string> userIdAndName = new();
+            while (rdr.Read())
+            {
+                userIdAndName.Add(rdr.GetInt32(0),rdr.GetString(1));
+            }
+            rdr.Close();
+            return userIdAndName;
+        }
     }
 }

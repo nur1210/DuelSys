@@ -11,4 +11,5 @@ public interface IUserDB
     User GetUserById(int userId);
     User GetUserByEmail(string email);
     void RegisterUserToTournament(int userId, int tournamentId);
+    Dictionary<int, string> GetAllUsersIdAndFullName();
 }
