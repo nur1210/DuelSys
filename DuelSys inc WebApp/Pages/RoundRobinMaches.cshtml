@@ -6,9 +6,14 @@
 	var cell = row;
 }
 <script>
+	const cells =[]
 	const onMatchClicked = (winnerId, loserId) => {
-		var  winnerCell = document.getElementById(winnerId)
-		var  loserCell = document.getElementById(loserId)
+		cells.forEach(el => {
+			el.style.background="transparent"
+		});
+		let  winnerCell = document.getElementById(winnerId)
+		let  loserCell = document.getElementById(loserId)
+		cells.push(winnerCell,loserCell)
 		winnerCell.style.background = "lightgreen"
 		loserCell.style.background = "lightcoral"
 	}
@@ -41,12 +46,12 @@
 					.ToList();
 					if (results.Count > 0)
 					{
-						<td onclick="onMatchClicked(@rank[0].UserId, @rank[1].UserId)">
+						<td class="result-cell" onclick="onMatchClicked(@rank[0].UserId, @rank[1].UserId)">
 							@(results[0].MatchResult) - @(results[1].MatchResult)
 						</td>
 					}
 					else
-					{
+						{
 						<td>Not played</td>
 					}
 				}

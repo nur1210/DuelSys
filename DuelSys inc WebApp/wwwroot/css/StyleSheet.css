@@ -7,14 +7,16 @@
     border-color: lightgrey;
     margin-bottom: 1px;
     background: white;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
 }
 
 .card-header {
+    all: unset;
     display: flex;
     flex-direction: row;
     height: 100%;
     align-items: center;
-    
 }
 
 .card-header > img {
@@ -48,4 +50,8 @@
 
 .progress-green span {
     background-color: lightgreen;
+}
+
+.tournament-register {
+    vertical-align: center;
 }

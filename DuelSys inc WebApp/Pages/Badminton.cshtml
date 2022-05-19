@@ -4,6 +4,15 @@
 @model DuelSys_inc_WebApp.Pages.BadmintonModel
 @{
 }
+<script>
+	const submitTournament = (tournamentId) => {
+		const input = document.getElementById("tournament-input")
+		const form = document.getElementById("tournament-form")
+		input.value = tournamentId
+		console.log(tournamentId)
+		form.submit()
+	}
+</script>
 <header id="header">
 	<h1><a href="">DuelSys Inc.</a> sport tournaments</h1>
 	<nav id="nav">
@@ -19,46 +28,33 @@
 
 		<form method="post" id="tournament-form">
 			<input asp-for="TournamentId" id="tournament-input" type="hidden" />
-			<script>
-				const submitTournament = (tournamentId) => {
-					const input = document.getElementById("tournament-input")
-					const form = document.getElementById("tournament-form")
-					input.value = tournamentId
-					console.log(tournamentId)
-					form.submit()
-				}
-			</script>
 
 			<ul>
 				@foreach (var t in Model.TournamentService.GetAllBadmintonTournamentsForView())
 				{
 					<li class="no-bullet-list">
-						<button>
-							<div class="tournament-register-card">
-								<div class="card-header">
-									<img src="img/badminton.png" style="width: 45px">
-									<div>
-										<span>@t.Description</span><br>
-										<span>@t.Location</span>
-									</div>
-									<div class="animated-progress progress-green">
-										<span data-progress="@Model.TournamentService.GetTournamentOccupancyPercentage(t.Id)"></span>
-									</div>
-								</div>
+						<div class="tournament-register-card">
+							<div class="card-header">
+								<img src="img/pngfind.com-shuttlecock-png-5759382.png" style="width: 75px">
 								<div>
-									@{
-										if (Model.Validation.ValidTournamentRegistration(int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)), t.Id))
-										{
-											<button class="button" onclick="submitTournament(@t.Id)">Register</button>
-										}
-										else
-										{
-											<h4>You are Registered</h4>
-										}
-									}
+									<span>@t.Description</span><br>
+									<span>@t.Location</span>
+								</div>
+								<div class="animated-progress progress-green">
+									<span data-progress="@Model.TournamentService.GetTournamentOccupancyPercentage(t.Id)"></span>
 								</div>
 							</div>
-						</button>
+							@{
+								if (Model.Validation.ValidTournamentRegistration(int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)), t.Id))
+								{
+									<button class="button tournament-register" onclick="submitTournament(@t.Id)">Register</button>
+								}
+								else
+								{
+									<h4 class="tournament-register">You are Registered</h4>
+								}
+							}
+						</div>
 					</li>
 				}
 			</ul>
