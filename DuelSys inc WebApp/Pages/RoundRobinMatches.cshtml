@@ -1,7 +1,7 @@
 ﻿@page
 @model RoundRobinMatchesModel
 @{
-	var playerMatches = Model.MatchService.GetAllMatchesPerPlayer(1);
+	var playerMatches = Model.AllMatchesPerPlayer;
 	var row = 0;
 	var cell = row;
 }
@@ -11,8 +11,8 @@
 		cells.forEach(el => {
 			el.style.background="transparent"
 		});
-		let  winnerCell = document.getElementById(winnerId)
-		let  loserCell = document.getElementById(loserId)
+		const  winnerCell = document.getElementById(winnerId)
+		const  loserCell = document.getElementById(loserId)
 		cells.push(winnerCell,loserCell)
 		winnerCell.style.background = "lightgreen"
 		loserCell.style.background = "lightcoral"
@@ -51,7 +51,7 @@
 						</td>
 					}
 					else
-						{
+					{
 						<td>Not played</td>
 					}
 				}

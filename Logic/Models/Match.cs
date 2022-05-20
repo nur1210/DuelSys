@@ -49,5 +49,7 @@ namespace Logic.Models
                 .First();
             _loserId = _winnerId == _firstPlayerId ? _secondPlayerId : _firstPlayerId;
         }
+
+
     }
 }

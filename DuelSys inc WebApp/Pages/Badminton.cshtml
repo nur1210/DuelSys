@@ -45,6 +45,10 @@
 								</div>
 							</div>
 							@{
+								if (Model.StartedTournaments.Any(x => x.Id == t.Id))
+								{
+									<button asp-page-handler="ViewMatches"  onclick="submitTournament(@t.Id)" class="button" type="submit">View Matches</button>
+								}
 								if (Model.Validation.ValidTournamentRegistration(int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)), t.Id))
 								{
 									<button class="button tournament-register" onclick="submitTournament(@t.Id)">Register</button>
