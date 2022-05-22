@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,9 +46,7 @@ namespace Logic.Services
             }
         }
 
-        public bool ValidTournamentRegistration(int userId, int tournamentId)
-        {
-            return _tournamentService.GetAllUsersRegisteredToTournamentByTournamentId(tournamentId).All(user => user.Id != userId);
-        }
+        public bool ValidTournamentRegistration(int userId, int tournamentId) => _tournamentService
+            .GetAllUsersRegisteredToTournamentByTournamentId(tournamentId).All(user => user.Id != userId);
     }
 }

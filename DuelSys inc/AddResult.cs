@@ -15,18 +15,20 @@ namespace DuelSys_inc
 {
     public partial class AddResult : MaterialForm
     {
+        private readonly Tournament _tournament;
         private readonly MatchService _matchService;
         private readonly ResultService _resultService;
         private readonly UserService _userService;
         private readonly List<Match> _matches;
 
-        public AddResult(MatchService matchService, ResultService resultService, UserService userService)
+        public AddResult(Tournament tournament, MatchService matchService, ResultService resultService, UserService userService)
         {
             InitializeComponent();
+            _tournament = tournament;
             _matchService = matchService;
             _resultService = resultService;
             _userService = userService;
-            _matches = _matchService.GetAllMatchesForTournament(1);
+            _matches = _matchService.GetAllMatchesForTournament(_tournament.Id);
 
             cbxPlayerOne.DisplayMember = "FirstName";
             cbxPlayerOne.ValueMember = "Id";
@@ -45,11 +47,26 @@ namespace DuelSys_inc
             var playerTwo = Convert.ToInt32(cbxPlayerTwo.SelectedValue);
             var playerOneResult = Convert.ToInt32(tbxResultPlayerOne.Text);
             var playerTwoResult = Convert.ToInt32(tbxResultPlayerTwo.Text);
+
+            var valid = (_tournament.Sport) switch
+            {
+                Badminton badminton => badminton.ValidateResults(playerOneResult, playerTwoResult),
+                Tennis tennis => tennis.ValidateResults(playerOneResult, playerTwoResult),
+                _ => false
+            };
+
+            if (!valid)
+            {
+                MessageBox.Show(@"At least One of the results is not valid");
+                return;
+            }
+
             foreach (var match in _matches.Where(match => match.FirstPlayerId == playerOne && match.SecondPlayerId == playerTwo))
             {
                 _resultService.CreateResult(new Result(match.FirstPlayerId, match.Id, playerOneResult));
                 _resultService.CreateResult(new Result(match.SecondPlayerId, match.Id, playerTwoResult));
             }
+            MessageBox.Show(@"The results registered successfully");
             tbxResultPlayerOne.Clear();
             tbxResultPlayerTwo.Clear();
 

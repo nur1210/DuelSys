@@ -131,11 +131,10 @@ namespace DuelSys_inc
             int? i = dgvTournaments.CurrentCell.RowIndex;
             if (i is -1 or null) return;
             var tournamentId = Convert.ToInt32(dgvTournaments.Rows[i.Value].Cells[0].Value);
-            if (_tournamentService.TournamentHasStarted(tournamentId))
-            {
-                AddResult addResult = new(_matchService, _resultService, _userService);
-                addResult.ShowDialog();
-            }
+            if (!_tournamentService.TournamentHasStarted(tournamentId)) return;
+            var tournament = _tournamentService.GetTournamentById(tournamentId);
+            AddResult addResult = new(tournament, _matchService, _resultService, _userService);
+            addResult.ShowDialog();
         }
 
         private void dgvTournaments_CellContentClick(object sender, DataGridViewCellEventArgs e)

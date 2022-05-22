@@ -27,6 +27,4 @@ public class Sport
         _minPlayers = s.MinPlayers;
         _maxPlayers = s.MaxPlayers;
     }
-
-    public virtual TournamentLeaderboard GenerateTournamentLeaderBoard() => new();
 }

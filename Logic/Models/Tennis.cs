@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Models
 {
-	public class Tennis: Sport
+	public class Tennis: Sport, IRuleResult
 	{
         public Tennis(Sport sport): base(sport)
         {
@@ -14,9 +14,9 @@ namespace Logic.Models
             MaxPlayers = 12;
         }
 
-        public override TournamentLeaderboard GenerateTournamentLeaderBoard()
+        public bool ValidateResults(int resultOne, int resultTwo)
         {
-            return new TournamentLeaderboard();
+            throw new NotImplementedException();
         }
     }
 }
