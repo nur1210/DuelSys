@@ -34,10 +34,5 @@ namespace DuelSys_inc_WebApp.Pages
             AllMatchesPerPlayer = MatchService.GetAllMatchesPerPlayer(TournamentId);
             Leaderboard = TournamentService.GetTournamentLeaderboard(TournamentId);
         }
-
-        public IActionResult OnPost()
-        {
-            return RedirectToPage("/AddResult", 1);
-        }
     }
 }

@@ -9,7 +9,7 @@
 	const cells =[]
 	const onMatchClicked = (winnerId, loserId) => {
 		cells.forEach(el => {
-			el.style.background="transparent"
+			el.style.background="#1d1d1d"
 		});
 		const  winnerCell = document.getElementById(winnerId)
 		const  loserCell = document.getElementById(loserId)
@@ -18,59 +18,75 @@
 		loserCell.style.background = "lightcoral"
 	}
 </script>
-
+<header id="header">
+	<h1><a href="">DuelSys Inc.</a> sport tournaments</h1>
+	<nav id="nav">
+		<ul>
+			<li><a href="Index">Home</a></li>
+			<li> <a asp-page="Logout" asp-route-returnUrl="@Request.Path" class="button">Logout</a></li>
+		</ul>
+	</nav>
+</header>
 <div class="container" id="page-wrapper">
-	<table>
-		<tr>
-			<th>Player</th>
-			<th>Result</th>
-		</tr>
-		@foreach (var playerMatch in playerMatches)
-		{
+	<table class="leaderboard-results">
+		<thead>
 			<tr>
-				<td id="@playerMatch.Key">@Model.PlayerIdAndFullName.Where(x => x.Key == playerMatch.Key).Select(x => x.Value).First()</td>
-				@foreach (var match in playerMatch.Value)
-				{
-					if (cell == row)
+				<th>Player</th>
+				<th>Result</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var playerMatch in playerMatches)
+			{
+				<tr>
+					<td id="@playerMatch.Key">@Model.PlayerIdAndFullName.Where(x => x.Key == playerMatch.Key).Select(x => x.Value).First()</td>
+					@foreach (var match in playerMatch.Value)
 					{
+						if (cell == row)
+						{
+							cell += 1;
+							<td></td>
+						}
 						cell += 1;
-						<td></td>
+						var results = Model.TournamentResults
+						.Where(x => x.MatchId == match.Id)
+						.OrderByDescending(y => y.UserId == playerMatch.Key)
+						.ToList();
+						var rank = results
+						.OrderByDescending(x => x.MatchResult)
+						.ToList();
+						if (results.Count > 0)
+						{
+							<td class="result-cell" onclick="onMatchClicked(@rank[0].UserId, @rank[1].UserId)">
+								@(results[0].MatchResult) - @(results[1].MatchResult)
+							</td>
+						}
+						else
+						{
+							<td>Not played</td>
+						}
 					}
-					cell += 1;
-					var results = Model.TournamentResults
-					.Where(x => x.MatchId == match.Id)
-					.OrderByDescending(y => y.UserId == playerMatch.Key)
-					.ToList();
-					var rank = results
-					.OrderBy(x => x.MatchResult)
-					.ToList();
-					if (results.Count > 0)
-					{
-						<td class="result-cell" onclick="onMatchClicked(@rank[0].UserId, @rank[1].UserId)">
-							@(results[0].MatchResult) - @(results[1].MatchResult)
-						</td>
-					}
-					else
-					{
-						<td>Not played</td>
-					}
-				}
-			</tr>
-			row += 1;
-			cell = 0;
-		}
+				</tr>
+				row += 1;
+				cell = 0;
+			}
+		</tbody>
 	</table>
-	<table>
-		<tr>
-			<th>Name</th>
-			<th>Wins</th>
-		</tr>
-		@foreach (var rank in Model.Leaderboard)
-		{
+	<table id="rankings" class="leaderboard-results">
+		<thead>
 			<tr>
-				<td>@Model.PlayerIdAndFullName.Where(x => x.Key == rank.Key.Id).Select(y => y.Value).First()</td>
-				<td>@rank.Value</td>
+				<th>Name</th>
+				<th>Wins</th>
 			</tr>
-		}
+		</thead>
+		<tbody>
+			@foreach (var rank in Model.Leaderboard)
+			{
+				<tr>
+					<td>@Model.PlayerIdAndFullName.Where(x => x.Key == rank.Key.Id).Select(y => y.Value).First()</td>
+					<td>@rank.Value</td>
+				</tr>
+			}
+		</tbody>
 	</table>
 </div>
