@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Models
 {
-	public class Tennis: Sport, IRuleResult
+    public class Tennis: Sport
 	{
         public Tennis(Sport sport): base(sport)
         {
@@ -14,7 +15,7 @@ namespace Logic.Models
             MaxPlayers = 12;
         }
 
-        public bool ValidateResults(int resultOne, int resultTwo)
+        public override bool ValidateResults(int resultOne, int resultTwo)
         {
             throw new NotImplementedException();
         }

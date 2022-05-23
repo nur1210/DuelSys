@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Logic.Interfaces;
 using Logic.Models;
 using Logic.Services;
 using MaterialSkin.Controls;
@@ -54,6 +55,8 @@ namespace DuelSys_inc
                 Tennis tennis => tennis.ValidateResults(playerOneResult, playerTwoResult),
                 _ => false
             };
+
+            //var valid = _ruleResult.ValidateResults(playerOneResult, playerTwoResult);
 
             if (!valid)
             {

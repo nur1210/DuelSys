@@ -1,4 +1,6 @@
 ﻿
+using Logic.Interfaces;
+
 namespace Logic.Models;
 
 public class Sport
@@ -26,5 +28,15 @@ public class Sport
         _name = s.Name;
         _minPlayers = s.MinPlayers;
         _maxPlayers = s.MaxPlayers;
+    }
+
+    //public Sport(IRuleResult ruleResult)
+    //{
+    //    _ruleResult = ruleResult;
+    //}
+
+    public virtual bool ValidateResults(int resultOne, int resultTwo)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -39,7 +39,7 @@
 					cell += 1;
 					var results = Model.TournamentResults
 					.Where(x => x.MatchId == match.Id)
-					.OrderBy(y => y.UserId == playerMatch.Key)
+					.OrderByDescending(y => y.UserId == playerMatch.Key)
 					.ToList();
 					var rank = results
 					.OrderBy(x => x.MatchResult)
@@ -58,6 +58,19 @@
 			</tr>
 			row += 1;
 			cell = 0;
+		}
+	</table>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Wins</th>
+		</tr>
+		@foreach (var rank in Model.Leaderboard)
+		{
+			<tr>
+				<td>@Model.PlayerIdAndFullName.Where(x => x.Key == rank.Key.Id).Select(y => y.Value).First()</td>
+				<td>@rank.Value</td>
+			</tr>
 		}
 	</table>
 </div>

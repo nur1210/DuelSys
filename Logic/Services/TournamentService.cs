@@ -56,5 +56,21 @@ namespace Logic.Services
 
         public bool TournamentHasStarted(int tournamentId) =>
             _repository.GetAllStartedTournamentsIds().Contains(tournamentId);
+
+        public Dictionary<User, int> GetTournamentLeaderboard(int tournamentId)
+        {
+            Dictionary<User, int> leaderboard = new();
+            var users = GetAllUsersRegisteredToTournamentByTournamentId(tournamentId);
+            var tournamentLeaderboard = _repository.GetTournamentLeaderboard(tournamentId);
+            foreach (var user in users)
+            {
+                var wins = tournamentLeaderboard.Matches
+                    .Count(match => user.Id == match.WinnerId);
+                leaderboard.Add(user, wins);
+            }
+
+            return leaderboard;
+        }
+
     }
 }

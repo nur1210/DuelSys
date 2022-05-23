@@ -1,7 +1,9 @@
 ﻿
+using Logic.Interfaces;
+
 namespace Logic.Models;
 
-public class Badminton : Sport, IRuleResult
+public class Badminton : Sport
 {
     public Badminton(Sport sport) : base(sport)
     {
@@ -9,7 +11,7 @@ public class Badminton : Sport, IRuleResult
         MaxPlayers = 10;
     }
 
-    public bool ValidateResults(int resultOne, int resultTwo)
+    public override bool ValidateResults(int resultOne, int resultTwo)
     {
         List<int> results = new() {resultOne, resultTwo};
         if (results.Find(x => x is >= 21 and <= 30) is 0) return false;

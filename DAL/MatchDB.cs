@@ -133,7 +133,7 @@ namespace DAL
             Dictionary<int, List<Result>> matchResults = new();
             foreach (var result in results.Where(result => !matchResults.ContainsKey(result.MatchId)))
             {
-                matchResults.Add(result.MatchId, results);
+                matchResults.Add(result.MatchId, results.Where(x => x.MatchId == result.MatchId).ToList());
             }
 
             var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("TournamentId", tournamentId));
