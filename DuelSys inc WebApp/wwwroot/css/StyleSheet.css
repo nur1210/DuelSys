@@ -85,8 +85,7 @@
         background: #1a1a1a;
         font-size: 16px;
         border-bottom: 5px solid white;
-/*        border: 5px solid white;
-*/    }
+    }
 
 .leaderboard-results tbody td {
     font-weight: bold;
