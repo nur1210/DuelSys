@@ -11,10 +11,14 @@ public class Badminton : Sport
         MaxPlayers = 10;
     }
 
-    public override bool ValidateResults(int resultOne, int resultTwo)
+    public override bool ValidateResults(List<Result> results)
     {
-        List<int> results = new() {resultOne, resultTwo};
-        if (results.Find(x => x is >= 21 and <= 30) is 0) return false;
-        return resultOne is >= 21 and <= 30 && resultOne == resultTwo - 2 || resultOne == resultTwo + 2;
+        foreach (var rule in Rules.Where(rule => rule.ShouldRun(results)))
+        {
+            rule.RunRule(results);
+            return true;
+        }
+
+        return false;
     }
 }

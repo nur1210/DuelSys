@@ -15,7 +15,7 @@ namespace Logic.Models
             MaxPlayers = 12;
         }
 
-        public override bool ValidateResults(int resultOne, int resultTwo)
+        public override bool ValidateResults(List<Result> results)
         {
             throw new NotImplementedException();
         }

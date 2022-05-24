@@ -51,8 +51,8 @@ namespace DuelSys_inc
 
             var valid = (_tournament.Sport) switch
             {
-                Badminton badminton => badminton.ValidateResults(playerOneResult, playerTwoResult),
-                Tennis tennis => tennis.ValidateResults(playerOneResult, playerTwoResult),
+                Badminton badminton => badminton.ValidateResults(TODO),
+                Tennis tennis => tennis.ValidateResults(TODO),
                 _ => false
             };
 
