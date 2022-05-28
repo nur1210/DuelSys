@@ -45,10 +45,22 @@ namespace DAL
         {
             List<Tournament> list = new();
             using var conn = Connection.OpenConnection();
-            string sql = "SELECT t.id, t.description, t.location, s.min_players, s.max_players, t.start_date, " +
-                         "t.end_date, s.id, s.name, s.min_players, s.max_players, ts.id, ts.name FROM tournament AS t " +
-                         "INNER JOIN sport AS s ON t.sport_id = s.id INNER JOIN tournament_system AS ts " +
-                         "ON t.tournament_system_id = ts.id;";
+            string sql = @"SELECT t.id,
+            t.description,
+            t.location,
+            s.min_players,
+            s.max_players,
+            t.start_date,
+            t.end_date,
+            s.id,
+            s.name,
+            s.min_players,
+            s.max_players,
+            ts.id,
+            ts.name
+                FROM tournament AS t
+                INNER JOIN sport AS s ON t.sport_id = s.id
+            INNER JOIN tournament_system AS ts ON t.tournament_system_id = ts.id; ";
             var rdr = MySqlHelper.ExecuteReader(conn, sql);
 
             while (rdr.Read())

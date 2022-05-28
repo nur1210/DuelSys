@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Logic.Interfaces;
@@ -26,13 +28,30 @@ namespace Logic.Services
         public void DeleteTournament(int tournamentId) => _repository.DeleteTournament(tournamentId);
         public List<Tournament> GetAllTournaments() => _repository.GetAllTournaments();
 
-
         public Tournament GetTournamentById(int tournamentId) =>
             GetAllTournaments().First(t => t.Id == tournamentId);
         public List<TournamentView> GetAllTournamentsForView() => _repository.GetAllTournamentsForView();
+
         public List<TournamentView> GetAllBadmintonTournamentsForView() =>
             GetAllTournamentsForView().Where(x => x.SportName == "Badminton").ToList();
 
+        public List<TournamentView> GetAllBadmintonTournamentsForView(int? filter) => filter switch
+        {
+            1 => GetAllBadmintonTournamentsForView()
+                .Where(x => TournamentHasStarted(x.Id) == false && x.StartDate > DateTime.Now.AddDays(7))
+                .ToList(),
+            2 => GetAllBadmintonTournamentsForView()
+                .Where(x => TournamentHasStarted(x.Id) && x.EndDate > DateTime.Now)
+                .ToList(),
+            3 => GetAllBadmintonTournamentsForView()
+                .Where(x => TournamentHasStarted(x.Id) && x.EndDate < DateTime.Now)
+                .ToList(),
+            4 => GetAllBadmintonTournamentsForView()
+                .Where(x => TournamentHasStarted(x.Id) == false && x.StartDate < DateTime.Now.AddDays(7))
+                .ToList(),
+            _ => GetAllTournamentsForView().Where(x => x.SportName == "Badminton").ToList()
+
+        };
         public double GetTournamentOccupancyPercentage(int tournamentId) => GetAllTournamentsForView()
             .Where(x => x.Id == tournamentId)
             .Select(y => (y.RegisteredPlayers * 100) / y.MaxPlayers)

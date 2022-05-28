@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Logic;
 using Logic.Interfaces;
 using Logic.Models;
 using Logic.Services;
+using MaterialSkin;
 using MaterialSkin.Controls;
 
 namespace DuelSys_inc
@@ -21,10 +23,15 @@ namespace DuelSys_inc
         private readonly ResultService _resultService;
         private readonly UserService _userService;
         private readonly List<Match> _matches;
+        private readonly IRule _rule;
 
         public AddResult(Tournament tournament, MatchService matchService, ResultService resultService, UserService userService)
         {
             InitializeComponent();
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey900, Primary.BlueGrey900, Primary.BlueGrey500, Accent.DeepOrange700, TextShade.WHITE);
             _tournament = tournament;
             _matchService = matchService;
             _resultService = resultService;
@@ -49,26 +56,25 @@ namespace DuelSys_inc
             var playerOneResult = Convert.ToInt32(tbxResultPlayerOne.Text);
             var playerTwoResult = Convert.ToInt32(tbxResultPlayerTwo.Text);
 
-            var valid = (_tournament.Sport) switch
+            //var valid = (_tournament.Sport) switch
+            //{
+            //    Badminton badminton => badminton.ValidateResults(TODO),
+            //    Tennis tennis => tennis.ValidateResults(TODO),
+            //    _ => false
+            //};
+            var results = new List<Result>();
+            foreach (var match in _matches.Where(match => match.FirstPlayerId == playerOne && match.SecondPlayerId == playerTwo))
             {
-                Badminton badminton => badminton.ValidateResults(TODO),
-                Tennis tennis => tennis.ValidateResults(TODO),
-                _ => false
-            };
+                results.Add(new Result(match.FirstPlayerId, match.Id, playerOneResult));
+                results.Add(new Result(match.SecondPlayerId, match.Id, playerTwoResult));
+            }
 
-            //var valid = _ruleResult.ValidateResults(playerOneResult, playerTwoResult);
-
-            if (!valid)
+            //if (!valid)
             {
                 MessageBox.Show(@"At least One of the results is not valid");
                 return;
             }
 
-            foreach (var match in _matches.Where(match => match.FirstPlayerId == playerOne && match.SecondPlayerId == playerTwo))
-            {
-                _resultService.CreateResult(new Result(match.FirstPlayerId, match.Id, playerOneResult));
-                _resultService.CreateResult(new Result(match.SecondPlayerId, match.Id, playerTwoResult));
-            }
             MessageBox.Show(@"The results registered successfully");
             tbxResultPlayerOne.Clear();
             tbxResultPlayerTwo.Clear();

@@ -1,4 +1,7 @@
 using System.Security.Claims;
+using AspNetCoreHero.ToastNotification.Abstractions;
+using AspNetCoreHero.ToastNotification.Enums;
+using AspNetCoreHero.ToastNotification.Toastify.Models;
 using Logic.Models;
 using Logic.Services;
 using Logic.Views;
@@ -12,14 +15,17 @@ namespace DuelSys_inc_WebApp.Pages
     public class BadmintonModel : PageModel
     {
         public Validation Validation;
+        private readonly INotyfService _toastNotification;
         public TournamentService TournamentService { get; set; }
         public UserService UserService { get; set; }
         public MatchService MatchService { get; }
         [BindProperty] public int TournamentId { get; set; }
+        [BindProperty(SupportsGet = true)] public int TournamentStageFilter { get; set; }
         [BindProperty] public List<TournamentView> StartedTournaments { get; set; }
-        public BadmintonModel(TournamentService tournamentService, UserService userService, Validation validation)
+        public BadmintonModel(TournamentService tournamentService, UserService userService, Validation validation, INotyfService toastNotification)
         {
             Validation = validation;
+            _toastNotification = toastNotification;
             TournamentService = tournamentService;
             UserService = userService;
         }
@@ -35,13 +41,25 @@ namespace DuelSys_inc_WebApp.Pages
         {
             var userId = int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
             var tournamentId = TournamentId;
-            UserService.RegisterUserToTournament(userId, tournamentId);
+            if (UserService.RegisterUserToTournament(userId, tournamentId))
+            {
+                _toastNotification.Success("Registered successfully!");
+            }
+            else
+            {
+                _toastNotification.Warning("Not able to register");
+            }
             return Page();
         }
 
         public IActionResult OnPostViewMatches()
         {
             return RedirectToPage("/RoundRobinMatches", new { TournamentId });
+        }
+
+        public IActionResult OnPostFilter()
+        {
+            return RedirectToPage("/Badminton", new { TournamentStageFilter});
         }
     }
 }

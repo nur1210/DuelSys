@@ -10,8 +10,6 @@ namespace Logic
 {
     public class BadmintonResult : IRule
     {
-        private readonly IResultDB _repository;
-
         public bool ShouldRun(List<Result> results)
         {
             var range = Enumerable.Range(21, 9);
@@ -19,14 +17,6 @@ namespace Logic
             var resultOne = results[0].MatchResult;
             var resultTwo = results[1].MatchResult;
             return resultOne is >= 21 and <= 30 && resultOne == resultTwo - 2 || resultOne == resultTwo + 2;
-        }
-
-        public void RunRule(List<Result> results)
-        {
-            foreach (var result in results)
-            {
-                _repository.CreateResult(result);
-            }
         }
     }
 }

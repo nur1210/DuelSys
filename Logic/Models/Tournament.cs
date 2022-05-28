@@ -39,7 +39,7 @@ namespace Logic.Models
             _minPlayers = sport.MinPlayers;
             _maxPlayers = sport.MaxPlayers;
             _startDate = startDate < DateTime.Now.AddDays(7) ? DateTime.Now.AddDays(10) : startDate;
-            _endDate = endDate < _startDate ? _endDate.AddHours(1) : endDate;
+            _endDate = endDate < _startDate ? _endDate.AddDays(1) : endDate;
             _sport = sport;
             _system = system;
         }

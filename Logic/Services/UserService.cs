@@ -11,10 +11,12 @@ namespace Logic.Services
     public class UserService
     {
         private readonly IUserDB _repository;
+        private readonly ITournamentDB _tournamentRepository;
 
-        public UserService(IUserDB repository)
+        public UserService(IUserDB repository, ITournamentDB tournamentRepository)
         {
             _repository = repository;
+            _tournamentRepository = tournamentRepository;
         }
 
         public void AddUser(User u) => _repository.AddUser(u, Hashing.HashPassword(u.Password));
@@ -24,8 +26,13 @@ namespace Logic.Services
         public User GetUserById(int id) => _repository.GetUserById(id);
         public User GetUserByEmail(string email) => _repository.GetUserByEmail(email);
 
-        public void RegisterUserToTournament(int userId, int tournamentId) =>
+        public bool RegisterUserToTournament(int userId, int tournamentId)
+        {
+            var tournament = _tournamentRepository.GetAllTournaments().First(t => t.Id == tournamentId);
+            if (tournament.StartDate <= DateTime.Now.AddDays(7)) return false;
             _repository.RegisterUserToTournament(userId, tournamentId);
+            return true;
+        }
 
         public Dictionary<int, string> GetAllUsersIdAndFullName() => _repository.GetAllUsersIdAndFullName();
     }

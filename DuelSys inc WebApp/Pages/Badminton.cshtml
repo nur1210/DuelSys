@@ -12,7 +12,16 @@
 		console.log(tournamentId)
 		form.submit()
 	}
+
+	const submitTournamentFilter = (filterId) => {
+		const input = document.getElementById("filter")
+		const form = document.getElementById("tournament-form")
+		input.value = filterId
+		console.log(filterId)
+		form.submit()
+	}
 </script>
+
 <header id="header">
 	<h1><a href="">DuelSys Inc.</a> sport tournaments</h1>
 	<nav id="nav">
@@ -28,9 +37,23 @@
 
 		<form method="post" id="tournament-form">
 			<input asp-for="TournamentId" id="tournament-input" type="hidden" />
+			<input asp-for="TournamentStageFilter" id="filter" type="hidden" />
+
+			<details class="dropdown">
+				<summary role="button">
+					<a class="button">Filter</a>
+				</summary>
+				<ul>
+					<li><input asp-page-handler="Filter" type="submit" value="All" id="filter" onclick="submitTournamentFilter(0)"></li>
+					<li><input asp-page-handler="Filter" type="submit" value="Open registration" id="filter" onclick="submitTournamentFilter(1)"></li>
+					<li><input asp-page-handler="Filter" type="submit" value="Ongoing tournaments" id="filter" onclick="submitTournamentFilter(2)"></li>
+					<li><input asp-page-handler="Filter" type="submit" value="Finished tournaments" id="filter" onclick="submitTournamentFilter(3)"></li>
+					<li><input asp-page-handler="Filter" type="submit" value="Canceled tournaments" id="filter" onclick="submitTournamentFilter(4)"></li>
+				</ul>
+			</details>
 
 			<ul>
-				@foreach (var t in Model.TournamentService.GetAllBadmintonTournamentsForView())
+				@foreach (var t in Model.TournamentService.GetAllBadmintonTournamentsForView(Model.TournamentStageFilter))
 				{
 					<li class="no-bullet-list">
 						<div class="tournament-register-card">
@@ -47,7 +70,7 @@
 							@{
 								if (Model.StartedTournaments.Any(x => x.Id == t.Id))
 								{
-									<button asp-page-handler="ViewMatches"  onclick="submitTournament(@t.Id)" class="button" type="submit">View Matches</button>
+									<button asp-page-handler="ViewMatches" onclick="submitTournament(@t.Id)" class="button tournament-register" type="submit">View Matches</button>
 								}
 								if (Model.Validation.ValidTournamentRegistration(int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)), t.Id))
 								{
@@ -55,7 +78,7 @@
 								}
 								else
 								{
-									<h4 class="tournament-register">You are Registered</h4>
+									<h4 class="tournament-register">Unable to register</h4>
 								}
 							}
 						</div>

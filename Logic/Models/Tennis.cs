@@ -9,7 +9,7 @@ namespace Logic.Models
 {
     public class Tennis: Sport
 	{
-        public Tennis(Sport sport): base(sport)
+        public Tennis(Sport sport, List<IRule> rules): base(sport, rules)
         {
             MinPlayers = 4;
             MaxPlayers = 12;

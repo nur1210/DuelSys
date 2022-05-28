@@ -9,7 +9,7 @@ public class Sport
     private string _name;
     private int _minPlayers;
     private int _maxPlayers;
-    private List<IRule> _rules = new() {new BadmintonResult()};
+    private List<IRule> _rules;
     public int Id { get => _id; set => _id = value; }
     public string Name { get => _name; set => _name = value; }
     public int MinPlayers { get => _minPlayers; set => _minPlayers = value; }
@@ -24,19 +24,20 @@ public class Sport
         _maxPlayers = maxPlayers;
     }
 
-    public Sport(Sport s)
+    public Sport(Sport s, List<IRule> rules)
     {
         _id = s.Id;
         _name = s.Name;
         _minPlayers = s.MinPlayers;
         _maxPlayers = s.MaxPlayers;
+        _rules = rules;
     }
 
     public virtual bool ValidateResults(List<Result> results)
     {
         foreach (var rule in _rules.Where(rule => rule.ShouldRun(results)))
         {
-            rule.RunRule(results);
+            //rule.RunRule(results);
             return true;
         }
 

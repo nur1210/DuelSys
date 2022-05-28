@@ -46,7 +46,12 @@ namespace Logic.Services
             }
         }
 
-        public bool ValidTournamentRegistration(int userId, int tournamentId) => _tournamentService
-            .GetAllUsersRegisteredToTournamentByTournamentId(tournamentId).All(user => user.Id != userId);
+        public bool ValidTournamentRegistration(int userId, int tournamentId)
+        {
+            var tournament = _tournamentService.GetTournamentById(tournamentId);
+            return _tournamentService.GetAllUsersRegisteredToTournamentByTournamentId(tournamentId)
+                .All(user => user.Id != userId && tournament.StartDate > DateTime.Now.AddDays(7) &&
+                             !_tournamentService.TournamentHasStarted(tournamentId));
+        }
     }
 }
