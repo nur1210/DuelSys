@@ -21,7 +21,10 @@ namespace DuelSys_inc_WebApp.Pages
         public MatchService MatchService { get; }
         [BindProperty] public int TournamentId { get; set; }
         [BindProperty(SupportsGet = true)] public int TournamentStageFilter { get; set; }
-        [BindProperty] public List<TournamentView> StartedTournaments { get; set; }
+        [BindProperty(SupportsGet = true)] public string TournamentSportName { get; set; }
+        [BindProperty] public List<TournamentView> GetAllTournamentViews { get; set; }
+        [BindProperty] public List<TournamentView> GetAllFilteredTournaments { get; set; }
+
         public BadmintonModel(TournamentService tournamentService, UserService userService, Validation validation, INotyfService toastNotification)
         {
             Validation = validation;
@@ -32,9 +35,9 @@ namespace DuelSys_inc_WebApp.Pages
 
         public void OnGet()
         {
-            StartedTournaments = TournamentService.GetAllBadmintonTournamentsForView()
-                .Where(x => TournamentService.TournamentHasStarted(x.Id))
-                .ToList();
+            GetAllTournamentViews = TournamentService.GetAllTournamentsForView(TournamentSportName);
+            GetAllFilteredTournaments =
+                TournamentService.GetAllFilteredTournaments(TournamentStageFilter, GetAllTournamentViews);
         }
 
         public IActionResult OnPost()
@@ -59,7 +62,8 @@ namespace DuelSys_inc_WebApp.Pages
 
         public IActionResult OnPostFilter()
         {
-            return RedirectToPage("/Badminton", new { TournamentStageFilter});
+            var sportName = Request.Form["sportName"];
+            return RedirectToPage("/Badminton", new { TournamentStageFilter, TournamentSportName = sportName});
         }
     }
 }

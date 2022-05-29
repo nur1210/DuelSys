@@ -30,29 +30,37 @@ namespace Logic.Services
 
         public Tournament GetTournamentById(int tournamentId) =>
             GetAllTournaments().First(t => t.Id == tournamentId);
-        public List<TournamentView> GetAllTournamentsForView() => _repository.GetAllTournamentsForView();
 
-        public List<TournamentView> GetAllBadmintonTournamentsForView() =>
-            GetAllTournamentsForView().Where(x => x.SportName == "Badminton").ToList();
+        //public List<TournamentView> GetAllTournamentsForView() => _repository.GetAllTournamentsForView();
 
-        public List<TournamentView> GetAllBadmintonTournamentsForView(int? filter) => filter switch
+        //public List<TournamentView> GetAllBadmintonTournamentsForView() =>
+        //    GetAllTournamentsForView().Where(x => x.SportName == "Badminton").ToList();
+        public List<TournamentView> GetAllTournamentsForView(string? sportName) => sportName switch
         {
-            1 => GetAllBadmintonTournamentsForView()
+            "Badminton" => _repository.GetAllTournamentsForView().Where(x => x.SportName == "Badminton").ToList(),
+            "Chess" => _repository.GetAllTournamentsForView().Where(x => x.SportName == "Chess").ToList(),
+            "Tennis" => _repository.GetAllTournamentsForView().Where(x => x.SportName == "Tennis").ToList(),
+            _ => _repository.GetAllTournamentsForView()
+        };
+
+
+        public List<TournamentView> GetAllFilteredTournaments(int? filter, List<TournamentView>? tournamentsList) => filter switch
+        {
+            1 => tournamentsList
                 .Where(x => TournamentHasStarted(x.Id) == false && x.StartDate > DateTime.Now.AddDays(7))
                 .ToList(),
-            2 => GetAllBadmintonTournamentsForView()
+            2 => tournamentsList
                 .Where(x => TournamentHasStarted(x.Id) && x.EndDate > DateTime.Now)
                 .ToList(),
-            3 => GetAllBadmintonTournamentsForView()
+            3 => tournamentsList
                 .Where(x => TournamentHasStarted(x.Id) && x.EndDate < DateTime.Now)
                 .ToList(),
-            4 => GetAllBadmintonTournamentsForView()
+            4 => tournamentsList
                 .Where(x => TournamentHasStarted(x.Id) == false && x.StartDate < DateTime.Now.AddDays(7))
                 .ToList(),
-            _ => GetAllTournamentsForView().Where(x => x.SportName == "Badminton").ToList()
-
+            _ => GetAllTournamentsForView(tournamentsList.Select(x => x.SportName).First())
         };
-        public double GetTournamentOccupancyPercentage(int tournamentId) => GetAllTournamentsForView()
+        public double GetTournamentOccupancyPercentage(int tournamentId) => _repository.GetAllTournamentsForView()
             .Where(x => x.Id == tournamentId)
             .Select(y => (y.RegisteredPlayers * 100) / y.MaxPlayers)
             .First();

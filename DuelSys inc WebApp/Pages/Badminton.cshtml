@@ -1,6 +1,5 @@
 ﻿@page
 @using System.Security.Claims
-@using System.Diagnostics.Eventing.Reader
 @model DuelSys_inc_WebApp.Pages.BadmintonModel
 @{
 }
@@ -27,7 +26,7 @@
 	<nav id="nav">
 		<ul>
 			<li><a href="Index">Home</a></li>
-			<li><a href="Login" class="button">Login</a></li>
+			<li> <a asp-page="Logout" asp-route-returnUrl="@Request.Path" class="button">Logout</a></li>
 		</ul>
 	</nav>
 </header>
@@ -38,6 +37,7 @@
 		<form method="post" id="tournament-form">
 			<input asp-for="TournamentId" id="tournament-input" type="hidden" />
 			<input asp-for="TournamentStageFilter" id="filter" type="hidden" />
+			<input asp-for="TournamentSportName" value="@Model.TournamentSportName" name="sportName" id="sportName-input" type="hidden" />
 
 			<details class="dropdown">
 				<summary role="button">
@@ -53,7 +53,7 @@
 			</details>
 
 			<ul>
-				@foreach (var t in Model.TournamentService.GetAllBadmintonTournamentsForView(Model.TournamentStageFilter))
+				@foreach (var t in Model.GetAllFilteredTournaments)
 				{
 					<li class="no-bullet-list">
 						<div class="tournament-register-card">
@@ -68,7 +68,7 @@
 								</div>
 							</div>
 							@{
-								if (Model.StartedTournaments.Any(x => x.Id == t.Id))
+								if (Model.GetAllTournamentViews.Any(x => x.Id == t.Id))
 								{
 									<button asp-page-handler="ViewMatches" onclick="submitTournament(@t.Id)" class="button tournament-register" type="submit">View Matches</button>
 								}

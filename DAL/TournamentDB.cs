@@ -132,7 +132,6 @@ namespace DAL
             using var conn = Connection.OpenConnection();
             string sql2 = @"select * from result;";
             var rdr2 = MySqlHelper.ExecuteReader(conn, sql2);
-
             List<Result> results = new();
             while (rdr2.Read())
             {
@@ -140,7 +139,6 @@ namespace DAL
                     rdr2.GetInt32(2), rdr2.GetInt32(3)));
             }
             rdr2.Close();
-
             Dictionary<int, List<Result>> matchResults = new();
             foreach (var result in results.Where(result => !matchResults.ContainsKey(result.MatchId)))
             {
@@ -193,15 +191,6 @@ namespace DAL
             join `match` m on m.id = utm1.match_id
             where t.id = @TournamentId
             group by m.id;";
-            //var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("TournamentId", tournamentId));
-            //List<Match> matches = new();
-
-            //while (rdr.Read())
-            //{
-            //    matches.Add(new Match(rdr.GetInt32(13), rdr.GetDateTime(14), rdr.GetInt32(15),
-            //        rdr.GetInt32(16), rdr.GetInt32(17)));
-            //}
-            //rdr.Close();
 
             var rdr3 = MySqlHelper.ExecuteReader(conn, sql3, new MySqlParameter("TournamentId", tournamentId));
             while (rdr3.Read())

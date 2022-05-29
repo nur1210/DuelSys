@@ -49,7 +49,7 @@ namespace DuelSys_inc
         {
             dgvTournaments.Rows.Clear();
             _source.DataSource = typeof(TournamentView);
-            foreach (var tournament in _tournamentService.GetAllTournamentsForView())
+            foreach (var tournament in _tournamentService.GetAllTournamentsForView(null))
             {
                 _source.Add(tournament);
             }
