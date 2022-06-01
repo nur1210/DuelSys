@@ -68,7 +68,7 @@
 								</div>
 							</div>
 							@{
-								if (Model.GetAllTournamentViews.Any(x => x.Id == t.Id))
+								if (Model.GetAllStartedTournaments.Any(x => x.Id == t.Id))
 								{
 									<button asp-page-handler="ViewMatches" onclick="submitTournament(@t.Id)" class="button tournament-register" type="submit">View Matches</button>
 								}

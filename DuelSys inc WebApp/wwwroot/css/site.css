@@ -1974,7 +1974,7 @@ code {
 /* Container */
 
 .container {
-    margin: 0 auto;
+    margin: 40px auto;
     max-width: calc(100% - 5em);
     width: 60em;
 }
@@ -2946,6 +2946,7 @@ body.landing #page-wrapper {
     top: 0;
     width: 100%;
     z-index: 10000;
+    position: relative;
 }
 
     #header h1 {

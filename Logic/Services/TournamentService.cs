@@ -31,18 +31,10 @@ namespace Logic.Services
         public Tournament GetTournamentById(int tournamentId) =>
             GetAllTournaments().First(t => t.Id == tournamentId);
 
-        //public List<TournamentView> GetAllTournamentsForView() => _repository.GetAllTournamentsForView();
-
-        //public List<TournamentView> GetAllBadmintonTournamentsForView() =>
-        //    GetAllTournamentsForView().Where(x => x.SportName == "Badminton").ToList();
-        public List<TournamentView> GetAllTournamentsForView(string? sportName) => sportName switch
-        {
-            "Badminton" => _repository.GetAllTournamentsForView().Where(x => x.SportName == "Badminton").ToList(),
-            "Chess" => _repository.GetAllTournamentsForView().Where(x => x.SportName == "Chess").ToList(),
-            "Tennis" => _repository.GetAllTournamentsForView().Where(x => x.SportName == "Tennis").ToList(),
-            _ => _repository.GetAllTournamentsForView()
-        };
-
+        public List<TournamentView> GetAllTournamentsForView(string? sportName) =>
+            _repository.GetAllTournamentsForView()
+                .Where(x => x.SportName == sportName)
+                .ToList();
 
         public List<TournamentView> GetAllFilteredTournaments(int? filter, List<TournamentView>? tournamentsList) => filter switch
         {
@@ -58,7 +50,7 @@ namespace Logic.Services
             4 => tournamentsList
                 .Where(x => TournamentHasStarted(x.Id) == false && x.StartDate < DateTime.Now.AddDays(7))
                 .ToList(),
-            _ => GetAllTournamentsForView(tournamentsList.Select(x => x.SportName).First())
+            _ => GetAllTournamentsForView(tournamentsList.Select(x => x.SportName).FirstOrDefault())
         };
         public double GetTournamentOccupancyPercentage(int tournamentId) => _repository.GetAllTournamentsForView()
             .Where(x => x.Id == tournamentId)

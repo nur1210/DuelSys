@@ -53,5 +53,10 @@ namespace Logic.Services
                 .All(user => user.Id != userId && tournament.StartDate > DateTime.Now.AddDays(7) &&
                              !_tournamentService.TournamentHasStarted(tournamentId));
         }
+
+        public bool ValidatePassword(string CurrentPassword, string userPassword)
+        {
+            return Hashing.ValidatePassword(CurrentPassword, userPassword);
+        }
     }
 }

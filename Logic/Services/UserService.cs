@@ -21,6 +21,7 @@ namespace Logic.Services
 
         public void AddUser(User u) => _repository.AddUser(u, Hashing.HashPassword(u.Password));
         public void UpdateUser(User u) => _repository.UpdateUser(u);
+        public void UpdateUserPassword(User u) => _repository.UpdateUser(u, Hashing.HashPassword(u.Password));
         public void DeleteUser(User u) => _repository.DeleteUser(u);
         public List<User> GetAllUsers() => _repository.GetAllUsers();
         public User GetUserById(int id) => _repository.GetUserById(id);
@@ -35,5 +36,13 @@ namespace Logic.Services
         }
 
         public Dictionary<int, string> GetAllUsersIdAndFullName() => _repository.GetAllUsersIdAndFullName();
+
+        public List<string> GetAllRegisteredTournamentsNamesPerUser(int userId) =>
+            _repository.GetAllRegisteredTournamentsNamesPerUser(userId);
+
+        public DateTime GetUpcomingMatchDate(int userId) => _repository.GetUpcomingMatchDate(userId);
+
+        public Leaderboard GetTournamnetLeaderboard(int tournamentId, List<User> tournamentPlayers) =>
+            _repository.GetTournamnetLeaderboard(tournamentId, tournamentPlayers);
     }
 }

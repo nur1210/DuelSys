@@ -109,16 +109,6 @@ namespace DAL
         public List<Match> GetAllPlayedMatchesPerTournament(int tournamentId)
         {
             using var conn = Connection.OpenConnection();
-            string sql = @"select distinct (m.id), m.date, utm1.tournament_id, utm1.user_id, utm2.user_id
-            from `match` m
-             join user_tournament_match utm1 on m.id = utm1.match_id
-             join user_tournament_match utm2 on utm1.match_id = utm2.match_id
-            join result r on m.id = r.match_id
-            where utm1.tournament_id = @TournamentId
-              and m.id = r.match_id
-              AND utm1.user_id <> utm2.user_id
-            group by m.id";
-
             string sql2 = @"select * from result;";
             var rdr2 = MySqlHelper.ExecuteReader(conn, sql2);
 
@@ -136,6 +126,15 @@ namespace DAL
                 matchResults.Add(result.MatchId, results.Where(x => x.MatchId == result.MatchId).ToList());
             }
 
+            string sql = @"select distinct (m.id), m.date, utm1.tournament_id, utm1.user_id, utm2.user_id
+            from `match` m
+             join user_tournament_match utm1 on m.id = utm1.match_id
+             join user_tournament_match utm2 on utm1.match_id = utm2.match_id
+            join result r on m.id = r.match_id
+            where utm1.tournament_id = @TournamentId
+              and m.id = r.match_id
+              AND utm1.user_id <> utm2.user_id
+            group by m.id";
             var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("TournamentId", tournamentId));
             List<Match> matches = new();
             while (rdr.Read())

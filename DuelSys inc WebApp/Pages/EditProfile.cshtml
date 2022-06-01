@@ -1,0 +1,76 @@
+﻿@page
+@model DuelSys_inc_WebApp.Pages.EditProfileModel
+@{
+	<link rel="stylesheet" href="~/css/Profile.css" asp-append-version="true" />
+}
+<form method="post">
+	<div class="container">
+		<div class="main-body">
+			<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+			<div class="col-lg-8">
+				@*					<div class="card">*@						
+				<div class="card-body">
+					<div class="row mb-3">
+						<div class="col-sm-3 my-auto">
+							<h6 class="mb-0">First Name</h6>
+						</div>
+						<div class="col-sm-9 text-secondary">
+							<span class="text-danger" asp-validation-for="FirstName"></span>
+							<input asp-for="FirstName" />
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-sm-3 my-auto">
+							<h6 class="mb-0">Last Name</h6>
+						</div>
+						<div class="col-sm-9 text-secondary">
+							<span class="text-danger" asp-validation-for="LastName"></span>
+							<input asp-for="LastName" />
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-sm-3 my-auto">
+							<h6 class="mb-0">Email</h6>
+						</div>
+						<div class="col-sm-9 text-secondary">
+							<span class="text-danger" asp-validation-for="Email"></span>
+							<input asp-for="Email" type="text" />
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-sm-3 my-auto">
+							<h6 class="mb-0">Current Password</h6>
+						</div>
+						<div class="col-sm-9 text-secondary">
+							<input type="password" class="form-control" asp-for="CurrentPassword" />
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-sm-3 my-auto">
+							<h6 class="mb-0">New Password</h6>
+						</div>
+						<div class="col-sm-9 text-secondary">
+							<input class="form-control" type="password" asp-for="NewPassword" />
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-sm-3 my-auto">
+							<h6 class="mb-0">Repeat Password</h6>
+						</div>
+						<div class="col-sm-9 text-secondary">
+							<input class="form-control" type="password" asp-for="RepeatPassword" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-3 my-auto"></div>
+						<div class="col-sm-9 text-secondary">
+							<button class="button">Save Changes</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	@*		</div>
+	*@
+</form>

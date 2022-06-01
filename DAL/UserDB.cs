@@ -22,9 +22,17 @@ namespace DAL
         public void UpdateUser(User user)
         {
             using var conn = Connection.OpenConnection();
-            string sql = "UPDATE user SET first_name = @FirstName, last_name = @LastName, email = @Email, password = @Password, is_admin = @IsAdmin WHERE id = @ID ";
-            MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("FirstName", user.FirstName), new MySqlParameter("LastName", user.LastName), new MySqlParameter("Email", user.Email), 
-                new MySqlParameter("Password", user.Password), new MySqlParameter("IsAdmin", user.IsAdmin), new MySqlParameter("ID", user.Id));
+            string sql = "UPDATE user SET first_name = @FirstName, last_name = @LastName, email = @Email WHERE id = @ID ";
+            MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("FirstName", user.FirstName), new MySqlParameter("LastName", user.LastName), 
+                new MySqlParameter("Email", user.Email), new MySqlParameter("ID", user.Id));
+        }
+
+        public void UpdateUser(User user, string hashPassword)
+        {
+            using var conn = Connection.OpenConnection();
+            string sql = "UPDATE user SET first_name = @FirstName, last_name = @LastName, email = @Email, password = @Password, WHERE id = @ID ";
+            MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("FirstName", user.FirstName), new MySqlParameter("LastName", user.LastName), new MySqlParameter("Email", user.Email),
+                new MySqlParameter("Password", hashPassword), new MySqlParameter("ID", user.Id));
         }
 
         public void DeleteUser(User user)
@@ -95,6 +103,43 @@ namespace DAL
             }
             rdr.Close();
             return userIdAndName;
+        }
+
+        public List<string> GetAllRegisteredTournamentsNamesPerUser(int userId)
+        {
+            using var conn = Connection.OpenConnection();
+            string sql = @"select description from tournament
+                            join user_tournament on tournament.id = user_tournament.tournament_id
+                            where user_tournament.user_id = @UserId;";
+            var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("UserId", userId));
+            List<string> tournamentsNames = new();
+            while (rdr.Read())
+            {
+                tournamentsNames.Add(rdr.GetString(0));
+            }
+            rdr.Close();
+            return tournamentsNames;
+        }
+
+        public DateTime GetUpcomingMatchDate(int userId)
+        {
+            using var conn = Connection.OpenConnection();
+            string sql = @"select date from tournament
+                                     join user_tournament on tournament.id = user_tournament.tournament_id
+                                     join user_tournament_match utm on tournament.id = utm.tournament_id
+                                     join `match` m on m.id = utm.match_id
+                            where user_tournament.user_id = @UserId
+                              and m.date > now()
+                            order by m.date asc
+                            limit 1;";
+            var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("UserId", userId));
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                return rdr.GetDateTime(0);
+            }
+            rdr.Close();
+            return DateTime.MinValue;
         }
     }
 }

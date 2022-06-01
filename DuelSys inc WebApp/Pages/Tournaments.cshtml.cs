@@ -13,7 +13,7 @@ namespace DuelSys_inc_WebApp.Pages
 
         public IActionResult OnPost()
         {
-            return RedirectToPage("/Badminton", new {TournamentSportName});
+            return RedirectToPage("/AllTournamentsPerSport", new {TournamentSportName});
         }
     }
 }
