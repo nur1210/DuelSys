@@ -79,16 +79,20 @@
 	<table id="rankings" class="leaderboard-results">
 		<thead>
 			<tr>
+				<th>Rank</th>
 				<th>Name</th>
 				<th>Wins</th>
+				<th>Points</th>
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (var rank in Model.Leaderboard)
+			@foreach (var rank in Model.Leaderboard.RankedLeaderboard)
 			{
 				<tr>
-					<td>@Model.PlayerIdAndFullName.Where(x => x.Key == rank.Key.Id).Select(y => y.Value).First()</td>
-					<td>@rank.Value</td>
+					<td>@rank.Key</td>
+					<td>@Model.PlayerIdAndFullName.Where(x => x.Key == rank.Value.UserId).Select(x => x.Value).First()</td>
+					<td>@rank.Value.Wins</td>
+					<td>@rank.Value.SumResults</td>
 				</tr>
 			}
 		</tbody>

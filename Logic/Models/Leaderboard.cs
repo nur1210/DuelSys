@@ -13,7 +13,7 @@ namespace Logic.Models
         private Dictionary<int, UserRank> _leaderboard;
 
         public int TournamentId { get => _tournamentId; set => _tournamentId = value; }
-        public Dictionary<int, UserRank> RankedLeaderboard { get => _leaderboard; set => _leaderboard = value; }
+        public Dictionary<int, UserRank> RankedLeaderboard { get => _leaderboard; private set => _leaderboard = value; }
 
         public Leaderboard(int tournamentId, List<UserRank> users)
         {

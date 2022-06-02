@@ -42,7 +42,30 @@ namespace Logic.Services
 
         public DateTime GetUpcomingMatchDate(int userId) => _repository.GetUpcomingMatchDate(userId);
 
-        public Leaderboard GetTournamnetLeaderboard(int tournamentId, List<User> tournamentPlayers) =>
-            _repository.GetTournamnetLeaderboard(tournamentId, tournamentPlayers);
+        public int GetUserBestRank(int userId)
+        {
+            var tournamentsIds = _tournamentRepository.GetAllTournaments().Select(t => t.Id).ToList();
+            var allLeaderboards = tournamentsIds.Select(id => _tournamentRepository.GetTournamentLeaderboard(id)).ToList();
+            var bestRank = 100;
+            foreach (var leaderboard in allLeaderboards)
+            {
+                int? userRank = leaderboard.RankedLeaderboard.Where(x => x.Value.UserId == userId)
+                    .Select(y => y.Key)
+                    .FirstOrDefault();
+                if (bestRank > userRank && userRank is > 0)
+                {
+                    bestRank = leaderboard.RankedLeaderboard
+                        .Where(x => x.Value.UserId == userId)
+                        .Select(y => y.Key)
+                        .First();
+                }
+            }
+            if (bestRank == 100)
+            {
+                throw new ArgumentException("User is not ranked");
+            }
+
+            return bestRank;
+        }
     }
 }

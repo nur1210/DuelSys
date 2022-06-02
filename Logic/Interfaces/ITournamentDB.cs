@@ -12,6 +12,6 @@ public interface ITournamentDB
     List<TournamentView> GetAllTournamentsForView();
     List<User> GetAllUsersRegisteredToTournamentByTournamentId(int tournamentId);
     List<int> GetAllStartedTournamentsIds();
-    Tournament GetTournamentLeaderboard(int tournamentId);
-    Leaderboard GetTournamnetLeaderboard(int tournamentId, List<User> tournamentPlayers);
+    //Tournament GetTournamentLeaderboard(int tournamentId);
+    Leaderboard GetTournamentLeaderboard(int tournamentId);
 }

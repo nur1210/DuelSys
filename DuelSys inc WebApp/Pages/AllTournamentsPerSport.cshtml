@@ -39,16 +39,16 @@
 			<input asp-for="TournamentStageFilter" id="filter" type="hidden" />
 			<input asp-for="TournamentSportName" value="@Model.TournamentSportName" name="sportName" id="sportName-input" type="hidden" />
 
-			<details class="dropdown">
+			<details class="icon solid dropdown">
 				<summary role="button">
-					<a class="button">Filter</a>
+					<a class="icon solid dropdown">Filter</a>
 				</summary>
-				<ul>
-					<li><input asp-page-handler="Filter" type="submit" value="All" id="filter" onclick="submitTournamentFilter(0)"></li>
-					<li><input asp-page-handler="Filter" type="submit" value="Open registration" id="filter" onclick="submitTournamentFilter(1)"></li>
-					<li><input asp-page-handler="Filter" type="submit" value="Ongoing tournaments" id="filter" onclick="submitTournamentFilter(2)"></li>
-					<li><input asp-page-handler="Filter" type="submit" value="Finished tournaments" id="filter" onclick="submitTournamentFilter(3)"></li>
-					<li><input asp-page-handler="Filter" type="submit" value="Canceled tournaments" id="filter" onclick="submitTournamentFilter(4)"></li>
+				<ul class="justify-content-center align-content-center">
+					<li><input asp-page-handler="Filter" class="button alt justify-content-center" type="submit" value="All" id="filter" onclick="submitTournamentFilter(0)"></li>
+					<li><input asp-page-handler="Filter" class="button alt" type="submit" value="Open registration" id="filter" onclick="submitTournamentFilter(1)"></li>
+					<li><input asp-page-handler="Filter" class="button alt" type="submit" value="Ongoing tournaments" id="filter" onclick="submitTournamentFilter(2)"></li>
+					<li><input asp-page-handler="Filter" class="button alt" type="submit" value="Finished tournaments" id="filter" onclick="submitTournamentFilter(3)"></li>
+					<li><input asp-page-handler="Filter" class="button alt" type="submit" value="Canceled tournaments" id="filter" onclick="submitTournamentFilter(4)"></li>
 				</ul>
 			</details>
 
@@ -70,11 +70,11 @@
 							@{
 								if (Model.GetAllStartedTournaments.Any(x => x.Id == t.Id))
 								{
-									<button asp-page-handler="ViewMatches" onclick="submitTournament(@t.Id)" class="button tournament-register" type="submit">View Matches</button>
+									<button asp-page-handler="ViewMatches" onclick="submitTournament(@t.Id)" class="button alt tournament-register" type="submit">View Matches</button>
 								}
 								if (Model.Validation.ValidTournamentRegistration(int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)), t.Id))
 								{
-									<button class="button tournament-register" onclick="submitTournament(@t.Id)">Register</button>
+									<button class="button alt tournament-register" onclick="submitTournament(@t.Id)">Register</button>
 								}
 								else
 								{

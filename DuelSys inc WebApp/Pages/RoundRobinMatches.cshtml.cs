@@ -15,7 +15,7 @@ namespace DuelSys_inc_WebApp.Pages
         [BindProperty] public List<Match> TournamentPlayedMatches { get; set; }
         [BindProperty] public Dictionary<int, string> PlayerIdAndFullName { get; set; }
         [BindProperty] public Dictionary<int, List<Match>> AllMatchesPerPlayer { get; set; }
-        [BindProperty] public Dictionary<User, int> Leaderboard { get; set; }
+        [BindProperty] public Leaderboard Leaderboard { get; set; }
         [BindProperty(SupportsGet = true)] public int TournamentId { get; set; }
 
 
