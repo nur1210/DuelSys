@@ -11,12 +11,15 @@ namespace DuelSys_inc_WebApp.Pages
     public class ProfileModel : PageModel
     {
         public UserService UserService { get; }
+        public MatchService MatchService { get; }
         [BindProperty] public string UserFullName { get; set; }
-        [BindProperty] public User User{ get; set; }
+        [BindProperty] public User User { get; set; }
+        [BindProperty] public List<Match> PlayedMatches{ get; set; }
 
-        public ProfileModel(UserService userService)
+        public ProfileModel(UserService userService, MatchService matchService)
         {
             UserService = userService;
+            MatchService = matchService;
         }
         public void OnGet()
         {
@@ -26,6 +29,7 @@ namespace DuelSys_inc_WebApp.Pages
                 .Where(x => x.Key == userId)
                 .Select(y => y.Value)
                 .First();
+            PlayedMatches = MatchService.GetAllPlayedMatchesPerUser(userId);
         }
 
         //public IActionResult OnPost()

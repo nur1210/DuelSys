@@ -32,5 +32,7 @@ namespace Logic.Services
 
         public List<Match> GetAllPlayedMatchesPerTournament(int tournamentId) =>
             _repository.GetAllPlayedMatchesPerTournament(tournamentId);
+
+        public List<Match> GetAllPlayedMatchesPerUser(int userId) => _repository.GetAllPlayedMatchesPerUser(userId);
     }
 }

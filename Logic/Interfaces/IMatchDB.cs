@@ -10,4 +10,5 @@ public interface IMatchDB
     Match GetMatchByUsersIds(int firstUserId, int secondUserId);
     Dictionary<int, List<Match>> GetAllMatchesPerPlayer(int tournamentId);
     List<Match> GetAllPlayedMatchesPerTournament(int tournamentId);
+    List<Match> GetAllPlayedMatchesPerUser(int userId);
 }
