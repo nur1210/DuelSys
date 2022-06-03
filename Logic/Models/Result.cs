@@ -8,9 +8,9 @@ public class Result
     private int _matchResult;
 
     public int Id { get => _id; }
-    public int UserId { get => _userId; set => _userId = value; }
-    public int MatchId { get => _matchId; set => _matchId = value; }
-    public int MatchResult { get => _matchResult; set => _matchResult = value; }
+    public int UserId => _userId;
+    public int MatchId => _matchId;
+    public int MatchResult => _matchResult;
 
     public Result(int userId, int matchId, int matchResult)
     {

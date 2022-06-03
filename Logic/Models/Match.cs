@@ -17,13 +17,13 @@ namespace Logic.Models
         private int _winnerId;
         private int _loserId;
 
-        public int Id { get => _id; set => _id = value; }
-        public DateTime Date { get => _date; set => _date = value; }
-        public int TournamentId { get => _tournamentId; set => _tournamentId = value; }
-        public int FirstPlayerId { get => _firstPlayerId; set => _firstPlayerId = value; }
-        public int SecondPlayerId { get => _secondPlayerId; set => _secondPlayerId = value; }
-        public List<Result> MatchResults { get => _matchResults; set => _matchResults = value; }
-        public int WinnerId { get => _winnerId; set => _winnerId = value; }
+        public int Id => _id;
+        public DateTime Date => _date;
+        public int TournamentId => _tournamentId;
+        public int FirstPlayerId => _firstPlayerId;
+        public int SecondPlayerId => _secondPlayerId;
+        public List<Result> MatchResults => _matchResults;
+        public int WinnerId => _winnerId;
         public int LoserId { get => _loserId; set => _loserId = value; }
 
         public Match(int id, DateTime date, int tournamentId, int firstPlayerId, int secondPlayerId)

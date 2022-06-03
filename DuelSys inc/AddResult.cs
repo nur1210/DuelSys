@@ -56,28 +56,29 @@ namespace DuelSys_inc
             var playerOneResult = Convert.ToInt32(tbxResultPlayerOne.Text);
             var playerTwoResult = Convert.ToInt32(tbxResultPlayerTwo.Text);
 
-            //var valid = (_tournament.Sport) switch
-            //{
-            //    Badminton badminton => badminton.ValidateResults(TODO),
-            //    Tennis tennis => tennis.ValidateResults(TODO),
-            //    _ => false
-            //};
-            var results = new List<Result>();
-            foreach (var match in _matches.Where(match => match.FirstPlayerId == playerOne && match.SecondPlayerId == playerTwo))
+            var valid = (_tournament.Sport) switch
             {
-                results.Add(new Result(match.FirstPlayerId, match.Id, playerOneResult));
-                results.Add(new Result(match.SecondPlayerId, match.Id, playerTwoResult));
-            }
+                Badminton badminton => badminton.ValidateResults(playerOneResult, playerTwoResult),
+                Tennis tennis => tennis.ValidateResults(playerOneResult, playerTwoResult),
+                Chess chess => chess.ValidateResults(playerOneResult, playerTwoResult),
+                _ => false
+            };
 
-            //if (!valid)
+            if (!valid)
             {
                 MessageBox.Show(@"At least One of the results is not valid");
                 return;
             }
 
+            foreach (var match in _matches.Where(match => match.FirstPlayerId == playerOne && match.SecondPlayerId == playerTwo))
+            {
+                _resultService.CreateResult(new Result(match.FirstPlayerId, match.Id, playerOneResult));
+                _resultService.CreateResult(new Result(match.SecondPlayerId, match.Id, playerTwoResult));
+            }
             MessageBox.Show(@"The results registered successfully");
             tbxResultPlayerOne.Clear();
             tbxResultPlayerTwo.Clear();
+
 
         }
 

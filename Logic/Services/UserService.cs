@@ -67,5 +67,8 @@ namespace Logic.Services
 
             return bestRank;
         }
+
+        public List<Tournament> GetAllTournamentsPerUser(int userId) =>
+            _repository.GetAllTournamentsPerUser(userId);
     }
 }

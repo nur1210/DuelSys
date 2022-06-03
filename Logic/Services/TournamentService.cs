@@ -36,6 +36,11 @@ namespace Logic.Services
                 .Where(x => x.SportName == sportName)
                 .ToList();
 
+        public List<Tournament> GetAllTournamentsBySportName(string? sportName) =>
+            _repository.GetAllTournaments()
+                .Where(x => x.Sport.Name == sportName)
+                .ToList();
+
         public List<TournamentView> GetAllFilteredTournaments(int? filter, List<TournamentView>? tournamentsList) => filter switch
         {
             1 => tournamentsList

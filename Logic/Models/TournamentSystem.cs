@@ -8,8 +8,8 @@ public class TournamentSystem : ITournamentSystem
     private string _name;
     private List<Match> _matches;
 
-    public int Id { get => _id; set => _id = value; }
-    public string Name { get => _name; set => _name = value; }
+    public int Id => _id;
+    public string Name => _name;
     public List<Match> Matches { get => _matches; set => _matches = value; }
 
 

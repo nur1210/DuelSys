@@ -15,4 +15,5 @@ public interface IUserDB
     Dictionary<int, string> GetAllUsersIdAndFullName();
     List<string> GetAllRegisteredTournamentsNamesPerUser(int userId);
     DateTime GetUpcomingMatchDate(int userId);
+    List<Tournament> GetAllTournamentsPerUser(int userId);
 }

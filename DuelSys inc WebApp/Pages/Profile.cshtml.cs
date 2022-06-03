@@ -14,7 +14,8 @@ namespace DuelSys_inc_WebApp.Pages
         public MatchService MatchService { get; }
         [BindProperty] public string UserFullName { get; set; }
         [BindProperty] public User User { get; set; }
-        [BindProperty] public List<Match> PlayedMatches{ get; set; }
+        [BindProperty] public List<Match> PlayedMatches { get; set; }
+
 
         public ProfileModel(UserService userService, MatchService matchService)
         {
@@ -30,11 +31,7 @@ namespace DuelSys_inc_WebApp.Pages
                 .Select(y => y.Value)
                 .First();
             PlayedMatches = MatchService.GetAllPlayedMatchesPerUser(userId);
-        }
 
-        //public IActionResult OnPost()
-        //{
-        //    return RedirectToPage("/EditProfile", new {User.Id});
-        //}
+        }
     }
 }

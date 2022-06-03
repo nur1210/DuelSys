@@ -22,15 +22,15 @@ namespace Logic.Models
         private List<Match> _matches;
         private Leaderboard _leaderboard;
 
-        public int Id { get => _id; set => _id = value; }
-        public string Description { get => _description; set => _description = value; }
-        public string Location { get => _location; set => _location = value; }
-        public int MinPlayers { get => _minPlayers; set => _minPlayers = value; }
+        public int Id => _id;
+        public string Description => _description;
+        public string Location => _location;
+        public int MinPlayers => _minPlayers;
         public int MaxPlayers { get => _maxPlayers; set => _maxPlayers = value; }
-        public DateTime StartDate { get => _startDate; set => _startDate = value; }
-        public DateTime EndDate { get => _endDate; set => _endDate = value; }
-        public Sport Sport { get => _sport; set => _sport = value; }
-        public TournamentSystem System { get => _system; set => _system = value; }
+        public DateTime StartDate => _startDate;
+        public DateTime EndDate => _endDate;
+        public Sport Sport => _sport;
+        public TournamentSystem System => _system;
         public List<User> Players { get => _players; set => _players = value; }
         public List<Match> Matches { get => _matches; set => _matches = value; }
         public Leaderboard Leaderboard { get => _leaderboard; set => _leaderboard = value; }

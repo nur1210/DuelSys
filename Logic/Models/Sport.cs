@@ -10,10 +10,12 @@ public class Sport
     private int _minPlayers;
     private int _maxPlayers;
     private List<IRule> _rules;
-    public int Id { get => _id; set => _id = value; }
-    public string Name { get => _name; set => _name = value; }
-    public int MinPlayers { get => _minPlayers; set => _minPlayers = value; }
-    public int MaxPlayers { get => _maxPlayers; set => _maxPlayers = value; }
+    public int Id => _id;
+    public string Name => _name;
+    public int MinPlayers { get => _minPlayers;
+        protected init => _minPlayers = value; }
+    public int MaxPlayers { get => _maxPlayers;
+        protected init => _maxPlayers = value; }
     public List<IRule> Rules { get => _rules; set => _rules = value; }
 
     public Sport(int id, string name, int minPlayers, int maxPlayers)
@@ -33,14 +35,9 @@ public class Sport
         _rules = rules;
     }
 
-    public virtual bool ValidateResults(List<Result> results)
+    public virtual bool ValidateResults(int resultOne, int resultTwo)
     {
-        foreach (var rule in _rules.Where(rule => rule.ShouldRun(results)))
-        {
-            //rule.RunRule(results);
-            return true;
-        }
-
-        return false;
+        throw new NotImplementedException();
     }
+
 }

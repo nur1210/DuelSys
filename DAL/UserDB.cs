@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Logic.Interfaces;
 using Logic.Models;
+using Logic.Services;
 using MySql.Data.MySqlClient;
 
 namespace DAL
@@ -140,6 +141,37 @@ namespace DAL
             }
             rdr.Close();
             return DateTime.MinValue;
+        }
+
+        public List<Tournament> GetAllTournamentsPerUser(int userId)
+        {
+            using var conn = Connection.OpenConnection();
+            string sql = @"SELECT t.id,
+               t.description,
+               t.location,
+               s.min_players,
+               s.max_players,
+               t.start_date,
+               t.end_date,
+               s.id,
+               s.name,
+               s.min_players,
+               s.max_players
+        FROM tournament AS t
+                 INNER JOIN sport AS s ON t.sport_id = s.id
+                 join user_tournament_match utm on t.id = utm.tournament_id
+        where utm.user_id = @UserId
+        group by t.id;";;
+            var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("UserId", userId));
+            List<Tournament> list = new();
+            while (rdr.Read())
+            {
+                list.Add(new Tournament(rdr.GetInt32(0), rdr.GetString(1),
+                    rdr.GetString(2), rdr.GetInt32(3), rdr.GetInt32(4), rdr.GetDateTime(5),
+                    rdr.GetDateTime(6), SportFactory.CreateSport(new Sport(rdr.GetInt32(7), rdr.GetString(8), rdr.GetInt32(9),
+                        rdr.GetInt32(10))), TournamentSystemFactory.CreateTournamentSystem(new TournamentSystem(rdr.GetInt32(11), rdr.GetString(12)))));
+            }
+            return list;
         }
     }
 }
