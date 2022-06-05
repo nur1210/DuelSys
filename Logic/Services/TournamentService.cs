@@ -71,7 +71,7 @@ namespace Logic.Services
         {
             var tournament = GetTournamentById(tournamentId);
             var players = GetAllUsersRegisteredToTournamentByTournamentId(tournamentId);
-            if (tournament.MinPlayers > players.Count) return false;
+            if (tournament.MinPlayers > players.Count || tournament.MaxPlayers < players.Count) return false;
             var matches = tournament.System.GenerateTournamentSchedule(tournament, players);
             foreach (var match in matches)
             {

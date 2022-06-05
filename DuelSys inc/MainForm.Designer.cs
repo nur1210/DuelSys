@@ -48,8 +48,6 @@
             this.btnCreateTournament = new MaterialSkin.Controls.MaterialButton();
             this.materialSwitch1 = new MaterialSkin.Controls.MaterialSwitch();
             this.tbxDescription = new MaterialSkin.Controls.MaterialTextBox();
-            this.Notification = new System.Windows.Forms.TabPage();
-            this.Statistics = new System.Windows.Forms.TabPage();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.materialTabControl1.SuspendLayout();
             this.Dashboard.SuspendLayout();
@@ -61,8 +59,6 @@
             // 
             this.materialTabControl1.Controls.Add(this.Dashboard);
             this.materialTabControl1.Controls.Add(this.Forms);
-            this.materialTabControl1.Controls.Add(this.Notification);
-            this.materialTabControl1.Controls.Add(this.Statistics);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialTabControl1.ImageList = this.imageList1;
@@ -78,8 +74,8 @@
             // Dashboard
             // 
             this.Dashboard.BackColor = System.Drawing.Color.Transparent;
-            this.Dashboard.Controls.Add(this.btnAddResults);
             this.Dashboard.Controls.Add(this.dgvTournaments);
+            this.Dashboard.Controls.Add(this.btnAddResults);
             this.Dashboard.ImageKey = "icons8-table-32.png";
             this.Dashboard.Location = new System.Drawing.Point(4, 39);
             this.Dashboard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -88,20 +84,22 @@
             this.Dashboard.Size = new System.Drawing.Size(1251, 668);
             this.Dashboard.TabIndex = 0;
             this.Dashboard.Text = "Dashboard";
+            this.Dashboard.Click += new System.EventHandler(this.Dashboard_Click);
             // 
             // btnAddResults
             // 
             this.btnAddResults.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnAddResults.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnAddResults.Depth = 0;
+            this.btnAddResults.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnAddResults.HighEmphasis = true;
             this.btnAddResults.Icon = null;
-            this.btnAddResults.Location = new System.Drawing.Point(1051, 621);
+            this.btnAddResults.Location = new System.Drawing.Point(4, 627);
             this.btnAddResults.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAddResults.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAddResults.Name = "btnAddResults";
             this.btnAddResults.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAddResults.Size = new System.Drawing.Size(116, 36);
+            this.btnAddResults.Size = new System.Drawing.Size(1243, 36);
             this.btnAddResults.TabIndex = 1;
             this.btnAddResults.Text = "Add results";
             this.btnAddResults.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -113,15 +111,16 @@
             // 
             this.dgvTournaments.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvTournaments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTournaments.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvTournaments.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dgvTournaments.Location = new System.Drawing.Point(33, 291);
+            this.dgvTournaments.Location = new System.Drawing.Point(4, 227);
             this.dgvTournaments.Margin = new System.Windows.Forms.Padding(2);
             this.dgvTournaments.Name = "dgvTournaments";
             this.dgvTournaments.RowHeadersWidth = 72;
             this.dgvTournaments.RowTemplate.Height = 37;
-            this.dgvTournaments.Size = new System.Drawing.Size(1176, 300);
+            this.dgvTournaments.Size = new System.Drawing.Size(1243, 400);
             this.dgvTournaments.TabIndex = 0;
-            this.dgvTournaments.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTournaments_CellContentClick);
+            this.dgvTournaments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTournaments_CellClick);
             this.dgvTournaments.DoubleClick += new System.EventHandler(this.dgvTournaments_DoubleClick);
             // 
             // Forms
@@ -353,28 +352,6 @@
             this.tbxDescription.Text = "";
             this.tbxDescription.TrailingIcon = null;
             // 
-            // Notification
-            // 
-            this.Notification.ImageKey = "icons8-notification-32.png";
-            this.Notification.Location = new System.Drawing.Point(4, 39);
-            this.Notification.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Notification.Name = "Notification";
-            this.Notification.Size = new System.Drawing.Size(1251, 668);
-            this.Notification.TabIndex = 5;
-            this.Notification.Text = "Notification";
-            this.Notification.UseVisualStyleBackColor = true;
-            // 
-            // Statistics
-            // 
-            this.Statistics.ImageKey = "icons8-marketing-32.png";
-            this.Statistics.Location = new System.Drawing.Point(4, 39);
-            this.Statistics.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Statistics.Name = "Statistics";
-            this.Statistics.Size = new System.Drawing.Size(1251, 668);
-            this.Statistics.TabIndex = 7;
-            this.Statistics.Text = "Statistics";
-            this.Statistics.UseVisualStyleBackColor = true;
-            // 
             // imageList1
             // 
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
@@ -420,8 +397,6 @@
         private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
         private System.Windows.Forms.TabPage Dashboard;
         private System.Windows.Forms.TabPage Forms;
-        private System.Windows.Forms.TabPage Notification;
-        private System.Windows.Forms.TabPage Statistics;
         private System.Windows.Forms.ImageList imageList1;
         private MaterialSkin.Controls.MaterialButton btnCreateTournament;
         private MaterialSkin.Controls.MaterialSwitch materialSwitch1;

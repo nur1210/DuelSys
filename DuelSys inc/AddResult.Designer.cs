@@ -153,6 +153,7 @@
             this.Controls.Add(this.cbxPlayerOne);
             this.Name = "AddResult";
             this.Padding = new System.Windows.Forms.Padding(1, 31, 1, 1);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddResult";
             this.ResumeLayout(false);
             this.PerformLayout();

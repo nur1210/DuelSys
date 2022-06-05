@@ -31,8 +31,7 @@ namespace DuelSys_inc
             _resultService = resultService;
             _userService = userService;
 
-            UpdateGridView();
-            UpdateListBox();
+            UpdateForm();
 
             cbxSport.ValueMember = "Id";
             cbxSport.DisplayMember = "Name";
@@ -78,6 +77,7 @@ namespace DuelSys_inc
             var tournamentSystem = _tournamentSystemService.GetTournamentSystemById(tournamentSystemId);
 
             _tournamentService.CreateTournament(new Tournament(description, location, startDate, endDate, sport, tournamentSystem));
+            UpdateForm();
         }
 
         private void lbxTournaments_DoubleClick(object sender, EventArgs e)
@@ -108,6 +108,7 @@ namespace DuelSys_inc
             var tournamentSystem = _tournamentSystemService.GetTournamentSystemById(tournamentSystemId);
 
             _tournamentService.UpdateTournament(new Tournament(description, location, startDate, endDate, sport, tournamentSystem), id);
+            UpdateForm();
         }
 
         private void dgvTournaments_DoubleClick(object sender, EventArgs e)
@@ -138,7 +139,18 @@ namespace DuelSys_inc
             addResult.ShowDialog();
         }
 
-        private void dgvTournaments_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Dashboard_Click(object sender, EventArgs e)
+        {
+            UpdateForm();
+        }
+
+        private void UpdateForm()
+        {
+            UpdateGridView();
+            UpdateListBox();
+        }
+
+        private void dgvTournaments_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int? i = dgvTournaments.CurrentCell.RowIndex;
             if (i is -1 or null) return;

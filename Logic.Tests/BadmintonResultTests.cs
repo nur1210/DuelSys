@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Logic.Models;
 using Xunit;
+using Xunit.Sdk;
 
 namespace Logic.Tests
 {
@@ -23,9 +24,29 @@ namespace Logic.Tests
         [InlineData(24,26)]
         public void Validate_ValidCall(int one, int two)
         {
-            BadmintonResult badmintonResult = new BadmintonResult();
+            BadmintonResult badmintonResult = new();
 
             badmintonResult.Validate(one, two);
+        }
+
+        [Theory]
+        [InlineData(1, 2)]
+        [InlineData(2, 1)]
+        [InlineData(10, 12)]
+        [InlineData(31, 30)]
+        [InlineData(30, 31)]
+        [InlineData(1000, 21)]
+        [InlineData(-1, 20)]
+        [InlineData(21, -5)]
+        [InlineData(24, 24)]
+        [InlineData(30, 30)]
+        public void Validate_Values_Not_valid(int one, int two)
+        {
+            BadmintonResult badmintonResult = new();
+
+            var accusal = Assert.Throws<Exception>(() => badmintonResult.Validate(one, two));
+
+            Assert.Equal(new Exception().GetType(), accusal.GetType());
         }
     }
 }

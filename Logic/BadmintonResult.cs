@@ -15,6 +15,9 @@ namespace Logic
             if (resultOne < 21 && resultTwo < 21)
                 throw new Exception("The winner's score must be at least 21");
 
+            if (resultOne < 0 || resultTwo < 0)
+                throw new Exception("THe result must be a positive number");
+
             if (resultOne > 30 || resultTwo > 30)
                 throw new Exception("Maximum score cannot exceed 30");
 

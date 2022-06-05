@@ -15,27 +15,6 @@ namespace Logic.Tests
 {
     public class TournamentServiceTests
     {
-        //[Fact]
-        //public void GenerateTournamentSchedule_ValidCall()
-        //{
-        //    var tournamentId = GetSampleTournament().Id;
-        //    using var mock = AutoMock.GetLoose();
-        //    foreach (var match in getSampleMatches())
-        //    {
-        //        mock.Mock<IMatchDB>()
-        //            .Setup(x => x.CreateMatch(match));
-        //    }
-
-        //    var cls = mock.Create<TournamentService>();
-        //    var expected = true;
-
-        //    var actual = cls.GenerateTournamentSchedule(tournamentId);
-
-        //    Assert.True(actual);
-        //    Assert.Equal(expected, actual);
-
-        //}
-
         [Fact]
         public void GenerateTournamentSchedule_ValidCall()
         {
@@ -46,7 +25,7 @@ namespace Logic.Tests
 
             mock.Mock<ITournamentDB>()
                 .Setup(x => x.GetAllUsersRegisteredToTournamentByTournamentId(1))
-                .Returns(GetSampleUsers);
+                .Returns(GetSampleUsers());
 
 
             var cls = mock.Create<TournamentService>();
@@ -57,7 +36,59 @@ namespace Logic.Tests
 
             Assert.True(actual);
             Assert.Equal(expected, actual);
+        }
 
+        [Fact]
+        public void GenerateTournamentSchedule_MinPlayer_Not_Reached()
+        {
+            using var mock = AutoMock.GetLoose();
+            mock.Mock<ITournamentDB>()
+                .Setup(x => x.GetAllTournaments())
+                .Returns(GetSampleTournaments());
+
+            var users = GetSampleUsers().FindAll(x => x.Id > 1);
+            mock.Mock<ITournamentDB>()
+                .Setup(x => x.GetAllUsersRegisteredToTournamentByTournamentId(1))
+                .Returns(users);
+
+
+            var cls = mock.Create<TournamentService>();
+
+            var expected = false;
+
+            var actual = cls.GenerateTournamentSchedule(1);
+
+            Assert.False(actual);
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void GenerateTournamentSchedule_MaxPlayer_Reached()
+        {
+            using var mock = AutoMock.GetLoose();
+            mock.Mock<ITournamentDB>()
+                .Setup(x => x.GetAllTournaments())
+                .Returns(GetSampleTournaments());
+
+            var users = GetSampleUsers();
+            users.AddRange(GetSampleUsers());
+            users.AddRange(GetSampleUsers());
+            users.AddRange(GetSampleUsers());
+            users.AddRange(GetSampleUsers());
+
+            mock.Mock<ITournamentDB>()
+                .Setup(x => x.GetAllUsersRegisteredToTournamentByTournamentId(1))
+                .Returns(users);
+
+
+            var cls = mock.Create<TournamentService>();
+
+            var expected = false;
+
+            var actual = cls.GenerateTournamentSchedule(1);
+
+            Assert.False(actual);
+            Assert.Equal(expected, actual);
         }
 
 
@@ -107,47 +138,6 @@ namespace Logic.Tests
                 new TournamentSystem(1,
                     "Round Robin"))
             );
-            return list;
-        }
-        private List<TournamentView> GetSampleTournamentsView()
-        {
-            var list = new List<TournamentView>();
-            list.Add(new TournamentView(
-                1,
-                "World cup",
-                "Windhoek",
-                10,
-                4,
-                12,
-                new DateTime(2022, 10, 12),
-                new DateTime(2022, 10, 18),
-                "Badminton",
-                "Round Robin"
-            ));
-            list.Add(new TournamentView(
-                2,
-                "World cup",
-                "Windhoek",
-                10,
-                4,
-                12,
-                new DateTime(2022, 10, 12),
-                new DateTime(2022, 10, 18),
-                "Badminton",
-                "Round Robin"
-            ));
-            return list;
-        }
-
-        private List<Match> getSampleMatches()
-        {
-            List<Match> list = new List<Match>();
-            list.Add(new Match(1, new DateTime(2022, 10, 13), 1, 1, 2));
-            list.Add(new Match(2, new DateTime(2022, 10, 14), 1, 1, 3));
-            list.Add(new Match(3, new DateTime(2022, 10, 15), 1, 1, 4));
-            list.Add(new Match(4, new DateTime(2022, 10, 16), 1, 2, 3));
-            list.Add(new Match(5, new DateTime(2022, 10, 17), 1, 2, 4));
-            list.Add(new Match(6, new DateTime(2022, 10, 18), 1, 3, 4));
             return list;
         }
     }
