@@ -8,15 +8,10 @@ namespace Logic.Models
 {
     public class Chess : Sport
     {
-        public Chess(Sport s, List<IRule> rules) : base(s, rules)
+        public Chess(Sport s, IRule rule) : base(s, rule)
         {
             MinPlayers = 4;
             MaxPlayers = 10;
-        }
-
-        public override bool ValidateResults(int resultOne, int resultTwo)
-        {
-            throw new NotImplementedException();
         }
     }
 }

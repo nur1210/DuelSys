@@ -2,14 +2,19 @@
 
 namespace Logic.Models;
 
-public class TournamentSystem : ITournamentSystem
+public class TournamentSystem
 {
     private int _id;
     private string _name;
     private List<Match> _matches;
 
     public int Id => _id;
-    public string Name => _name;
+    public string Name
+    {
+        get => _name;
+        set => _name = value;
+    }
+
     public List<Match> Matches { get => _matches; set => _matches = value; }
 
 

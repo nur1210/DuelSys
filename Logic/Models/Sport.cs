@@ -9,7 +9,7 @@ public class Sport
     private string _name;
     private int _minPlayers;
     private int _maxPlayers;
-    private List<IRule> _rules;
+    private List<IRule> _rules = new();
     public int Id => _id;
     public string Name => _name;
     public int MinPlayers { get => _minPlayers;
@@ -26,18 +26,21 @@ public class Sport
         _maxPlayers = maxPlayers;
     }
 
-    public Sport(Sport s, List<IRule> rules)
+    public Sport(Sport s, IRule rule)
     {
         _id = s.Id;
         _name = s.Name;
         _minPlayers = s.MinPlayers;
         _maxPlayers = s.MaxPlayers;
-        _rules = rules;
+        _rules?.Add(rule);
     }
 
-    public virtual bool ValidateResults(int resultOne, int resultTwo)
+    public void ValidateResults(int resultOne, int resultTwo)
     {
-        throw new NotImplementedException();
+        foreach (var rule in Rules)
+        {
+            rule.Validate(resultOne, resultTwo);
+        }
     }
 
 }

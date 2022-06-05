@@ -9,7 +9,6 @@ namespace Logic
 {
     public interface IRule
     {
-        bool ShouldRun(List<Result> results);
-        //void RunRule(List<Result> results);
+        void Validate(int resultOne, int resultTwo);
     }
 }

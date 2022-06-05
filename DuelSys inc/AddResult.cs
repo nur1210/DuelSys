@@ -23,7 +23,6 @@ namespace DuelSys_inc
         private readonly ResultService _resultService;
         private readonly UserService _userService;
         private readonly List<Match> _matches;
-        private readonly IRule _rule;
 
         public AddResult(Tournament tournament, MatchService matchService, ResultService resultService, UserService userService)
         {
@@ -56,25 +55,23 @@ namespace DuelSys_inc
             var playerOneResult = Convert.ToInt32(tbxResultPlayerOne.Text);
             var playerTwoResult = Convert.ToInt32(tbxResultPlayerTwo.Text);
 
-            var valid = (_tournament.Sport) switch
+            try
             {
-                Badminton badminton => badminton.ValidateResults(playerOneResult, playerTwoResult),
-                Tennis tennis => tennis.ValidateResults(playerOneResult, playerTwoResult),
-                Chess chess => chess.ValidateResults(playerOneResult, playerTwoResult),
-                _ => false
-            };
-
-            if (!valid)
+                _tournament.Sport.ValidateResults(playerOneResult, playerTwoResult);
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(@"At least One of the results is not valid");
+                MessageBox.Show(ex.Message);
+                tbxResultPlayerOne.Clear();
+                tbxResultPlayerTwo.Clear();
                 return;
             }
 
-            foreach (var match in _matches.Where(match => match.FirstPlayerId == playerOne && match.SecondPlayerId == playerTwo))
-            {
-                _resultService.CreateResult(new Result(match.FirstPlayerId, match.Id, playerOneResult));
-                _resultService.CreateResult(new Result(match.SecondPlayerId, match.Id, playerTwoResult));
-            }
+            var match = _matches.First(match => match.FirstPlayerId == playerOne && match.SecondPlayerId == playerTwo);
+
+            _resultService.CreateResult(new Result(match.FirstPlayerId, match.Id, playerOneResult));
+            _resultService.CreateResult(new Result(match.SecondPlayerId, match.Id, playerTwoResult));
+
             MessageBox.Show(@"The results registered successfully");
             tbxResultPlayerOne.Clear();
             tbxResultPlayerTwo.Clear();

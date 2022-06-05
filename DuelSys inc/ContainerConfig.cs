@@ -16,9 +16,10 @@ namespace DuelSys_inc
             builder.RegisterType<SportDB>().As<ISportDB>();
             builder.RegisterType<TournamentSystemDB>().As<ITournamentSystemDB>();
             builder.RegisterType<UserDB>().As<IUserDB>();
-            builder.RegisterType<TournamentSystem>().As<ITournamentSystem>();
+            //builder.RegisterType<TournamentSystem>().As<ITournamentSystem>();
             builder.RegisterType<MatchDB>().As<IMatchDB>();
             builder.RegisterType<ResultDB>().As<IResultDB>();
+            builder.RegisterType<RoundRobin>().As<IRoundRobin>();
             //builder.RegisterType<Badminton>().As<IRuleResult>();
             ////builder.RegisterType<Tennis>().As<IRuleResult>();
 

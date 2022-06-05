@@ -2,7 +2,12 @@
 
 namespace Logic.Models;
 
-public class RoundRobin : TournamentSystem, ITournamentSystem
+public interface IRoundRobin
+{
+    List<Match> GenerateTournamentSchedule(Tournament tournament, List<User> allPlayersInTheTournament);
+}
+
+public class RoundRobin : TournamentSystem, IRoundRobin
 {
     public RoundRobin(TournamentSystem tournamentSystem) : base(tournamentSystem)
     {
@@ -10,6 +15,10 @@ public class RoundRobin : TournamentSystem, ITournamentSystem
 
     public override List<Match> GenerateTournamentSchedule(Tournament tournament, List<User> allPlayersInTheTournament)
     {
+        if (!tournament.System.Name.Equals("Round Robin") || allPlayersInTheTournament.Count <= 0)
+        {
+            throw new ArgumentException("Invalid call");
+        }
         var tournamentLength = tournament.EndDate.DayOfYear - tournament.StartDate.DayOfYear;
         var numberOfMatches = allPlayersInTheTournament.Count * (allPlayersInTheTournament.Count - 1) / 2;
         var matchRate = 0.0;

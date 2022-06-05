@@ -10,13 +10,26 @@ namespace Logic
 {
     public class BadmintonResult : IRule
     {
-        public bool ShouldRun(List<Result> results)
+        public void Validate(int resultOne, int resultTwo)
         {
-            var range = Enumerable.Range(21, 9);
-            if (results.Find(x => range.Contains(x.MatchResult)) is null) return false;
-            var resultOne = results[0].MatchResult;
-            var resultTwo = results[1].MatchResult;
-            return resultOne is >= 21 and <= 30 && resultOne == resultTwo - 2 || resultOne == resultTwo + 2;
+            if (resultOne < 21 && resultTwo < 21)
+                throw new Exception("The winner's score must be at least 21");
+
+            if (resultOne > 30 || resultTwo > 30)
+                throw new Exception("Maximum score cannot exceed 30");
+
+            if (resultOne == resultTwo)
+                throw new Exception("Match cannot end in a draw");
+
+            if (resultOne < 20 || resultTwo < 20)
+                return;
+
+            if (resultOne == 30 || resultTwo == 30)
+                return;
+
+            var abs = Math.Abs(resultOne - resultTwo);
+            if (abs != 2)
+                throw new Exception("Match difference should be at least of 2 points");
         }
     }
 }

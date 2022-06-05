@@ -17,6 +17,7 @@
 			@{
 				if (User.Identity.IsAuthenticated)
 				{
+					<li><a asp-page="Profile">Profile</a></li>
 					<li> <a asp-page="Logout" asp-route-returnUrl="@Context.Request.Path" class="button">Logout</a></li>
 				}
 				else

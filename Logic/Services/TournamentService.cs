@@ -31,6 +31,8 @@ namespace Logic.Services
         public Tournament GetTournamentById(int tournamentId) =>
             GetAllTournaments().First(t => t.Id == tournamentId);
 
+        public List<TournamentView> GetAllTournamentsForView() =>
+            _repository.GetAllTournamentsForView();
         public List<TournamentView> GetAllTournamentsForView(string? sportName) =>
             _repository.GetAllTournamentsForView()
                 .Where(x => x.SportName == sportName)

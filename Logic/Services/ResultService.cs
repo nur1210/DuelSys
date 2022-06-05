@@ -22,6 +22,7 @@ namespace Logic.Services
         public List<Result> GetAllResultsForTournament(int tournamentId) =>
             _repository.GetAllResultsForTournament(tournamentId);
 
-        public List<Result> GetAllResultsPerMatchById(int matchId, int userId) => _repository.GetAllResultsPerMatchById(matchId, userId);
+        public List<Result> GetAllResultsPerMatchById(int matchId, int userId) => 
+            _repository.GetAllResultsPerMatchById(matchId, userId);
     }
 }

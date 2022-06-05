@@ -9,15 +9,10 @@ namespace Logic.Models
 {
     public class Tennis: Sport
 	{
-        public Tennis(Sport sport, List<IRule> rules): base(sport, rules)
+        public Tennis(Sport sport, IRule rule): base(sport, rule)
         {
             MinPlayers = 4;
             MaxPlayers = 12;
-        }
-
-        public override bool ValidateResults(List<Result> results)
-        {
-            throw new NotImplementedException();
         }
     }
 }
