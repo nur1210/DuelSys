@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Logic.Models;
 using Xunit;
 
-namespace Logic.Tests
+namespace Logic.Tests.Models
 {
     public class MatchTests
     {
@@ -22,7 +22,7 @@ namespace Logic.Tests
         [Fact]
         public void Match_Constructor_Test_Get_WinnerId()
         {
-            var match = new Match(1, DateTime.Today, 1, 1, 2, new List<Result> {new(1, 1, 1, 21), new(2, 2, 1, 18)});
+            var match = new Match(1, DateTime.Today, 1, 1, 2, new List<Result> { new(1, 1, 1, 21), new(2, 2, 1, 18) });
 
             var expected = 1;
 

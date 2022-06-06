@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Logic.Interfaces;
 using Logic.Models;
 
-namespace Logic
+namespace Logic.Rules
 {
     public class BadmintonRuleResult : IRule
     {

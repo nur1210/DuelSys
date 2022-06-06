@@ -8,7 +8,7 @@ using Logic.Interfaces;
 using Logic.Models;
 using Xunit;
 
-namespace Logic.Tests
+namespace Logic.Tests.Models
 {
     public class RoundRobinTests
     {
@@ -80,8 +80,8 @@ namespace Logic.Tests
                 "Windhoek",
                 4,
                 12,
-                new DateTime(2022,10,12),
-                new DateTime(2022,10,18),
+                new DateTime(2022, 10, 12),
+                new DateTime(2022, 10, 18),
                 new Sport(1,
                     "Badminton",
                     4,

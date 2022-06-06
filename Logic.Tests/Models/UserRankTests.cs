@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Logic.Models;
 using Xunit;
 
-namespace Logic.Tests
+namespace Logic.Tests.Models
 {
     public class UserRankTests
     {

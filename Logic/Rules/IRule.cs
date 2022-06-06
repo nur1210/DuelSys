@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Logic.Models;
 
-namespace Logic
+namespace Logic.Rules
 {
     public interface IRule
     {

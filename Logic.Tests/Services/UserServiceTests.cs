@@ -55,7 +55,7 @@ namespace Logic.Tests.Services
         {
             using var mock = AutoMock.GetLoose();
             mock.Mock<ITournamentDB>()
-                .Setup(x => x.GetAllTournaments())
+                .Setup(x => x.GetAllStartedTournaments())
                 .Returns(GetSampleTournament());
 
             mock.Mock<ITournamentDB>()
@@ -76,7 +76,7 @@ namespace Logic.Tests.Services
         {
             using var mock = AutoMock.GetLoose();
             mock.Mock<ITournamentDB>()
-                .Setup(x => x.GetAllTournaments())
+                .Setup(x => x.GetAllStartedTournaments())
                 .Returns(GetSampleTournament());
 
             mock.Mock<ITournamentDB>()
@@ -97,7 +97,7 @@ namespace Logic.Tests.Services
         {
             using var mock = AutoMock.GetLoose();
             mock.Mock<ITournamentDB>()
-                .Setup(x => x.GetAllTournaments())
+                .Setup(x => x.GetAllStartedTournaments())
                 .Returns(GetSampleTournament());
 
             mock.Mock<ITournamentDB>()
@@ -118,7 +118,7 @@ namespace Logic.Tests.Services
         {
             using var mock = AutoMock.GetLoose();
             mock.Mock<ITournamentDB>()
-                .Setup(x => x.GetAllTournaments())
+                .Setup(x => x.GetAllStartedTournaments())
                 .Returns(GetSampleTournament());
 
             mock.Mock<ITournamentDB>()

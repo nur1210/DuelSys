@@ -8,7 +8,7 @@ using Logic.Models;
 using Xunit;
 using Xunit.Sdk;
 
-namespace Logic.Tests
+namespace Logic.Tests.Models
 {
     public class LeaderboardTests
     {
@@ -28,7 +28,7 @@ namespace Logic.Tests
         [ClassData(typeof(UserRankData))]
         public void Leaderboard_Constructor_Test_Throw_Exception(UserRank userRank)
         {
-            var userRanks = new List<UserRank> {userRank};
+            var userRanks = new List<UserRank> { userRank };
 
             var expected = "Leaderboard cannot be calculate";
 

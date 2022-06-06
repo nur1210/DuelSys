@@ -11,7 +11,7 @@ using Logic.Services;
 using Logic.Views;
 using Xunit;
 
-namespace Logic.Tests
+namespace Logic.Tests.Services
 {
     public class TournamentServiceTests
     {

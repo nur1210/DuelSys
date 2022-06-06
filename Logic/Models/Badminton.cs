@@ -1,5 +1,6 @@
 ﻿
 using Logic.Interfaces;
+using Logic.Rules;
 
 namespace Logic.Models;
 
