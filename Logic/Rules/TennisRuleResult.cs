@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    public class TennisResult : IRule
+    public class TennisRuleResult : IRule
     {
         public void Validate(int resultOne, int resultTwo)
         {

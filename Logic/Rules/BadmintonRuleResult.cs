@@ -8,7 +8,7 @@ using Logic.Models;
 
 namespace Logic
 {
-    public class BadmintonResult : IRule
+    public class BadmintonRuleResult : IRule
     {
         public void Validate(int resultOne, int resultTwo)
         {

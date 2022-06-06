@@ -1,13 +1,7 @@
 ﻿using Logic.Interfaces;
 
 namespace Logic.Models;
-
-public interface IRoundRobin
-{
-    List<Match> GenerateTournamentSchedule(Tournament tournament, List<User> allPlayersInTheTournament);
-}
-
-public class RoundRobin : TournamentSystem, IRoundRobin
+public class RoundRobin : TournamentSystem
 {
     public RoundRobin(TournamentSystem tournamentSystem) : base(tournamentSystem)
     {

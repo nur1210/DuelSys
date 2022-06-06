@@ -105,7 +105,7 @@ namespace Logic.Tests
             return userRanks;
         }
 
-        public class UserRankData : IEnumerable<object[]>
+        private class UserRankData : IEnumerable<object[]>
         {
             public IEnumerator<object[]> GetEnumerator()
             {

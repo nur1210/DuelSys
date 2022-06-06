@@ -9,7 +9,7 @@ using Xunit.Sdk;
 
 namespace Logic.Tests
 {
-    public class BadmintonResultTests
+    public class BadmintonRuleResultTests
     {
         [Theory]
         [InlineData(1,21)]
@@ -24,7 +24,7 @@ namespace Logic.Tests
         [InlineData(24,26)]
         public void Validate_ValidCall(int one, int two)
         {
-            BadmintonResult badmintonResult = new();
+            BadmintonRuleResult badmintonResult = new();
 
             badmintonResult.Validate(one, two);
         }
@@ -40,9 +40,11 @@ namespace Logic.Tests
         [InlineData(21, -5)]
         [InlineData(24, 24)]
         [InlineData(30, 30)]
+        [InlineData(int.MaxValue, 30)]
+        [InlineData(int.MaxValue, int.MinValue)]
         public void Validate_Values_Not_valid(int one, int two)
         {
-            BadmintonResult badmintonResult = new();
+            BadmintonRuleResult badmintonResult = new();
 
             var accusal = Assert.Throws<Exception>(() => badmintonResult.Validate(one, two));
 

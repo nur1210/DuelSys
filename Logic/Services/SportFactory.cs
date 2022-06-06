@@ -10,24 +10,23 @@ public static class SportFactory
     private const string tennis = "Tennis";
     private const string chess = "Chess";
 
-    private delegate Sport SportFactoryFn(Sport s/*, List<IRule> rules*/);
+    private delegate Sport SportFactoryFn(Sport s);
 
     private static Dictionary<string, SportFactoryFn> _sportTypes = new()
     {
         {
-            badminton, (sport) => new Badminton(sport, new BadmintonResult())
+            badminton, (sport) => new Badminton(sport, new BadmintonRuleResult())
         },
         {
-            tennis, (sport) => new Tennis(sport, new TennisResult())
+            tennis, (sport) => new Tennis(sport, new TennisRuleResult())
         },
         {
-            chess, (sport) => new Chess(sport, new ChessResult())
+            chess, (sport) => new Chess(sport, new ChessRuleResult())
         }
     };
     public static Sport CreateSport(Sport sport)
     {
-        //var rules = new List<IRule> {new BadmintonResult()};
-        return _sportTypes[sport.Name](sport/*, rules*/);
+        return _sportTypes[sport.Name](sport);
     }
 }
 
