@@ -73,6 +73,42 @@ namespace DAL
             return list;
         }
 
+        public List<Tournament> GetAllStartedTournaments()
+        {
+            List<Tournament> list = new();
+            using var conn = Connection.OpenConnection();
+            string sql = @"SELECT t.id,
+               t.description,
+               t.location,
+               s.min_players,
+               s.max_players,
+               t.start_date,
+               t.end_date,
+               s.id,
+               s.name,
+               s.min_players,
+               s.max_players,
+               ts.id,
+               ts.name
+        FROM tournament AS t
+                 INNER JOIN sport AS s ON t.sport_id = s.id
+                 INNER JOIN tournament_system AS ts ON t.tournament_system_id = ts.id
+                 join user_tournament_match utm on t.id = utm.tournament_id
+        where t.id = utm.tournament_id
+        group by t.id, t.description, t.location, s.min_players, s.max_players, t.start_date, t.end_date, s.id, s.name,
+                 s.min_players, s.max_players, ts.id, ts.name;";
+            var rdr = MySqlHelper.ExecuteReader(conn, sql);
+
+            while (rdr.Read())
+            {
+                list.Add(new Tournament(rdr.GetInt32(0), rdr.GetString(1),
+                    rdr.GetString(2), rdr.GetInt32(3), rdr.GetInt32(4), rdr.GetDateTime(5),
+                    rdr.GetDateTime(6), SportFactory.CreateSport(new Sport(rdr.GetInt32(7), rdr.GetString(8), rdr.GetInt32(9),
+                        rdr.GetInt32(10))), TournamentSystemFactory.CreateTournamentSystem(new TournamentSystem(rdr.GetInt32(11), rdr.GetString(12)))));
+            }
+            return list;
+        }
+
         public List<TournamentView> GetAllTournamentsForView()
         {
             List<TournamentView> list = new();

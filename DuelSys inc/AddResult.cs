@@ -37,15 +37,7 @@ namespace DuelSys_inc
             _userService = userService;
             _matches = _matchService.GetAllMatchesForTournament(_tournament.Id);
 
-            cbxPlayerOne.DisplayMember = "FirstName";
-            cbxPlayerOne.ValueMember = "Id";
-            cbxPlayerOne.DataSource = _matches
-                .Where(m => matchService.HasResult(m.Id) == false)
-                .Select(x => _userService.GetUserById(x.FirstPlayerId))
-                .DistinctBy(y => y.FirstName)
-                .ToList();
-
-            UpdateComboBox();
+            UpdateComboBoxes();
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -76,15 +68,30 @@ namespace DuelSys_inc
             tbxResultPlayerOne.Clear();
             tbxResultPlayerTwo.Clear();
 
-
+            UpdateComboBoxes();
         }
 
         private void cbxPlayerOne_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateComboBox();
+            UpdateComboBoxTwo();
         }
 
-        private void UpdateComboBox()
+        private void UpdateComboBoxes()
+        {
+            UpdateComboBoxOne();
+            UpdateComboBoxTwo();
+        }
+        private void UpdateComboBoxOne()
+        {
+            cbxPlayerOne.DisplayMember = "FirstName";
+            cbxPlayerOne.ValueMember = "Id";
+            cbxPlayerOne.DataSource = _matches
+                .Where(m => _matchService.HasResult(m.Id) == false)
+                .Select(x => _userService.GetUserById(x.FirstPlayerId))
+                .DistinctBy(y => y.FirstName)
+                .ToList();
+        }
+        private void UpdateComboBoxTwo()
         {
             var playerOne = Convert.ToInt32(cbxPlayerOne.SelectedValue);
             cbxPlayerTwo.DisplayMember = "FirstName";

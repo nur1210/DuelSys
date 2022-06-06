@@ -42,6 +42,7 @@ namespace DuelSys_inc
             cbxTournamentSystem.DataSource = _tournamentSystemService.GetAllTournamentSystems();
 
             btnAddResults.Enabled = false;
+            btnGenerateSchedule.Enabled = false;
         }
 
         private void UpdateGridView()
@@ -111,23 +112,6 @@ namespace DuelSys_inc
             UpdateForm();
         }
 
-        private void dgvTournaments_DoubleClick(object sender, EventArgs e)
-        {
-            int? i = dgvTournaments.CurrentCell.RowIndex;
-            if (i is -1 or null) return;
-            var tournamentId = Convert.ToInt32(dgvTournaments.Rows[i.Value].Cells[0].Value);
-            if (!_tournamentService.TournamentHasStarted(tournamentId))
-            {
-                MessageBox.Show(_tournamentService.GenerateTournamentSchedule(tournamentId)
-                    ? @"Tournament schedule created successfully!"
-                    : @"Unable to create tournament schedule");
-            }
-            else
-            {
-                MessageBox.Show(@"This tournament has already started");
-            }
-        }
-
         private void btnAddResults_Click(object sender, EventArgs e)
         {
             int? i = dgvTournaments.CurrentCell.RowIndex;
@@ -156,6 +140,24 @@ namespace DuelSys_inc
             if (i is -1 or null) return;
             var tournamentId = Convert.ToInt32(dgvTournaments.Rows[i.Value].Cells[0].Value);
             btnAddResults.Enabled = _tournamentService.TournamentHasStarted(tournamentId);
+            btnGenerateSchedule.Enabled = !_tournamentService.TournamentHasStarted(tournamentId);
+        }
+
+        private void btnGenerateSchedule_Click(object sender, EventArgs e)
+        {
+            int? i = dgvTournaments.CurrentCell.RowIndex;
+            if (i is -1 or null) return;
+            var tournamentId = Convert.ToInt32(dgvTournaments.Rows[i.Value].Cells[0].Value);
+            if (!_tournamentService.TournamentHasStarted(tournamentId))
+            {
+                MessageBox.Show(_tournamentService.GenerateTournamentSchedule(tournamentId)
+                    ? @"Tournament schedule created successfully!"
+                    : @"Unable to create tournament schedule");
+            }
+            else
+            {
+                MessageBox.Show(@"This tournament has already started");
+            }
         }
     }
 }

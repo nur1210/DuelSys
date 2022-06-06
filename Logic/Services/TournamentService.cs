@@ -27,6 +27,7 @@ namespace Logic.Services
         public void UpdateTournament(Tournament t, int tournamentId) => _repository.UpdateTournament(t, tournamentId);
         public void DeleteTournament(int tournamentId) => _repository.DeleteTournament(tournamentId);
         public List<Tournament> GetAllTournaments() => _repository.GetAllTournaments();
+        public List<Tournament> GetAllStartedTournaments() => _repository.GetAllStartedTournaments();
 
         public Tournament GetTournamentById(int tournamentId) =>
             GetAllTournaments().First(t => t.Id == tournamentId);

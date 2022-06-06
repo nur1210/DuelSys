@@ -9,6 +9,7 @@ public interface ITournamentDB
     void UpdateTournament(Tournament t, int tournamentId);
     void DeleteTournament(int tournamentId);
     List<Tournament> GetAllTournaments();
+    List<Tournament> GetAllStartedTournaments();
     List<TournamentView> GetAllTournamentsForView();
     List<User> GetAllUsersRegisteredToTournamentByTournamentId(int tournamentId);
     List<int> GetAllStartedTournamentsIds();

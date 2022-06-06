@@ -44,7 +44,7 @@ namespace Logic.Services
 
         public int GetUserBestRank(int userId)
         {
-            var tournamentsIds = _tournamentRepository.GetAllTournaments().Select(t => t.Id).ToList();
+            var tournamentsIds = _tournamentRepository.GetAllStartedTournaments().Select(t => t.Id).ToList();
             var allLeaderboards = tournamentsIds.Select(id => _tournamentRepository.GetTournamentLeaderboard(id)).ToList();
             var bestRank = 100;
             foreach (var leaderboard in allLeaderboards)

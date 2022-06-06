@@ -58,7 +58,16 @@
 					<li class="no-bullet-list">
 						<div class="tournament-register-card">
 							<div class="card-header">
-								<img src="img/pngfind.com-shuttlecock-png-5759382.png" style="width: 75px">
+								@switch (t.SportName)
+								{
+									case "Badminton":
+										@:<img src="img/pngfind.com-shuttlecock-png-5759382.png" style="width: 75px">
+										break;
+
+									case "Chess":
+										@:<img src="img/Chess.png" style="width: 50px">
+										break;
+								}
 								<div>
 									<span>@t.Description</span><br>
 									<span>@t.Location</span>

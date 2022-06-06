@@ -32,8 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.Dashboard = new System.Windows.Forms.TabPage();
-            this.btnAddResults = new MaterialSkin.Controls.MaterialButton();
             this.dgvTournaments = new System.Windows.Forms.DataGridView();
+            this.btnAddResults = new MaterialSkin.Controls.MaterialButton();
+            this.btnGenerateSchedule = new MaterialSkin.Controls.MaterialButton();
             this.Forms = new System.Windows.Forms.TabPage();
             this.lblId = new MaterialSkin.Controls.MaterialLabel();
             this.btnEditTournament = new MaterialSkin.Controls.MaterialButton();
@@ -76,6 +77,7 @@
             this.Dashboard.BackColor = System.Drawing.Color.Transparent;
             this.Dashboard.Controls.Add(this.dgvTournaments);
             this.Dashboard.Controls.Add(this.btnAddResults);
+            this.Dashboard.Controls.Add(this.btnGenerateSchedule);
             this.Dashboard.ImageKey = "icons8-table-32.png";
             this.Dashboard.Location = new System.Drawing.Point(4, 39);
             this.Dashboard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -86,6 +88,21 @@
             this.Dashboard.Text = "Dashboard";
             this.Dashboard.Click += new System.EventHandler(this.Dashboard_Click);
             // 
+            // dgvTournaments
+            // 
+            this.dgvTournaments.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dgvTournaments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTournaments.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvTournaments.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgvTournaments.Location = new System.Drawing.Point(4, 191);
+            this.dgvTournaments.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvTournaments.Name = "dgvTournaments";
+            this.dgvTournaments.RowHeadersWidth = 72;
+            this.dgvTournaments.RowTemplate.Height = 37;
+            this.dgvTournaments.Size = new System.Drawing.Size(1243, 400);
+            this.dgvTournaments.TabIndex = 0;
+            this.dgvTournaments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTournaments_CellClick);
+            // 
             // btnAddResults
             // 
             this.btnAddResults.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -94,7 +111,7 @@
             this.btnAddResults.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnAddResults.HighEmphasis = true;
             this.btnAddResults.Icon = null;
-            this.btnAddResults.Location = new System.Drawing.Point(4, 627);
+            this.btnAddResults.Location = new System.Drawing.Point(4, 591);
             this.btnAddResults.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAddResults.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAddResults.Name = "btnAddResults";
@@ -107,21 +124,26 @@
             this.btnAddResults.UseVisualStyleBackColor = true;
             this.btnAddResults.Click += new System.EventHandler(this.btnAddResults_Click);
             // 
-            // dgvTournaments
+            // btnGenerateSchedule
             // 
-            this.dgvTournaments.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dgvTournaments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTournaments.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvTournaments.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dgvTournaments.Location = new System.Drawing.Point(4, 227);
-            this.dgvTournaments.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvTournaments.Name = "dgvTournaments";
-            this.dgvTournaments.RowHeadersWidth = 72;
-            this.dgvTournaments.RowTemplate.Height = 37;
-            this.dgvTournaments.Size = new System.Drawing.Size(1243, 400);
-            this.dgvTournaments.TabIndex = 0;
-            this.dgvTournaments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTournaments_CellClick);
-            this.dgvTournaments.DoubleClick += new System.EventHandler(this.dgvTournaments_DoubleClick);
+            this.btnGenerateSchedule.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnGenerateSchedule.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnGenerateSchedule.Depth = 0;
+            this.btnGenerateSchedule.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnGenerateSchedule.HighEmphasis = true;
+            this.btnGenerateSchedule.Icon = null;
+            this.btnGenerateSchedule.Location = new System.Drawing.Point(4, 627);
+            this.btnGenerateSchedule.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnGenerateSchedule.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnGenerateSchedule.Name = "btnGenerateSchedule";
+            this.btnGenerateSchedule.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnGenerateSchedule.Size = new System.Drawing.Size(1243, 36);
+            this.btnGenerateSchedule.TabIndex = 2;
+            this.btnGenerateSchedule.Text = "Generate schedule";
+            this.btnGenerateSchedule.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnGenerateSchedule.UseAccentColor = false;
+            this.btnGenerateSchedule.UseVisualStyleBackColor = true;
+            this.btnGenerateSchedule.Click += new System.EventHandler(this.btnGenerateSchedule_Click);
             // 
             // Forms
             // 
@@ -413,6 +435,7 @@
         private MaterialSkin.Controls.MaterialButton btnEditTournament;
         private MaterialSkin.Controls.MaterialLabel lblId;
         private MaterialSkin.Controls.MaterialButton btnAddResults;
+        private MaterialSkin.Controls.MaterialButton btnGenerateSchedule;
     }
 }
 
