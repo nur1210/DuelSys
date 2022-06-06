@@ -6,14 +6,18 @@
 }
 <header id="header"></header>
 <form method="post">
-	<div id="page-wapper">
-		<div class="container-md">
-			<p>Are you sure you want to logout?</p>
-			<p>
-				<button class="button" asp-page-handler="Logout">Yes</button>
-				<button class="button" id="logout-btn" asp-page="@url">No</button>
-			</p>
+	<section id="main" class="container d-flex justify-content-center ">
+		<div role="main" class="pb-3">
+			<h2>Are you sure you want to logout?</h2>
+			<div class="row align-content-center">
+				<div class="col align-center">
+					<button class="button" asp-page-handler="Logout">Yes</button>
+				</div>
+				<div class="col">
+					<button class="button" id="logout-btn" asp-page="@url">No</button>
+				</div>
+			</div>
 		</div>
-	</div>
+	</section>
 </form>
 

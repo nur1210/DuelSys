@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Logic.Exceptions;
+using MySql.Data.MySqlClient;
 
 namespace DAL
 {
@@ -8,9 +9,17 @@ namespace DAL
 
         public static MySqlConnection OpenConnection()
         {
-            var conn = new MySqlConnection(Conn);
-            conn.Open();
-            return conn;
+            try
+            {
+                var conn = new MySqlConnection(Conn);
+                conn.Open();
+                return conn;
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                throw new InternalErrorException("Could not connect to database");
+            }
         }
     }
 }

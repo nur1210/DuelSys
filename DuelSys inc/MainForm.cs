@@ -120,7 +120,9 @@ namespace DuelSys_inc
             if (!_tournamentService.TournamentHasStarted(tournamentId)) return;
             var tournament = _tournamentService.GetTournamentById(tournamentId);
             AddResult addResult = new(tournament, _matchService, _resultService, _userService);
-            addResult.ShowDialog();
+            addResult.Show();
+            addResult.FormClosed += (_, _) => Show();
+            Hide();
         }
 
         private void Dashboard_Click(object sender, EventArgs e)

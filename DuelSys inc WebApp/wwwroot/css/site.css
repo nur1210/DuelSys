@@ -52,6 +52,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
     line-height: 1;
+    min-height: 100vh;
 }
 
 ol, ul {
@@ -3265,6 +3266,10 @@ body.landing #main {
     background: #f0f0f0;
     padding: 4em 0 6em 0;
     text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
 }
 
     #footer .icons a {
