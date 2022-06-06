@@ -17,6 +17,10 @@ namespace Logic.Models
 
         public Leaderboard(int tournamentId, List<UserRank> users)
         {
+            if (users.Count < 4)
+            {
+                throw new ArgumentException("Leaderboard cannot be calculate");
+            }
             _tournamentId = tournamentId;
             _usersRanks = users
                 .OrderByDescending(x => x.Wins)
