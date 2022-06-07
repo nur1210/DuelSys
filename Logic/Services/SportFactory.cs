@@ -8,7 +8,7 @@ namespace Logic.Services;
 public static class SportFactory
 {
     private const string badminton = "Badminton";
-    private const string tennis = "Tennis";
+    private const string armWrestling = "Arm wrestling";
     private const string chess = "Chess";
 
     private delegate Sport SportFactoryFn(Sport s);
@@ -19,10 +19,10 @@ public static class SportFactory
             badminton, (sport) => new Badminton(sport, new BadmintonRuleResult())
         },
         {
-            tennis, (sport) => new Tennis(sport, new TennisRuleResult())
+            armWrestling, (sport) => new ArmWrestling(sport, new WinnerOrLoserRuleResult())
         },
         {
-            chess, (sport) => new Chess(sport, new ChessRuleResult())
+            chess, (sport) => new Chess(sport, new WinnerOrLoserRuleResult())
         }
     };
     public static Sport CreateSport(Sport sport)

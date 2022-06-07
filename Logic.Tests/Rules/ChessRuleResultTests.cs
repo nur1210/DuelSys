@@ -15,7 +15,7 @@ namespace Logic.Tests.Rules
         [InlineData(0, 1)]
         public void Validate_ValidCall(int one, int two)
         {
-            ChessRuleResult chessRuleResult = new();
+            WinnerOrLoserRuleResult chessRuleResult = new();
 
             chessRuleResult.Validate(one, two);
         }
@@ -39,7 +39,7 @@ namespace Logic.Tests.Rules
         [InlineData(int.MaxValue, int.MinValue)]
         public void Validate_Values_Not_valid(int one, int two)
         {
-            ChessRuleResult chessRuleResult = new();
+            WinnerOrLoserRuleResult chessRuleResult = new();
 
             var accusal = Assert.Throws<Exception>(() => chessRuleResult.Validate(one, two));
 

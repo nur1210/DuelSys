@@ -22,7 +22,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "..\DAL\DAL.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "..\Logic\Logic.csproj", "{0E762D78-2526-4F01-AD4B-E1E024EF0208}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic.Tests", "..\Logic.Tests\Logic.Tests.csproj", "{D48731BF-5D6F-42D9-86F5-37FA38797B75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic.Tests", "..\Logic.Tests\Logic.Tests.csproj", "{D48731BF-5D6F-42D9-86F5-37FA38797B75}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0E762D78-2526-4F01-AD4B-E1E024EF0208} = {0E762D78-2526-4F01-AD4B-E1E024EF0208}
 	EndProjectSection

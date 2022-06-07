@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Logic.Models
 {
-    public class Tennis: Sport
+    public class ArmWrestling: Sport
 	{
-        public Tennis(Sport sport, IRule rule): base(sport, rule)
+        public ArmWrestling(Sport sport, IRule rule): base(sport, rule)
         {
             MinPlayers = 4;
             MaxPlayers = 12;
