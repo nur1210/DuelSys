@@ -91,19 +91,27 @@ namespace DAL
             using var con = Connection.OpenConnection();
             string sql = "SELECT * FROM user WHERE email = @Email";
             var rdr = MySqlHelper.ExecuteReader(con, sql, new MySqlParameter("Email", email));
+            rdr.Read();
             if (rdr.HasRows)
             {
                 return new User(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3),
                     rdr.GetString(4), rdr.GetBoolean(5));
             }
-            rdr.Close();
             throw new NotFoundException("User not found");
         }
+
         public void RegisterUserToTournament(int userId, int tournamentId)
         {
             using var conn = Connection.OpenConnection();
-            string sql = "INSERT INTO user_tournament (user_id, tournament_id) VALUES (@UserId, @TournamentId)";
-            MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("UserId", userId), new MySqlParameter("TournamentId", tournamentId));
+            try
+            {
+                string sql = "INSERT INTO user_tournament (user_id, tournament_id) VALUES (@UserId, @TournamentId)";
+                MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("UserId", userId), new MySqlParameter("TournamentId", tournamentId));
+            }
+            catch (MySqlException e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public Dictionary<int, string> GetAllUsersIdAndFullName()

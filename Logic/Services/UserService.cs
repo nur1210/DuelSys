@@ -31,8 +31,15 @@ namespace Logic.Services
         {
             var tournament = _tournamentRepository.GetAllTournaments().First(t => t.Id == tournamentId);
             if (tournament.StartDate <= DateTime.Now.AddDays(7)) return false;
-            _repository.RegisterUserToTournament(userId, tournamentId);
-            return true;
+            try
+            {
+                _repository.RegisterUserToTournament(userId, tournamentId);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public Dictionary<int, string> GetAllUsersIdAndFullName() => _repository.GetAllUsersIdAndFullName();
