@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Logic.Exceptions;
 using Logic.Interfaces;
 using Logic.Models;
 
@@ -22,9 +23,15 @@ namespace Logic.Services
 
         public bool ValidUser(string email, string password)
         {
-            if (_userRepository.GetUserByEmail(email) == null) return false;
-            var user = _userRepository.GetUserByEmail(email);
-            return Hashing.ValidatePassword(password, user.Password);
+            try
+            {
+                var user = _userRepository.GetUserByEmail(email);
+                return Hashing.ValidatePassword(password, user.Password);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public bool ValidEmail(string email)

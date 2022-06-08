@@ -3,12 +3,14 @@ using System.Security.Claims;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Logic.Models;
 using Logic.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DuelSys_inc_WebApp.Pages
 {
+    [Authorize]
     public class EditProfileModel : PageModel
     {
         public UserService UserService { get; }
@@ -24,7 +26,7 @@ namespace DuelSys_inc_WebApp.Pages
         [BindProperty]
         [Display(Name = "Current password")]
         [DataType(DataType.Password)]
-        public string? CurrentPassword { get; set; }
+        public string CurrentPassword { get; set; }
 
         [BindProperty]
         [Display(Name = "New password")]
@@ -49,7 +51,6 @@ namespace DuelSys_inc_WebApp.Pages
         public void OnGet(int id)
         {
             if (!HttpContext.User.Identity.IsAuthenticated) return;
-            //var id = int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
             User = UserService.GetUserById(id);
             FirstName = User.FirstName;
             LastName = User.LastName;
@@ -58,7 +59,11 @@ namespace DuelSys_inc_WebApp.Pages
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid || !HttpContext.User.Identity.IsAuthenticated) return Page();
+            if (!ModelState.IsValid || !HttpContext.User.Identity.IsAuthenticated)
+            {
+                _toastNotification.Warning("Please fill in the correct info");
+                return Page();
+            }
             var id = int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
             User = UserService.GetUserById(id);
             if (!string.IsNullOrEmpty(NewPassword) && Validation.ValidatePassword(CurrentPassword, User.Password))

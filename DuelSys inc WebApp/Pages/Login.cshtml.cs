@@ -30,7 +30,19 @@ namespace DuelSys_inc_WebApp.Pages
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid) return Page();
-            if (!Validation.ValidUser(credential.Email, credential.Password)) return Page();
+            try
+            {
+                if (!Validation.ValidUser(credential.Email, credential.Password))
+                {
+                    _toastNotification.Error("Incorrect password");
+                    return Page();
+                }
+            }
+            catch (Exception e)
+            {
+                _toastNotification.Error(e.Message);
+                return Page();
+            }
             var user = UserManager.GetUserByEmail(credential.Email);
             var claims = new List<Claim>
             {

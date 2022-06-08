@@ -12,7 +12,7 @@ namespace DuelSys_inc_WebApp.Pages
     {
         public UserService UserService { get; }
         public MatchService MatchService { get; }
-        [BindProperty] public string UserFullName { get; set; }
+        [BindProperty] public Dictionary<int, string> UsersFullName { get; set; }
         [BindProperty] public User User { get; set; }
         [BindProperty] public List<Match> PlayedMatches { get; set; }
 
@@ -26,10 +26,7 @@ namespace DuelSys_inc_WebApp.Pages
         {
             var userId = int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
             User = UserService.GetUserById(userId);
-            UserFullName = UserService.GetAllUsersIdAndFullName()
-                .Where(x => x.Key == userId)
-                .Select(y => y.Value)
-                .First();
+            UsersFullName = UserService.GetAllUsersIdAndFullName();
             PlayedMatches = MatchService.GetAllPlayedMatchesPerUser(userId);
 
         }

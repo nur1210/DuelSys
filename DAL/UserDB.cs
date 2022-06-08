@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Logic.Exceptions;
 using Logic.Interfaces;
 using Logic.Models;
 using Logic.Services;
@@ -15,24 +16,34 @@ namespace DAL
         public void AddUser(User user, string hashPassword)
         {
             using var conn = Connection.OpenConnection();
-            string sql = "INSERT INTO user (first_name, last_name, email, password, is_admin) VALUES (@FirstName, @LastName, @Email, @Password, @IsAdmin)";
-            MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("FirstName", user.FirstName), new MySqlParameter("LastName", user.LastName), new MySqlParameter("Email", user.Email), 
+            string sql =
+                "INSERT INTO user (first_name, last_name, email, password, is_admin) VALUES (@FirstName, @LastName, @Email, @Password, @IsAdmin)";
+            MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("FirstName", user.FirstName),
+                new MySqlParameter("LastName", user.LastName), new MySqlParameter("Email", user.Email),
                 new MySqlParameter("Password", hashPassword), new MySqlParameter("IsAdmin", user.IsAdmin));
         }
 
         public void UpdateUser(User user)
         {
             using var conn = Connection.OpenConnection();
-            string sql = "UPDATE user SET first_name = @FirstName, last_name = @LastName, email = @Email WHERE id = @ID ";
-            MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("FirstName", user.FirstName), new MySqlParameter("LastName", user.LastName), 
+            string sql =
+                "UPDATE user SET first_name = @FirstName, last_name = @LastName, email = @Email WHERE id = @ID ";
+            MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("FirstName", user.FirstName),
+                new MySqlParameter("LastName", user.LastName),
                 new MySqlParameter("Email", user.Email), new MySqlParameter("ID", user.Id));
         }
 
         public void UpdateUser(User user, string hashPassword)
         {
             using var conn = Connection.OpenConnection();
-            string sql = "UPDATE user SET first_name = @FirstName, last_name = @LastName, email = @Email, password = @Password, WHERE id = @ID ";
-            MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("FirstName", user.FirstName), new MySqlParameter("LastName", user.LastName), new MySqlParameter("Email", user.Email),
+            string sql = @"UPDATE user
+            SET first_name = @FirstName,
+                last_name = @LastName,
+                email = @Email,
+                password = @Password
+            WHERE id = @ID;";
+            MySqlHelper.ExecuteNonQuery(conn, sql, new MySqlParameter("FirstName", user.FirstName),
+                new MySqlParameter("LastName", user.LastName), new MySqlParameter("Email", user.Email),
                 new MySqlParameter("Password", hashPassword), new MySqlParameter("ID", user.Id));
         }
 
@@ -51,8 +62,10 @@ namespace DAL
             var rdr = MySqlHelper.ExecuteReader(conn, sql);
             while (rdr.Read())
             {
-                persons.Add(new User(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4), rdr.GetBoolean(5)));
+                persons.Add(new User(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3),
+                    rdr.GetString(4), rdr.GetBoolean(5)));
             }
+
             rdr.Close();
             return persons;
         }
@@ -65,8 +78,10 @@ namespace DAL
 
             while (rdr.Read())
             {
-                return new User(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4), rdr.GetBoolean(5));
+                return new User(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4),
+                    rdr.GetBoolean(5));
             }
+
             rdr.Close();
             return null;
         }
@@ -76,15 +91,14 @@ namespace DAL
             using var con = Connection.OpenConnection();
             string sql = "SELECT * FROM user WHERE email = @Email";
             var rdr = MySqlHelper.ExecuteReader(con, sql, new MySqlParameter("Email", email));
-            while (rdr.Read())
+            if (rdr.HasRows)
             {
                 return new User(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3),
                     rdr.GetString(4), rdr.GetBoolean(5));
             }
             rdr.Close();
-            return null;
+            throw new NotFoundException("User not found");
         }
-
         public void RegisterUserToTournament(int userId, int tournamentId)
         {
             using var conn = Connection.OpenConnection();
@@ -100,7 +114,7 @@ namespace DAL
             Dictionary<int, string> userIdAndName = new();
             while (rdr.Read())
             {
-                userIdAndName.Add(rdr.GetInt32(0),rdr.GetString(1));
+                userIdAndName.Add(rdr.GetInt32(0), rdr.GetString(1));
             }
             rdr.Close();
             return userIdAndName;
@@ -126,10 +140,9 @@ namespace DAL
         {
             using var conn = Connection.OpenConnection();
             string sql = @"select date from tournament
-                                     join user_tournament on tournament.id = user_tournament.tournament_id
                                      join user_tournament_match utm on tournament.id = utm.tournament_id
                                      join `match` m on m.id = utm.match_id
-                            where user_tournament.user_id = @UserId
+                            where utm.user_id = @UserId
                               and m.date > now()
                             order by m.date asc
                             limit 1;";
@@ -161,7 +174,7 @@ namespace DAL
                  INNER JOIN sport AS s ON t.sport_id = s.id
                  join user_tournament_match utm on t.id = utm.tournament_id
         where utm.user_id = @UserId
-        group by t.id;";;
+        group by t.id;"; ;
             var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("UserId", userId));
             List<Tournament> list = new();
             while (rdr.Read())
