@@ -62,20 +62,5 @@ namespace Logic.Models
             _sport = sport;
             _system = system;
         }
-
-        public Tournament(int id, string description, string location, int minPlayers, int maxPlayers,
-            DateTime startDate, DateTime endDate, Sport sport, TournamentSystem system, List<Match> matches)
-        {
-            _id = id;
-            _description = description;
-            _location = location;
-            _minPlayers = minPlayers;
-            _maxPlayers = maxPlayers;
-            _startDate = startDate;
-            _endDate = endDate;
-            _sport = sport;
-            _system = system;
-            _matches = matches;
-        }
     }
 }

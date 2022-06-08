@@ -39,21 +39,19 @@
 			<input asp-for="TournamentStageFilter" id="filter" type="hidden" />
 			<input asp-for="TournamentSportName" value="@Model.TournamentSportName" name="sportName" id="sportName-input" type="hidden" />
 
-			<details class="icon solid dropdown">
-				<summary role="button">
-					<a class="icon solid dropdown">Filter</a>
-				</summary>
-				<ul class="justify-content-center align-content-center">
-					<li><input asp-page-handler="Filter" class="button alt justify-content-center" type="submit" value="All" id="filter" onclick="submitTournamentFilter(0)"></li>
-					<li><input asp-page-handler="Filter" class="button alt" type="submit" value="Open registration" id="filter" onclick="submitTournamentFilter(1)"></li>
-					<li><input asp-page-handler="Filter" class="button alt" type="submit" value="Ongoing tournaments" id="filter" onclick="submitTournamentFilter(2)"></li>
-					<li><input asp-page-handler="Filter" class="button alt" type="submit" value="Finished tournaments" id="filter" onclick="submitTournamentFilter(3)"></li>
-					<li><input asp-page-handler="Filter" class="button alt" type="submit" value="Canceled tournaments" id="filter" onclick="submitTournamentFilter(4)"></li>
+			<div class="dropdown">
+				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+					Filter
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+					<li><input asp-page-handler="Filter" class="dropdown-item alt" type="submit" value="All" onclick="submitTournamentFilter(0)"></li>
+					<li><input asp-page-handler="Filter" class="dropdown-item alt" type="submit" value="Open" onclick="submitTournamentFilter(1)"></li>
+					<li><input asp-page-handler="Filter" class="dropdown-item alt" type="submit" value="Ongoing" onclick="submitTournamentFilter(2)"></li>
+					<li><input asp-page-handler="Filter" class="dropdown-item alt" type="submit" value="Finished" onclick="submitTournamentFilter(3)"></li>
+					<li><input asp-page-handler="Filter" class="dropdown-item alt" type="submit" value="Canceled" onclick="submitTournamentFilter(4)"></li>
 				</ul>
-			</details>
-
-			<ul>
-				@foreach (var t in Model.GetAllFilteredTournaments)
+			</div>
+			@foreach (var t in Model.GetAllFilteredTournaments)
 				{
 					<li class="no-bullet-list">
 						<div class="tournament-register-card">
