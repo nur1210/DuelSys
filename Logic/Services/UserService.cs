@@ -30,10 +30,10 @@ namespace Logic.Services
 
         public bool RegisterUserToTournament(int userId, int tournamentId)
         {
-            var tournament = _tournamentRepository.GetAllTournaments().First(t => t.Id == tournamentId);
-            if (tournament.StartDate <= DateTime.Now.AddDays(7)) return false;
             try
             {
+                var tournament = _tournamentRepository.GetAllTournaments().First(t => t.Id == tournamentId);
+                if (tournament.StartDate <= DateTime.Now.AddDays(7)) return false;
                 _repository.RegisterUserToTournament(userId, tournamentId);
                 return true;
             }

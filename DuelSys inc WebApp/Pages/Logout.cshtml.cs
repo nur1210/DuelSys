@@ -14,17 +14,18 @@ namespace DuelSys_inc_WebApp.Pages
         public void OnGet()
         {
         }
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPostLogout()
         {
-            if (ReturnUrl is not null)
-            {
-                return LocalRedirect(ReturnUrl);
-            }
             if (HttpContext.User.Identity?.IsAuthenticated == true)
             {
                 await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             }
             return LocalRedirect("/Index");
+        }
+
+        public IActionResult OnPost()
+        {
+            return LocalRedirect(ReturnUrl ?? "/Index");
         }
     }
 }

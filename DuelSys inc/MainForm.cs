@@ -80,7 +80,7 @@ namespace DuelSys_inc
             var tournamentSystemId = (int)cbxTournamentSystem.SelectedValue;
             var tournamentSystem = _tournamentSystemService.GetTournamentSystemById(tournamentSystemId);
             var tournament = new Tournament(description, location, startDate, endDate, sport, tournamentSystem);
-            var result = _tournamentValidator.Validate(tournament);
+            var result = _tournamentValidator.ValidateTournament(tournament);
             if (result.Errors.Count == 0)
             {
                 _tournamentService.CreateTournament(tournament);
@@ -119,9 +119,18 @@ namespace DuelSys_inc
             var sport = _sportService.GetSportById(sportId);
             var tournamentSystemId = (int)cbxTournamentSystem.SelectedValue;
             var tournamentSystem = _tournamentSystemService.GetTournamentSystemById(tournamentSystemId);
-
-            _tournamentService.UpdateTournament(new Tournament(description, location, startDate, endDate, sport, tournamentSystem), id);
-            UpdateForm();
+            var tournament = new Tournament(description, location, startDate, endDate, sport, tournamentSystem);
+            var result = _tournamentValidator.ValidateTournament(tournament);
+            if (result.Errors.Count == 0)
+            {
+                _tournamentService.UpdateTournament(tournament, id);
+                UpdateForm();
+            }
+            else
+            {
+                var message = string.Join(Environment.NewLine, result.Errors);
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void btnAddResults_Click(object sender, EventArgs e)

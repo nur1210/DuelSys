@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
+using FluentValidation.Results;
 using Logic.Models;
 
 namespace Logic.Validator
@@ -22,10 +23,15 @@ namespace Logic.Validator
                 .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty().WithMessage("{PropertyName} is required")
                 .Length(3, 50).WithMessage("{PropertyName} must be between 3 and 50 characters")
-                .Matches("^[a-zA-Z ]*$").WithMessage("{PropertyName} can contain only characters");
+                .Matches("^[a-zA-Z ]*$").WithMessage("{PropertyName} must contain only characters");
 
             RuleFor(t => t.EndDate)
                 .GreaterThan(t => t.StartDate).WithMessage("{PropertyName} must be bigger then start date");
+        }
+
+        public ValidationResult ValidateTournament(Tournament tournament)
+        {
+            return Validate(tournament);
         }
     }
 }

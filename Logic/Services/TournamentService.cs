@@ -6,6 +6,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Logic.Exceptions;
 using Logic.Interfaces;
 using Logic.Models;
 using Logic.Views;
@@ -39,23 +40,18 @@ namespace Logic.Services
                 .Where(x => x.SportName == sportName)
                 .ToList();
 
-        public List<Tournament> GetAllTournamentsBySportName(string? sportName) =>
-            _repository.GetAllTournaments()
-                .Where(x => x.Sport.Name == sportName)
-                .ToList();
-
         public List<TournamentView> GetAllFilteredTournaments(int? filter, List<TournamentView>? tournamentsList) => filter switch
         {
-            1 => tournamentsList
+            1 => (tournamentsList ?? throw new NotFoundException("Tournaments not found"))
                 .Where(x => TournamentHasStarted(x.Id) == false && x.StartDate > DateTime.Now.AddDays(7))
                 .ToList(),
-            2 => tournamentsList
+            2 => (tournamentsList ?? throw new NotFoundException("Tournaments not found"))
                 .Where(x => TournamentHasStarted(x.Id) && x.EndDate > DateTime.Now)
                 .ToList(),
-            3 => tournamentsList
+            3 => (tournamentsList ?? throw new NotFoundException("Tournaments not found"))
                 .Where(x => TournamentHasStarted(x.Id) && x.EndDate < DateTime.Now)
                 .ToList(),
-            4 => tournamentsList
+            4 => (tournamentsList ?? throw new NotFoundException("Tournaments not found"))
                 .Where(x => TournamentHasStarted(x.Id) == false && x.StartDate < DateTime.Now.AddDays(7))
                 .ToList(),
             _ => GetAllTournamentsForView(tournamentsList.Select(x => x.SportName).FirstOrDefault())

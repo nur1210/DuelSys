@@ -1,5 +1,7 @@
 ﻿@page
 @using System.Security.Claims
+@using Logic.Exceptions
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model DuelSys_inc_WebApp.Pages.BadmintonModel
 @{
 }
@@ -51,7 +53,9 @@
 					<li><input asp-page-handler="Filter" class="dropdown-item alt" type="submit" value="Canceled" onclick="submitTournamentFilter(4)"></li>
 				</ul>
 			</div>
-			@foreach (var t in Model.GetAllFilteredTournaments)
+			@try
+			{
+				foreach (var t in Model.GetAllFilteredTournaments)
 				{
 					<li class="no-bullet-list">
 						<div class="tournament-register-card">
@@ -95,6 +99,13 @@
 						</div>
 					</li>
 				}
+			}
+			catch (NotFoundException)
+			{
+				<div class="alert alert-danger" role="alert">
+					No tournaments found.
+				</div>
+			}
 		</form>
 	</div>
 </div>
