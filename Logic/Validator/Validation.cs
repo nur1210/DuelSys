@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using Logic.Exceptions;
 using Logic.Interfaces;
 using Logic.Models;
+using Logic.Services;
 
-namespace Logic.Services
+namespace Logic.Validator
 {
     public class Validation
     {

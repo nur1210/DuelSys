@@ -155,13 +155,14 @@ namespace DAL
                             order by m.date asc
                             limit 1;";
             var rdr = MySqlHelper.ExecuteReader(conn, sql, new MySqlParameter("UserId", userId));
-            if (rdr.HasRows)
+            if (!rdr.HasRows)
             {
-                rdr.Read();
-                return rdr.GetDateTime(0);
+                rdr.Close();
+                throw new NotFoundException("No upcoming matches");
             }
-            rdr.Close();
-            return DateTime.MinValue;
+
+            rdr.Read();
+            return rdr.GetDateTime(0);
         }
 
         public List<Tournament> GetAllTournamentsPerUser(int userId)

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Logic.Exceptions
 {
-    public class InternalErrorException : Exception
+    public class MatchResultException : Exception
     {
-        public InternalErrorException()
+        public MatchResultException()
         {
-            
         }
-        public InternalErrorException(string message): base(message)
+
+        public MatchResultException(string message) : base(message)
         {
         }
     }

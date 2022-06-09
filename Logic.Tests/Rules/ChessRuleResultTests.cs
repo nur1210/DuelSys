@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Castle.Components.DictionaryAdapter.Xml;
+using Logic.Exceptions;
 using Xunit;
 
 namespace Logic.Tests.Rules
@@ -41,9 +43,9 @@ namespace Logic.Tests.Rules
         {
             WinnerOrLoserRuleResult chessRuleResult = new();
 
-            var accusal = Assert.Throws<Exception>(() => chessRuleResult.Validate(one, two));
+            var actual = Assert.Throws<MatchResultException>(() => chessRuleResult.Validate(one, two));
 
-            Assert.Equal(new Exception().GetType(), accusal.GetType());
+            Assert.Equal(new MatchResultException().GetType(), actual.GetType());
         }
     }
 }

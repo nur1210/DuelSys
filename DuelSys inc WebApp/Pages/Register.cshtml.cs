@@ -6,7 +6,7 @@ using Logic.Models;
 using Logic.Services;
 using Microsoft.AspNetCore.Identity;
 using MySql.Data.MySqlClient;
-
+using Logic.Validator;
 
 namespace DuelSys_inc_WebApp.Pages
 {

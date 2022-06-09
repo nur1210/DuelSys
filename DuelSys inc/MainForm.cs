@@ -1,6 +1,7 @@
 ﻿using Logic.Interfaces;
 using Logic.Models;
 using Logic.Services;
+using Logic.Validator;
 using Logic.Views;
 using MaterialSkin;
 using MaterialSkin.Controls;
@@ -16,8 +17,9 @@ namespace DuelSys_inc
         private readonly MatchService _matchService;
         private readonly ResultService _resultService;
         private readonly UserService _userService;
+        private readonly TournamentValidator _tournamentValidator;
 
-        public MainForm(TournamentService tournamentService, SportService sportService, TournamentSystemService tournamentSystemService, MatchService matchService, ResultService resultService, UserService userService)
+        public MainForm(TournamentService tournamentService, SportService sportService, TournamentSystemService tournamentSystemService, MatchService matchService, ResultService resultService, UserService userService, TournamentValidator tournamentValidator)
         {
             InitializeComponent();
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -30,6 +32,7 @@ namespace DuelSys_inc
             _matchService = matchService;
             _resultService = resultService;
             _userService = userService;
+            _tournamentValidator = tournamentValidator;
 
             UpdateForm();
 
@@ -76,9 +79,18 @@ namespace DuelSys_inc
             var sport = _sportService.GetSportById(sportId);
             var tournamentSystemId = (int)cbxTournamentSystem.SelectedValue;
             var tournamentSystem = _tournamentSystemService.GetTournamentSystemById(tournamentSystemId);
-
-            _tournamentService.CreateTournament(new Tournament(description, location, startDate, endDate, sport, tournamentSystem));
-            UpdateForm();
+            var tournament = new Tournament(description, location, startDate, endDate, sport, tournamentSystem);
+            var result = _tournamentValidator.Validate(tournament);
+            if (result.Errors.Count == 0)
+            {
+                _tournamentService.CreateTournament(tournament);
+                UpdateForm();
+            }
+            else
+            {
+                var message = string.Join(Environment.NewLine, result.Errors);
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void lbxTournaments_DoubleClick(object sender, EventArgs e)

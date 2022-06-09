@@ -1,5 +1,7 @@
 ﻿@page
 @using Logic.Services
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Logic.Exceptions
 @model DuelSys_inc_WebApp.Pages.ProfileModel
 @{
 	<link rel="stylesheet" href="~/css/Profile.css" asp-append-version="true" />
@@ -144,7 +146,15 @@
 							<h5 class="mb-0 text-center">Upcoming match</h5>
 						</div>
 						<div class="col-sm-9 text-secondary d-flex justify-content-center">
-							@Model.UserService.GetUpcomingMatchDate(Model.User.Id).ToString("dd/MM/yyyy")
+							@try
+							{
+								Model.UserService.GetUpcomingMatchDate(Model.User.Id).ToString("dd/MM/yyyy");
+							}
+							catch (NotFoundException e)
+							{
+								Console.WriteLine(e);
+								<h5 class="mb-0 text-center">No upcoming match</h5>
+							}
 						</div>
 					</div>
 					<hr>

@@ -3,6 +3,7 @@ using Logic.Interfaces;
 using Logic.Services;
 using DAL;
 using Logic.Models;
+using Logic.Validator;
 
 namespace DuelSys_inc
 {
@@ -25,6 +26,7 @@ namespace DuelSys_inc
             builder.RegisterType<UserService>().AsSelf().SingleInstance();
             builder.RegisterType<MatchService>().AsSelf().SingleInstance();
             builder.RegisterType<ResultService>().AsSelf().SingleInstance();
+            builder.RegisterType<TournamentValidator>().AsSelf().SingleInstance();
 
             builder.RegisterType<MainForm>();
             builder.RegisterType<AddResult>();

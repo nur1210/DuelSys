@@ -15,10 +15,9 @@ namespace DAL
                 conn.Open();
                 return conn;
             }
-            catch (MySqlException e)
+            catch (MySqlException)
             {
-                Console.WriteLine(e);
-                throw new InternalErrorException("Could not connect to database");
+                throw new InternalErrorException();
             }
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Logic.Exceptions;
 using Logic.Interfaces;
 using Logic.Models;
 
@@ -47,7 +48,18 @@ namespace Logic.Services
         public List<string> GetAllRegisteredTournamentsNamesPerUser(int userId) =>
             _repository.GetAllRegisteredTournamentsNamesPerUser(userId);
 
-        public DateTime GetUpcomingMatchDate(int userId) => _repository.GetUpcomingMatchDate(userId);
+        public DateTime GetUpcomingMatchDate(int userId)
+        {
+            try
+            {
+                return _repository.GetUpcomingMatchDate(userId);
+            }
+            catch (NotFoundException)
+            {
+                throw;
+            }
+        }
+
 
         public int GetUserBestRank(int userId)
         {

@@ -2,6 +2,7 @@ using AspNetCoreHero.ToastNotification;
 using DAL;
 using Logic.Interfaces;
 using Logic.Services;
+using Logic.Validator;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);

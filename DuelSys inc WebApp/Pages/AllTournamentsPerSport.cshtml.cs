@@ -4,6 +4,7 @@ using AspNetCoreHero.ToastNotification.Enums;
 using AspNetCoreHero.ToastNotification.Toastify.Models;
 using Logic.Models;
 using Logic.Services;
+using Logic.Validator;
 using Logic.Views;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

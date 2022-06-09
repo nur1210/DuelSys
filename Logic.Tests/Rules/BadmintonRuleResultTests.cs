@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Logic.Exceptions;
 using Logic.Models;
 using Logic.Rules;
 using Xunit;
@@ -23,6 +24,7 @@ namespace Logic.Tests.Rules
         [InlineData(24, 22)]
         [InlineData(26, 24)]
         [InlineData(24, 26)]
+
         public void Validate_ValidCall(int one, int two)
         {
             BadmintonRuleResult badmintonResult = new();
@@ -31,6 +33,7 @@ namespace Logic.Tests.Rules
         }
 
         [Theory]
+        [InlineData(0, 0)]
         [InlineData(1, 2)]
         [InlineData(2, 1)]
         [InlineData(10, 12)]
@@ -47,9 +50,9 @@ namespace Logic.Tests.Rules
         {
             BadmintonRuleResult badmintonResult = new();
 
-            var accusal = Assert.Throws<Exception>(() => badmintonResult.Validate(one, two));
+            var actual = Assert.Throws<MatchResultException>(() => badmintonResult.Validate(one, two));
 
-            Assert.Equal(new Exception().GetType(), accusal.GetType());
+            Assert.Equal(new MatchResultException().GetType(), actual.GetType());
         }
     }
 }
