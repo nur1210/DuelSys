@@ -2,8 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DAL" GeneratedClassName="ConnConfig">
   <Profiles />
   <Settings>
-    <Setting Name="ConnStr" Type="System.String" Scope="User">
+    <Setting Name="ConnDev" Type="System.String" Scope="User">
       <Value Profile="(Default)">Server=localhost;Uid=root;Database=duelsys_db; port=3307; Pwd=</Value>
+    </Setting>
+    <Setting Name="ConnProd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=studmysql01.fhict.local;Uid=dbi495554;Database=dbi495554;Pwd=Nechushtan!998;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -42,16 +42,16 @@ namespace Logic.Services
 
         public List<TournamentView> GetAllFilteredTournaments(int? filter, List<TournamentView>? tournamentsList) => filter switch
         {
-            1 => (tournamentsList ?? throw new NotFoundException("Tournaments not found"))
+            1 => tournamentsList
                 .Where(x => TournamentHasStarted(x.Id) == false && x.StartDate > DateTime.Now.AddDays(7))
                 .ToList(),
-            2 => (tournamentsList ?? throw new NotFoundException("Tournaments not found"))
+            2 => tournamentsList
                 .Where(x => TournamentHasStarted(x.Id) && x.EndDate > DateTime.Now)
                 .ToList(),
-            3 => (tournamentsList ?? throw new NotFoundException("Tournaments not found"))
+            3 => tournamentsList
                 .Where(x => TournamentHasStarted(x.Id) && x.EndDate < DateTime.Now)
                 .ToList(),
-            4 => (tournamentsList ?? throw new NotFoundException("Tournaments not found"))
+            4 => tournamentsList
                 .Where(x => TournamentHasStarted(x.Id) == false && x.StartDate < DateTime.Now.AddDays(7))
                 .ToList(),
             _ => GetAllTournamentsForView(tournamentsList.Select(x => x.SportName).FirstOrDefault())

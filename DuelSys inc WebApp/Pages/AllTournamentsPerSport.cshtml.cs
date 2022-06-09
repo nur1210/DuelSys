@@ -2,6 +2,7 @@ using System.Security.Claims;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using AspNetCoreHero.ToastNotification.Enums;
 using AspNetCoreHero.ToastNotification.Toastify.Models;
+using Logic.Exceptions;
 using Logic.Models;
 using Logic.Services;
 using Logic.Validator;
@@ -25,6 +26,7 @@ namespace DuelSys_inc_WebApp.Pages
         [BindProperty] public List<TournamentView> GetAllTournamentViews { get; set; }
         [BindProperty] public List<TournamentView> GetAllFilteredTournaments { get; set; }
         [BindProperty] public List<TournamentView> GetAllStartedTournaments { get; set; }
+        [BindProperty] public string Error { get; set; }
 
         public BadmintonModel(TournamentService tournamentService, UserService userService, Validation validation, INotyfService toastNotification)
         {
@@ -38,9 +40,9 @@ namespace DuelSys_inc_WebApp.Pages
         {
             GetAllTournamentViews = TournamentService.GetAllTournamentsForView(TournamentSportName);
             GetAllFilteredTournaments =
-                TournamentService.GetAllFilteredTournaments(TournamentStageFilter, GetAllTournamentViews);
+                    TournamentService.GetAllFilteredTournaments(TournamentStageFilter, GetAllTournamentViews);
             GetAllStartedTournaments =
-                GetAllTournamentViews.Where(x => TournamentService.TournamentHasStarted(x.Id)).ToList();
+            GetAllTournamentViews.Where(x => TournamentService.TournamentHasStarted(x.Id)).ToList();
         }
 
         public IActionResult OnPost()
@@ -66,7 +68,7 @@ namespace DuelSys_inc_WebApp.Pages
         public IActionResult OnPostFilter()
         {
             var sportName = Request.Form["sportName"];
-            return RedirectToPage("/AllTournamentsPerSport", new { TournamentStageFilter, TournamentSportName = sportName});
+            return RedirectToPage("/AllTournamentsPerSport", new { TournamentStageFilter, TournamentSportName = sportName });
         }
     }
 }

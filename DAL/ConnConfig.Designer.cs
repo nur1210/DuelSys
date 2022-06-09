@@ -26,12 +26,25 @@ namespace DAL {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Server=localhost;Uid=root;Database=duelsys_db; port=3307; Pwd=")]
-        public string ConnStr {
+        public string ConnDev {
             get {
-                return ((string)(this["ConnStr"]));
+                return ((string)(this["ConnDev"]));
             }
             set {
-                this["ConnStr"] = value;
+                this["ConnDev"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=studmysql01.fhict.local;Uid=dbi495554;Database=dbi495554;Pwd=Nechushtan!99" +
+            "8;")]
+        public string ConnProd {
+            get {
+                return ((string)(this["ConnProd"]));
+            }
+            set {
+                this["ConnProd"] = value;
             }
         }
     }

@@ -1,9 +1,11 @@
+using System.Net;
 using AspNetCoreHero.ToastNotification;
 using DAL;
 using Logic.Interfaces;
 using Logic.Services;
 using Logic.Validator;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,13 +46,39 @@ builder.Services.AddSingleton<IResultDB, ResultDB>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
+ if (app.Environment.IsDevelopment())
+ {
+     app.UseDeveloperExceptionPage();
+ }
+ else
+ {
+     app.UseExceptionHandler(errorApp =>
+     {
+         errorApp.Run(async context =>
+         {
+             context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;;
+             context.Response.ContentType = "text/html";
+
+             await context.Response.WriteAsync("<html lang=\"en\"><body>\r\n");
+             await context.Response.WriteAsync("ERROR!<br><br>\r\n");
+
+             var exceptionHandlerPathFeature =
+                 context.Features.Get<IExceptionHandlerPathFeature>();
+
+             if (exceptionHandlerPathFeature?.Error is FileNotFoundException)
+             {
+                 await context.Response.WriteAsync(
+                     "File error thrown!<br><br>\r\n");
+             }
+
+             await context.Response.WriteAsync(
+                 "<a href=\"/\">Home</a><br>\r\n");
+             await context.Response.WriteAsync("</body></html>\r\n");
+             await context.Response.WriteAsync(new string(' ', 512));
+         });
+     });
+     app.UseHsts();
+ }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

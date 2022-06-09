@@ -77,7 +77,7 @@
 			{
 				<div class="card">
 					<div class="card-body">
-						<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Matches</i>Project Status</h6>
+						<h6 class="d-flex align-items-center mb-3">Matches</h6>
 						@foreach (var match in Model.PlayedMatches)
 						{
 							var ratio = Calculator.WinRatio(match.MatchResults, Model.User.Id);
@@ -92,7 +92,7 @@
 									</div>
 									<div class="d-flex flex-column">
 										<span>@Model.UsersFullName.Where(x => x.Key == match.SecondPlayerId).Select(y => y.Value).First()</span>
-										<span>@match.MatchResults[1].MatchResult</span>
+										<span class="text-end">@match.MatchResults[1].MatchResult</span>
 									</div>
 								</div>
 							</div>
@@ -148,7 +148,7 @@
 						<div class="col-sm-9 text-secondary d-flex justify-content-center">
 							@try
 							{
-								Model.UserService.GetUpcomingMatchDate(Model.User.Id).ToString("dd/MM/yyyy");
+								@Model.UserService.GetUpcomingMatchDate(Model.User.Id).ToString("dd/MM/yyyy")
 							}
 							catch (NotFoundException e)
 							{

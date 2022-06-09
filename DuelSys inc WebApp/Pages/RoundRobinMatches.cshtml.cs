@@ -1,11 +1,13 @@
  using AspNetCoreHero.ToastNotification.Abstractions;
  using Logic.Models;
 using Logic.Services;
-using Microsoft.AspNetCore.Mvc;
+ using Microsoft.AspNetCore.Authorization;
+ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DuelSys_inc_WebApp.Pages
 {
+    [Authorize]
     public class RoundRobinMatchesModel : PageModel
     {
         public ResultService ResultService { get; }

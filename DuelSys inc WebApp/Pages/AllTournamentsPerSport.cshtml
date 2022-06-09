@@ -28,6 +28,7 @@
 	<nav id="nav">
 		<ul>
 			<li><a href="Index">Home</a></li>
+			<li><a asp-page="Profile">Profile</a></li>
 			<li> <a asp-page="Logout" asp-route-returnUrl="@Request.Path" class="button">Logout</a></li>
 		</ul>
 	</nav>
@@ -41,11 +42,11 @@
 			<input asp-for="TournamentStageFilter" id="filter" type="hidden" />
 			<input asp-for="TournamentSportName" value="@Model.TournamentSportName" name="sportName" id="sportName-input" type="hidden" />
 
-			<div class="dropdown">
+			<div class="dropdown mb-3">
 				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 					Filter
 				</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+				<ul class="dropdown-menu gap-2 h-auto" aria-labelledby="dropdownMenuButton1">
 					<li><input asp-page-handler="Filter" class="dropdown-item alt" type="submit" value="All" onclick="submitTournamentFilter(0)"></li>
 					<li><input asp-page-handler="Filter" class="dropdown-item alt" type="submit" value="Open" onclick="submitTournamentFilter(1)"></li>
 					<li><input asp-page-handler="Filter" class="dropdown-item alt" type="submit" value="Ongoing" onclick="submitTournamentFilter(2)"></li>
@@ -53,11 +54,11 @@
 					<li><input asp-page-handler="Filter" class="dropdown-item alt" type="submit" value="Canceled" onclick="submitTournamentFilter(4)"></li>
 				</ul>
 			</div>
-			@try
+			@if (Model.GetAllFilteredTournaments.Count != 0)
 			{
 				foreach (var t in Model.GetAllFilteredTournaments)
 				{
-					<li class="no-bullet-list">
+					<li class="no-bullet-list mb-1">
 						<div class="tournament-register-card">
 							<div class="card-header">
 								@switch (t.SportName)
@@ -100,9 +101,9 @@
 					</li>
 				}
 			}
-			catch (NotFoundException)
+			else
 			{
-				<div class="alert alert-danger" role="alert">
+				<div class="alert alert-danger text-center" role="alert">
 					No tournaments found.
 				</div>
 			}
