@@ -5,7 +5,7 @@ namespace DAL
 {
     internal static class Connection
     {
-        private static string Conn = ConnConfig.Default.ConnDev;
+        private static readonly string Conn = ConnConfig.Default.ConnProd;
 
         public static MySqlConnection OpenConnection()
         {
@@ -17,18 +17,9 @@ namespace DAL
             }
             catch (MySqlException)
             {
-                try
-                {
-                    Conn = ConnConfig.Default.ConnProd;
-                    var conn = new MySqlConnection(Conn);
-                    conn.Open();
-                    return conn;
-                }
-                catch (MySqlException)
-                {
-                    throw new InternalErrorException();
-                }
+                throw new InternalErrorException();
             }
         }
     }
 }
+
