@@ -88,7 +88,7 @@ namespace Logic.Tests.Services
             var expected = 2; //The expected rank for the user with Id 2
 
             var actual = cls.GetUserBestRank(2);
-
+            
             Assert.Equal(expected, actual);
         }
 
